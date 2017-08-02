@@ -82,7 +82,7 @@ CString Path::MakeRelativeTo(const CString& rootPath)
 
    relativePath.ReleaseBuffer();
 
-   return ret == FALSE ? _T("") : relativePath;
+   return ret == FALSE ? CString() : relativePath;
 }
 
 bool Path::IsRelative() const
