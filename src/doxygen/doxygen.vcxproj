@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Default|Win32">
+      <Configuration>Default</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <RootNamespace>doxygen</RootNamespace>
+    <ProjectName>doxygen</ProjectName>
+    <ProjectGuid>{DF66E67D-C822-4E08-9945-BD25BF0F04AA}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Default|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Default|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\ulib.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.60610.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Default|Win32'">
+    <ExtensionsToDeleteOnClean>*.html%3b*.map%3b*.md5%3b*.png%3b*.css%3b*.dot%3b*.hhc%3b*.hhk%3b*.hhp%3b*.gif%3b$(TargetPath)</ExtensionsToDeleteOnClean>
+    <NMakeBuildCommandLine>set PATH=%PATH%;$(DoxygenPath);$(DotPath)
+set OUTDIR=$(OutDir)
+call BuildDoxygen.cmd</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>del /s /q "$(OutDir)html" 2&gt; nul
+set PATH=%PATH%;$(DoxygenPath);$(DotPath)
+set OUTDIR=$(OutDir)
+BuildDoxygen.cmd</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>del /s /q "$(OutDir)html" 2&gt; nul
+rmdir /s /q "$(OutDir)html" 2&gt; nul</NMakeCleanCommandLine>
+    <NMakeOutput />
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="BuildDoxygen.cmd" />
+    <None Include="doxygen.cfg" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

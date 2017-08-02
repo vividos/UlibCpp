@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <BoostPath>D:\devel\packages\boost_1_64_0\</BoostPath>
+    <CppCheckPath>C:\Program Files\Cppcheck\</CppCheckPath>
+    <DoxygenPath>D:\devel\tools\doxygen\bin\</DoxygenPath>
+    <DotPath>D:\devel\tools\dot\bin\</DotPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)..\bin\$(ProjectName)\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\intermediate\$(ProjectName)\$(PlatformName)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;$(BoostPath)boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="BoostPath">
+      <Value>$(BoostPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="CppCheckPath">
+      <Value>$(CppCheckPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DoxygenPath">
+      <Value>$(DoxygenPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DotPath">
+      <Value>$(DotPath)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
