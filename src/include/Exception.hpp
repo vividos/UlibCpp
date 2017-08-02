@@ -6,20 +6,24 @@
 //
 #pragma once
 
+#include <exception>
+
 /// exception base class
-class Exception
+class Exception : public std::exception
 {
 public:
    /// ctor
    Exception(LPCSTR sourceFile, UINT sourceLine)
-      :m_sourceFile(sourceFile),
+      :std::exception(FormatExceptionText(nullptr, sourceFile, sourceLine)),
+      m_sourceFile(sourceFile),
       m_sourceLine(sourceLine)
    {
    }
 
    /// ctor
    Exception(const CString& message, LPCSTR sourceFile, UINT sourceLine)
-      :m_message(message),
+      :std::exception(FormatExceptionText(message.GetString(), sourceFile, sourceLine)),
+      m_message(message),
       m_sourceFile(sourceFile),
       m_sourceLine(sourceLine)
    {
@@ -33,6 +37,20 @@ public:
 
    /// returns source file line where the exception occured
    UINT SourceLine() const { return m_sourceLine; }
+
+private:
+   /// formats exception text; used to pass a text to std::exception() base class ctor
+   static CStringA FormatExceptionText(LPCTSTR message, LPCSTR sourceFile, UINT sourceLine)
+   {
+      CStringA text;
+      text.Format(
+         "%s(%u): %ls",
+         sourceFile,
+         sourceLine,
+         message == nullptr ? _T("no message given") : message);
+
+      return text;
+   }
 
 private:
    /// exception message

@@ -18,21 +18,14 @@ CString Win32::ErrorMessage::ToString()
       MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), // default language
       reinterpret_cast<LPTSTR>(&messageBuffer), 0, nullptr);
 
-   try
+   CString errorMessage;
+   if (messageBuffer)
    {
-      CString errorMessage;
-      if (messageBuffer)
-      {
-         errorMessage = reinterpret_cast<LPTSTR>(messageBuffer);
-         LocalFree(messageBuffer);
-      }
-
-      errorMessage.TrimRight(_T("\r\n"));
-
-      return errorMessage;
+      errorMessage = reinterpret_cast<LPTSTR>(messageBuffer);
+      LocalFree(messageBuffer);
    }
-   catch (...)
-   {
-      return CString();
-   }
+
+   errorMessage.TrimRight(_T("\r\n"));
+
+   return errorMessage;
 }

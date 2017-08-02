@@ -31,9 +31,11 @@ public:
    /// adds new observer; new id is returned
    int Add(std::function<T> fnObserver)
    {
-      int iHandlerId = m_nextId++;
-      m_mapAllObserver.insert(std::make_pair(iHandlerId, fnObserver));
-      return iHandlerId;
+      int handlerID = m_nextId;
+      m_nextId++;
+
+      m_mapAllObserver.insert(std::make_pair(handlerID, fnObserver));
+      return handlerID;
    }
 
    /// adds new observer
@@ -52,7 +54,9 @@ public:
    /// calls subject with zero arguments
    void Call()
    {
-      T_mapSubjects::const_iterator iter = m_mapAllObserver.begin(), stop = m_mapAllObserver.end();
+      auto iter = m_mapAllObserver.begin();
+      auto stop = m_mapAllObserver.end();
+
       for (; iter != stop; ++iter)
          (iter->second)();
    }
@@ -61,7 +65,9 @@ public:
    template <typename T1>
    void Call(T1 param1)
    {
-      T_mapSubjects::const_iterator iter = m_mapAllObserver.begin(), stop = m_mapAllObserver.end();
+      auto iter = m_mapAllObserver.begin();
+      auto stop = m_mapAllObserver.end();
+
       for (; iter != stop; ++iter)
          (iter->second)(param1);
    }
@@ -70,7 +76,9 @@ public:
    template <typename T1, typename T2>
    void Call(T1 param1, T2 param2)
    {
-      T_mapSubjects::const_iterator iter = m_mapAllObserver.begin(), stop = m_mapAllObserver.end();
+      auto iter = m_mapAllObserver.begin();
+      auto stop = m_mapAllObserver.end();
+
       for (; iter != stop; ++iter)
       {
          (iter->second)(param1, param2);

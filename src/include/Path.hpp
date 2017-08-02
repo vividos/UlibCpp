@@ -20,7 +20,7 @@ public:
    }
 
    /// ctor that takes a path
-   Path(const CString& path)
+   explicit Path(const CString& path)
       :m_path(path)
    {
    }

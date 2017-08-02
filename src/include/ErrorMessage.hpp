@@ -16,7 +16,7 @@ namespace Win32
    public:
       /// ctor
       /// \param[in] errorCode win32 error code
-      ErrorMessage(DWORD errorCode = GetLastError())
+      explicit ErrorMessage(DWORD errorCode = GetLastError())
          :m_errorCode(errorCode)
       {
       }

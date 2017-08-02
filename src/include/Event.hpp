@@ -67,4 +67,4 @@ private:
 typedef EventT<true> ManualResetEvent;
 
 /// event that auto-resets as soon as a thread successfully Wait()ed on it
-typedef EventT<true> AutoResetEvent;
+typedef EventT<false> AutoResetEvent;

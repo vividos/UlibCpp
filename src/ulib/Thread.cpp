@@ -43,6 +43,7 @@ void Thread::SetName(LPCSTR pszThreadName, DWORD dwThreadId)
    }
    __except(EXCEPTION_EXECUTE_HANDLER)
    {
+      // ignore exception
    }
 #endif // WIN32
 }
