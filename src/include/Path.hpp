@@ -28,8 +28,9 @@ public:
    // ctors
 
    /// default ctor
-   Path()
+   explicit Path()
    {
+      // no further initialisation necessary
    }
 
    /// ctor that takes a path
@@ -41,9 +42,9 @@ public:
    // operators
 
    /// returns CString
-   operator const CString&() const { return m_path; }
+   explicit operator const CString&() const { return m_path; }
    /// returns raw string pointer
-   operator LPCTSTR() const { return m_path; }
+   explicit operator LPCTSTR() const { return m_path; }
 
    // getters
 
