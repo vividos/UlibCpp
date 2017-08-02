@@ -1,24 +1,10 @@
 //
-// winLAME - a frontend for the LAME encoding engine
-// Copyright (c) 2014-2017 Michael Fink
+// ulib - a collection of useful classes
+// Copyright (C) 2014-2017 Michael Fink
 //
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
+/// \file Path.hpp Path class
 //
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-/// \file Path.hpp
-/// \brief Path class
-//
+
 #pragma once
 
 /// file and folder path class
