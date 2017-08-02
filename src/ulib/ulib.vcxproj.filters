@@ -26,12 +26,51 @@
     <ClInclude Include="..\include\Win32.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Thread.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ErrorMessage.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Event.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Exception.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\LightweightMutex.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\MutexLock.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Observer.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Process.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\RecursiveMutex.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SystemException.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Timer.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Path.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorMessage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

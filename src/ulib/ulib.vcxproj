@@ -134,11 +134,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Atl.hpp" />
+    <ClInclude Include="..\include\ErrorMessage.hpp" />
+    <ClInclude Include="..\include\Event.hpp" />
+    <ClInclude Include="..\include\Exception.hpp" />
+    <ClInclude Include="..\include\LightweightMutex.hpp" />
+    <ClInclude Include="..\include\MutexLock.hpp" />
+    <ClInclude Include="..\include\Observer.hpp" />
     <ClInclude Include="..\include\Path.hpp" />
+    <ClInclude Include="..\include\Process.hpp" />
+    <ClInclude Include="..\include\RecursiveMutex.hpp" />
+    <ClInclude Include="..\include\SystemException.hpp" />
+    <ClInclude Include="..\include\Thread.hpp" />
+    <ClInclude Include="..\include\Timer.hpp" />
     <ClInclude Include="..\include\Win32.hpp" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ErrorMessage.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -146,6 +158,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Thread.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
