@@ -291,3 +291,6 @@ __pycache__/
 # SonarQube
 src/.sonarqube/
 src/bw-output/
+
+# my folders
+stuff/
