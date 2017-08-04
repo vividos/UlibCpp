@@ -5,7 +5,6 @@
 /// \file TestException.cpp tests for Exception class
 //
 
-// includes
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "Exception.hpp"
@@ -84,4 +83,5 @@ namespace UnitTest
          }
       }
    };
+
 } // namespace UnitTest
