@@ -112,8 +112,7 @@ void ProgramOptions::Parse(LPCTSTR commandLine)
 void ProgramOptions::Parse(CommandLineParser& parser)
 {
    // must contain at least one param
-   bool ret1 = parser.GetNext(m_executableFilename);
-   ATLASSERT(true == ret1); ret1;
+   ATLVERIFY(true == parser.GetNext(m_executableFilename));
 
    CString argument;
    while (parser.GetNext(argument))
