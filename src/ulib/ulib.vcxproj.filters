@@ -59,6 +59,12 @@
     <ClInclude Include="..\include\Timer.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\CommandLineParser.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ProgramOptions.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -71,6 +77,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ErrorMessage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandLineParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramOptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

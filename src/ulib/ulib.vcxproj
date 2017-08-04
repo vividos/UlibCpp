@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Atl.hpp" />
+    <ClInclude Include="..\include\CommandLineParser.hpp" />
     <ClInclude Include="..\include\ErrorMessage.hpp" />
     <ClInclude Include="..\include\Event.hpp" />
     <ClInclude Include="..\include\Exception.hpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="..\include\Observer.hpp" />
     <ClInclude Include="..\include\Path.hpp" />
     <ClInclude Include="..\include\Process.hpp" />
+    <ClInclude Include="..\include\ProgramOptions.hpp" />
     <ClInclude Include="..\include\RecursiveMutex.hpp" />
     <ClInclude Include="..\include\SystemException.hpp" />
     <ClInclude Include="..\include\Thread.hpp" />
@@ -150,8 +152,10 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CommandLineParser.cpp" />
     <ClCompile Include="ErrorMessage.cpp" />
     <ClCompile Include="Path.cpp" />
+    <ClCompile Include="ProgramOptions.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
