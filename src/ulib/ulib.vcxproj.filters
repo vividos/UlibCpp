@@ -59,10 +59,22 @@
     <ClInclude Include="..\include\Timer.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Mutex.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\include\CommandLineParser.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\ProgramOptions.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\UTF8.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\DynamicLibrary.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\FileFinder.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -83,6 +95,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ProgramOptions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UTF8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

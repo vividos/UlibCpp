@@ -9,10 +9,13 @@
 
 // include all public headers here, in order to check if they compile
 #include "CommandLineParser.hpp"
+#include "DynamicLibrary.hpp"
 #include "ErrorMessage.hpp"
 #include "Event.hpp"
 #include "Exception.hpp"
+#include "FileFinder.hpp"
 #include "LightweightMutex.hpp"
+#include "Mutex.hpp"
 #include "MutexLock.hpp"
 #include "Observer.hpp"
 #include "Path.hpp"
@@ -22,3 +25,4 @@
 #include "SystemException.hpp"
 #include "Thread.hpp"
 #include "Timer.hpp"
+#include "UTF8.hpp"
