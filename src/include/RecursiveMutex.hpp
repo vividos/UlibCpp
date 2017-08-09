@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006-2014 Michael Fink
+// Copyright (C) 2006-2014,2017 Michael Fink
 //
 /// \file RecursiveMutex.hpp recursive mutex class
 //

@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2008-2014 Michael Fink
+// Copyright (C) 2008-2014,2017 Michael Fink
 //
 /// \file LightweightMutex.hpp Lightweight mutex class
 //
@@ -21,7 +21,7 @@ public:
    {
       __try
       {
-         InitializeCriticalSection(&m_cs);
+         InitializeCriticalSection(&m_criticalSection);
       }
       __except (EXCEPTION_EXECUTE_HANDLER)
       {
@@ -32,20 +32,20 @@ public:
    /// dtor
    ~LightweightMutex()
    {
-      DeleteCriticalSection(&m_cs);
+      DeleteCriticalSection(&m_criticalSection);
    }
 
 private:
    /// locks mutex
    void Lock()
    {
-      EnterCriticalSection(&m_cs);
+      EnterCriticalSection(&m_criticalSection);
    }
 
    /// unlocks mutex
    void Unlock()
    {
-      LeaveCriticalSection(&m_cs);
+      LeaveCriticalSection(&m_criticalSection);
    }
 
    // friend so that MutexLock class can call Lock() and Unlock()
@@ -53,5 +53,5 @@ private:
 
 private:
    /// critical section object
-   CRITICAL_SECTION m_cs;
+   CRITICAL_SECTION m_criticalSection;
 };

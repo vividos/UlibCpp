@@ -51,9 +51,9 @@ public:
    }
 
    /// tries locking mutex until timeout (in milliseconds)
-   bool Try(DWORD dwTimeoutInMs)
+   bool Try(DWORD timeoutInMilliseconds)
    {
-      return m_mutex.TryLock(dwTimeoutInMs);
+      return m_mutex.TryLock(timeoutInMilliseconds);
    }
 
 private:
