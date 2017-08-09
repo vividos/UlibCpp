@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Vividos.UlibCpp.Static</id>
+    <version>0.1.0.0</version>
+    <title>$title$</title>
+    <authors>Michael Fink</authors>
+    <owners>Michael Fink</owners>
+    <licenseUrl>https://opensource.org/licenses/BSD-2-Clause</licenseUrl>
+    <projectUrl>https://github.com/vividos/UlibCpp</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>UlibCpp is a collection of useful C++ classes as a static library.</description>
+    <releaseNotes>This is the initial release of the library.</releaseNotes>
+    <copyright>Copyright 2017 Michael Fink</copyright>
+    <tags>native C++</tags>
+  </metadata>
+  <files>
+    <file src="build\native\Vividos.UlibCpp.Static.targets" target="build\native\Vividos.UlibCpp.Static.targets" />
+    <file src="..\include\**" target="lib\native\include\ulib\" />
+    <file src="..\..\bin\Release\Win32\ulib\ulib.lib" target="lib\native\lib\x86\ulib.lib" />
+    <file src="..\..\bin\Release\x64\ulib\ulib.lib" target="lib\native\lib\x64\ulib.lib" />
+  </files>
+</package>
