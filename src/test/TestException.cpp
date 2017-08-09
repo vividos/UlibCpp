@@ -27,6 +27,7 @@ namespace UnitTest
       /// tests throwing and catching by catch(...)
       TEST_METHOD(TestCatchingByCatchAll)
       {
+#pragma warning(disable: 4072) // unreachable code
          try
          {
             throw Exception(__FILE__, __LINE__);
@@ -36,6 +37,7 @@ namespace UnitTest
          {
             return;
          }
+#pragma warning(default: 4072)
       }
 
       /// tests if Exception is derived from std::exception
