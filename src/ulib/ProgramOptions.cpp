@@ -74,8 +74,8 @@ bool ProgramOptions::OutputHelp()
       OptionInfo& optInfo = m_optionsList[optionListIndex];
 
       // add short option chars
-      size_t maxShortOptions = optInfo.m_shortOptionChars.GetLength();
-      for (size_t shortOptionIndex = 0; shortOptionIndex < maxShortOptions; shortOptionIndex++)
+      int maxShortOptions = optInfo.m_shortOptionChars.GetLength();
+      for (int shortOptionIndex = 0; shortOptionIndex < maxShortOptions; shortOptionIndex++)
       {
          helpText.AppendFormat(_T(" -%c"), optInfo.m_shortOptionChars[shortOptionIndex]);
       }
