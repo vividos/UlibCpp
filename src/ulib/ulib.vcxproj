@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="..\include\Atl.hpp" />
     <ClInclude Include="..\include\CommandLineParser.hpp" />
+    <ClInclude Include="..\include\CrashReporter.hpp" />
     <ClInclude Include="..\include\DynamicLibrary.hpp" />
     <ClInclude Include="..\include\ErrorMessage.hpp" />
     <ClInclude Include="..\include\Event.hpp" />
@@ -159,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandLineParser.cpp" />
+    <ClCompile Include="CrashReporter.cpp" />
     <ClCompile Include="ErrorMessage.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="ProgramOptions.cpp" />

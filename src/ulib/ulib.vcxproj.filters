@@ -89,6 +89,9 @@
     <ClInclude Include="..\include\unittest\AutoCleanupFolder.hpp">
       <Filter>Public Include Files\unittest</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\CrashReporter.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -114,6 +117,9 @@
     </ClCompile>
     <ClCompile Include="unittest\AutoCleanupFolder.cpp">
       <Filter>Source Files\unittest</Filter>
+    </ClCompile>
+    <ClCompile Include="CrashReporter.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

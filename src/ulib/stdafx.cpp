@@ -9,6 +9,7 @@
 
 // include all public headers here, in order to check if they compile
 #include "CommandLineParser.hpp"
+#include "CrashReporter.hpp"
 #include "DynamicLibrary.hpp"
 #include "ErrorMessage.hpp"
 #include "Event.hpp"
