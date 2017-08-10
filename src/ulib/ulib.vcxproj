@@ -141,6 +141,8 @@
     <ClInclude Include="..\include\Event.hpp" />
     <ClInclude Include="..\include\Exception.hpp" />
     <ClInclude Include="..\include\FileFinder.hpp" />
+    <ClInclude Include="..\include\IniFile.hpp" />
+    <ClInclude Include="..\include\IoCContainer.hpp" />
     <ClInclude Include="..\include\LightweightMutex.hpp" />
     <ClInclude Include="..\include\Mutex.hpp" />
     <ClInclude Include="..\include\MutexLock.hpp" />

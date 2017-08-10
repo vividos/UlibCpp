@@ -92,6 +92,12 @@
     <ClInclude Include="..\include\CrashReporter.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\IniFile.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\IoCContainer.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

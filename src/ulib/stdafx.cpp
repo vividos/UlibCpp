@@ -15,6 +15,8 @@
 #include "Event.hpp"
 #include "Exception.hpp"
 #include "FileFinder.hpp"
+#include "IniFile.hpp"
+#include "IoCContainer.hpp"
 #include "LightweightMutex.hpp"
 #include "Mutex.hpp"
 #include "MutexLock.hpp"
