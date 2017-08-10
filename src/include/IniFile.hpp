@@ -2,7 +2,7 @@
 // ulib - a collection of useful classes
 // Copyright (C) 2000-2017 Michael Fink
 //
-/// \file niFile.hpp Ini file wrapper
+/// \file IniFile.hpp Ini file wrapper
 //
 #pragma once
 

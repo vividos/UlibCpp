@@ -53,11 +53,10 @@ bool WriteMinidump(HANDLE fileHandle, _EXCEPTION_POINTERS* exceptionInfo)
 /// creates minidump filename in given buffer
 void GetMinidumpFilename(LPTSTR minidumpFilename, UINT numMaxChars)
 {
-   HRESULT hr = StringCchCopy(
+   ATLVERIFY(S_OK == StringCchCopy(
       minidumpFilename,
       numMaxChars,
-      g_minidumpBasePath);
-   ATLASSERT(S_OK == hr); hr;
+      g_minidumpBasePath));
 
    size_t lenBasePath = _tcslen(minidumpFilename);
    TCHAR* start = minidumpFilename + lenBasePath;
@@ -149,11 +148,10 @@ void CrashReporter::Init(const CString& appName, const CString& basePath, T_fnSh
 
    path += appName + _T("-");
 
-   HRESULT hr = StringCchCopy(
+   ATLVERIFY(S_OK == StringCchCopy(
       g_minidumpBasePath,
       sizeof(g_minidumpBasePath) / sizeof(*g_minidumpBasePath),
-      path);
-   ATLASSERT(S_OK == hr); hr;
+      path));
 
    // set exception filter
    SetUnhandledExceptionFilter(&ExceptionFilterWriteMinidump);

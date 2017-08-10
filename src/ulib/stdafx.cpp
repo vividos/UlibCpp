@@ -30,5 +30,5 @@
 #include "Timer.hpp"
 #include "UTF8.hpp"
 
-#include "unittest\AutoCleanupFile.hpp"
-#include "unittest\AutoCleanupFolder.hpp"
+#include "unittest/AutoCleanupFile.hpp"
+#include "unittest/AutoCleanupFolder.hpp"
