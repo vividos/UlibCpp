@@ -133,22 +133,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\Atl.hpp" />
     <ClInclude Include="..\include\CommandLineParser.hpp" />
+    <ClInclude Include="..\include\config\Atl.hpp" />
+    <ClInclude Include="..\include\config\Win32.hpp" />
     <ClInclude Include="..\include\CrashReporter.hpp" />
     <ClInclude Include="..\include\DynamicLibrary.hpp" />
-    <ClInclude Include="..\include\ErrorMessage.hpp" />
     <ClInclude Include="..\include\Event.hpp" />
     <ClInclude Include="..\include\Exception.hpp" />
     <ClInclude Include="..\include\FileFinder.hpp" />
-    <ClInclude Include="..\include\IniFile.hpp" />
     <ClInclude Include="..\include\IoCContainer.hpp" />
     <ClInclude Include="..\include\LightweightMutex.hpp" />
     <ClInclude Include="..\include\Mutex.hpp" />
     <ClInclude Include="..\include\MutexLock.hpp" />
     <ClInclude Include="..\include\Observer.hpp" />
     <ClInclude Include="..\include\Path.hpp" />
-    <ClInclude Include="..\include\Process.hpp" />
     <ClInclude Include="..\include\ProgramOptions.hpp" />
     <ClInclude Include="..\include\RecursiveMutex.hpp" />
     <ClInclude Include="..\include\SystemException.hpp" />
@@ -157,7 +155,9 @@
     <ClInclude Include="..\include\unittest\AutoCleanupFile.hpp" />
     <ClInclude Include="..\include\unittest\AutoCleanupFolder.hpp" />
     <ClInclude Include="..\include\UTF8.hpp" />
-    <ClInclude Include="..\include\Win32.hpp" />
+    <ClInclude Include="..\include\win32\ErrorMessage.hpp" />
+    <ClInclude Include="..\include\win32\IniFile.hpp" />
+    <ClInclude Include="..\include\win32\Process.hpp" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

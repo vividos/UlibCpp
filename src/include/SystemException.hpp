@@ -7,7 +7,7 @@
 #pragma once
 
 #include "Exception.hpp"
-#include "ErrorMessage.hpp"
+#include "win32/ErrorMessage.hpp"
 
 /// Win32 system exception
 class SystemException : public Exception

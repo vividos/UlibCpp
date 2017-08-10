@@ -18,24 +18,21 @@
     <Filter Include="Source Files\unittest">
       <UniqueIdentifier>{6c7ddc27-c7cf-474f-bd0f-bd4497b413e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Public Include Files\win32">
+      <UniqueIdentifier>{45e94c10-659a-4778-bc14-69b290989a92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public Include Files\config">
+      <UniqueIdentifier>{4e2c782e-7222-4282-9e45-80a40d2fe742}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Atl.hpp">
-      <Filter>Public Include Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Path.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Win32.hpp">
-      <Filter>Public Include Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Thread.hpp">
-      <Filter>Public Include Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\ErrorMessage.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Event.hpp">
@@ -51,9 +48,6 @@
       <Filter>Public Include Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Observer.hpp">
-      <Filter>Public Include Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Process.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\RecursiveMutex.hpp">
@@ -92,11 +86,23 @@
     <ClInclude Include="..\include\CrashReporter.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\IniFile.hpp">
-      <Filter>Public Include Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\IoCContainer.hpp">
       <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\config\Atl.hpp">
+      <Filter>Public Include Files\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\config\Win32.hpp">
+      <Filter>Public Include Files\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\win32\ErrorMessage.hpp">
+      <Filter>Public Include Files\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\win32\IniFile.hpp">
+      <Filter>Public Include Files\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\win32\Process.hpp">
+      <Filter>Public Include Files\win32</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
