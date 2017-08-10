@@ -151,6 +151,8 @@
     <ClInclude Include="..\include\SystemException.hpp" />
     <ClInclude Include="..\include\Thread.hpp" />
     <ClInclude Include="..\include\Timer.hpp" />
+    <ClInclude Include="..\include\unittest\AutoCleanupFile.hpp" />
+    <ClInclude Include="..\include\unittest\AutoCleanupFolder.hpp" />
     <ClInclude Include="..\include\UTF8.hpp" />
     <ClInclude Include="..\include\Win32.hpp" />
     <ClInclude Include="stdafx.h" />
@@ -167,6 +169,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Thread.cpp" />
+    <ClCompile Include="unittest\AutoCleanupFolder.cpp" />
     <ClCompile Include="UTF8.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -12,6 +12,12 @@
     <Filter Include="Public Include Files">
       <UniqueIdentifier>{d53e8a8c-b12d-4391-9e77-f97928e07e8e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Public Include Files\unittest">
+      <UniqueIdentifier>{8ca97f72-6650-45e5-9713-ed44c5f643ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\unittest">
+      <UniqueIdentifier>{6c7ddc27-c7cf-474f-bd0f-bd4497b413e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -77,6 +83,12 @@
     <ClInclude Include="..\include\FileFinder.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\unittest\AutoCleanupFile.hpp">
+      <Filter>Public Include Files\unittest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\unittest\AutoCleanupFolder.hpp">
+      <Filter>Public Include Files\unittest</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -99,6 +111,9 @@
     </ClCompile>
     <ClCompile Include="UTF8.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="unittest\AutoCleanupFolder.cpp">
+      <Filter>Source Files\unittest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
