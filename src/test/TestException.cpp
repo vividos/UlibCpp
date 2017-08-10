@@ -24,10 +24,10 @@ namespace UnitTest
          Exception e2(_T("my message"), __FILE__, __LINE__);
       }
 
+#pragma warning(disable: 4702) // unreachable code
       /// tests throwing and catching by catch(...)
       TEST_METHOD(TestCatchingByCatchAll)
       {
-#pragma warning(disable: 4072) // unreachable code
          try
          {
             throw Exception(__FILE__, __LINE__);
@@ -37,8 +37,8 @@ namespace UnitTest
          {
             return;
          }
-#pragma warning(default: 4072)
       }
+#pragma warning(default: 4702)
 
       /// tests if Exception is derived from std::exception
       TEST_METHOD(TestDerivedByStdException)
