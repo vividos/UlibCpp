@@ -9,3 +9,4 @@
 #include "MutexLock.hpp"
 #include "RecursiveMutex.hpp"
 #include "LightweightMutex.hpp"
+#include "ReaderWriterMutex.hpp"

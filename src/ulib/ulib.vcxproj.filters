@@ -24,6 +24,12 @@
     <Filter Include="Public Include Files\config">
       <UniqueIdentifier>{4e2c782e-7222-4282-9e45-80a40d2fe742}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Public Include Files\thread">
+      <UniqueIdentifier>{563cbe98-6dd1-4f73-be60-df99c9f0eb98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\thread">
+      <UniqueIdentifier>{0c07266a-6028-45c1-8db2-2811202c0dfd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -32,34 +38,16 @@
     <ClInclude Include="..\include\Path.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Thread.hpp">
-      <Filter>Public Include Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Event.hpp">
-      <Filter>Public Include Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Exception.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\LightweightMutex.hpp">
-      <Filter>Public Include Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\MutexLock.hpp">
-      <Filter>Public Include Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Observer.hpp">
-      <Filter>Public Include Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\RecursiveMutex.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\SystemException.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Timer.hpp">
-      <Filter>Public Include Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Mutex.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\CommandLineParser.hpp">
@@ -104,15 +92,36 @@
     <ClInclude Include="..\include\win32\Process.hpp">
       <Filter>Public Include Files\win32</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ReaderWriterMutex.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\thread\LightweightMutex.hpp">
+      <Filter>Public Include Files\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\thread\Mutex.hpp">
+      <Filter>Public Include Files\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\thread\MutexLock.hpp">
+      <Filter>Public Include Files\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\thread\ReaderWriterMutex.hpp">
+      <Filter>Public Include Files\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\thread\RecursiveMutex.hpp">
+      <Filter>Public Include Files\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\thread\Thread.hpp">
+      <Filter>Public Include Files\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\thread\Event.hpp">
+      <Filter>Public Include Files\thread</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Path.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Thread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ErrorMessage.cpp">
@@ -132,6 +141,12 @@
     </ClCompile>
     <ClCompile Include="CrashReporter.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\ReaderWriterMutex.cpp">
+      <Filter>Source Files\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Thread.cpp">
+      <Filter>Source Files\thread</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

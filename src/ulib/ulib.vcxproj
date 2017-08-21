@@ -138,19 +138,21 @@
     <ClInclude Include="..\include\config\Win32.hpp" />
     <ClInclude Include="..\include\CrashReporter.hpp" />
     <ClInclude Include="..\include\DynamicLibrary.hpp" />
-    <ClInclude Include="..\include\Event.hpp" />
     <ClInclude Include="..\include\Exception.hpp" />
     <ClInclude Include="..\include\FileFinder.hpp" />
     <ClInclude Include="..\include\IoCContainer.hpp" />
-    <ClInclude Include="..\include\LightweightMutex.hpp" />
-    <ClInclude Include="..\include\Mutex.hpp" />
-    <ClInclude Include="..\include\MutexLock.hpp" />
     <ClInclude Include="..\include\Observer.hpp" />
     <ClInclude Include="..\include\Path.hpp" />
     <ClInclude Include="..\include\ProgramOptions.hpp" />
-    <ClInclude Include="..\include\RecursiveMutex.hpp" />
+    <ClInclude Include="..\include\ReaderWriterMutex.hpp" />
     <ClInclude Include="..\include\SystemException.hpp" />
-    <ClInclude Include="..\include\Thread.hpp" />
+    <ClInclude Include="..\include\thread\Event.hpp" />
+    <ClInclude Include="..\include\thread\LightweightMutex.hpp" />
+    <ClInclude Include="..\include\thread\Mutex.hpp" />
+    <ClInclude Include="..\include\thread\MutexLock.hpp" />
+    <ClInclude Include="..\include\thread\ReaderWriterMutex.hpp" />
+    <ClInclude Include="..\include\thread\RecursiveMutex.hpp" />
+    <ClInclude Include="..\include\thread\Thread.hpp" />
     <ClInclude Include="..\include\Timer.hpp" />
     <ClInclude Include="..\include\unittest\AutoCleanupFile.hpp" />
     <ClInclude Include="..\include\unittest\AutoCleanupFolder.hpp" />
@@ -172,7 +174,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Thread.cpp" />
+    <ClCompile Include="thread\ReaderWriterMutex.cpp" />
+    <ClCompile Include="thread\Thread.cpp" />
     <ClCompile Include="unittest\AutoCleanupFolder.cpp" />
     <ClCompile Include="UTF8.cpp" />
   </ItemGroup>
