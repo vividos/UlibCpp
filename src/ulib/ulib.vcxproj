@@ -144,7 +144,6 @@
     <ClInclude Include="..\include\ulib\Observer.hpp" />
     <ClInclude Include="..\include\ulib\Path.hpp" />
     <ClInclude Include="..\include\ulib\ProgramOptions.hpp" />
-    <ClInclude Include="..\include\ulib\ReaderWriterMutex.hpp" />
     <ClInclude Include="..\include\ulib\SystemException.hpp" />
     <ClInclude Include="..\include\ulib\thread\Event.hpp" />
     <ClInclude Include="..\include\ulib\thread\LightweightMutex.hpp" />

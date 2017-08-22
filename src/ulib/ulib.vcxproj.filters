@@ -95,9 +95,6 @@
     <ClInclude Include="..\include\ulib\win32\Process.hpp">
       <Filter>Public Include Files\win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\ulib\ReaderWriterMutex.hpp">
-      <Filter>Public Include Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\ulib\thread\LightweightMutex.hpp">
       <Filter>Public Include Files\thread</Filter>
     </ClInclude>
