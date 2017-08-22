@@ -119,6 +119,9 @@
     <ClInclude Include="..\include\ulib\win32\ResourceData.hpp">
       <Filter>Public Include Files\win32</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\config\Wtl.hpp">
+      <Filter>Public Include Files\config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

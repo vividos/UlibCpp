@@ -136,6 +136,7 @@
     <ClInclude Include="..\include\ulib\CommandLineParser.hpp" />
     <ClInclude Include="..\include\ulib\config\Atl.hpp" />
     <ClInclude Include="..\include\ulib\config\Win32.hpp" />
+    <ClInclude Include="..\include\ulib\config\Wtl.hpp" />
     <ClInclude Include="..\include\ulib\CrashReporter.hpp" />
     <ClInclude Include="..\include\ulib\DynamicLibrary.hpp" />
     <ClInclude Include="..\include\ulib\Exception.hpp" />
