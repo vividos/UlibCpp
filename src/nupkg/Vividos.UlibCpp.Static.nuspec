@@ -17,7 +17,9 @@
   <files>
     <file src="build\native\Vividos.UlibCpp.Static.targets" target="build\native\Vividos.UlibCpp.Static.targets" />
     <file src="..\include\ulib\**" target="lib\native\include\ulib\" />
-    <file src="..\..\bin\Release\Win32\ulib\ulib.lib" target="lib\native\lib\x86\ulib.lib" />
-    <file src="..\..\bin\Release\x64\ulib\ulib.lib" target="lib\native\lib\x64\ulib.lib" />
+    <file src="..\..\bin\Release\Win32\ulib\ulib.lib" target="lib\native\lib\x86\release\ulib.lib" />
+    <file src="..\..\bin\Release\x64\ulib\ulib.lib" target="lib\native\lib\x64\release\ulib.lib" />
+    <file src="..\..\bin\Debug\Win32\ulib\ulib.lib" target="lib\native\lib\x86\debug\ulib.lib" />
+    <file src="..\..\bin\Debug\x64\ulib\ulib.lib" target="lib\native\lib\x64\debug\ulib.lib" />
   </files>
 </package>

@@ -8,12 +8,16 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
     <Link>
-      <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)'=='Release'">$(MSBuildThisFileDirectory)..\..\lib\native\lib\x86\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)'=='Debug'">$(MSBuildThisFileDirectory)..\..\lib\native\lib\x86\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ulib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='x64'">
     <Link>
-      <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)'=='Release'">$(MSBuildThisFileDirectory)..\..\lib\native\lib\x64\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)'=='Debug'">$(MSBuildThisFileDirectory)..\..\lib\native\lib\x64\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ulib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />
