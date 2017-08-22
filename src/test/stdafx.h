@@ -9,7 +9,7 @@
 // including SDKDDKVer.h defines the highest available Windows platform.
 #include <SDKDDKVer.h>
 
-#include "config/Win32.hpp"
-#include "config/Atl.hpp"
+#include <ulib/config/Win32.hpp>
+#include <ulib/config/Atl.hpp>
 
 #include "CppUnitTest.h"

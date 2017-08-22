@@ -7,8 +7,8 @@
 #pragma once
 
 #include <memory>
-#include "MutexLock.hpp"
-#include "SystemException.hpp"
+#include <ulib/thread/MutexLock.hpp>
+#include <ulib/SystemException.hpp>
 
 /// a recursive lockable synchronisation object
 class RecursiveMutex

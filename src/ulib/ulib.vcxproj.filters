@@ -35,85 +35,85 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Path.hpp">
+    <ClInclude Include="..\include\ulib\Path.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Exception.hpp">
+    <ClInclude Include="..\include\ulib\Exception.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Observer.hpp">
+    <ClInclude Include="..\include\ulib\Observer.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\SystemException.hpp">
+    <ClInclude Include="..\include\ulib\SystemException.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Timer.hpp">
+    <ClInclude Include="..\include\ulib\Timer.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\CommandLineParser.hpp">
+    <ClInclude Include="..\include\ulib\CommandLineParser.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\ProgramOptions.hpp">
+    <ClInclude Include="..\include\ulib\ProgramOptions.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\UTF8.hpp">
+    <ClInclude Include="..\include\ulib\UTF8.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\DynamicLibrary.hpp">
+    <ClInclude Include="..\include\ulib\DynamicLibrary.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\FileFinder.hpp">
+    <ClInclude Include="..\include\ulib\FileFinder.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\unittest\AutoCleanupFile.hpp">
+    <ClInclude Include="..\include\ulib\unittest\AutoCleanupFile.hpp">
       <Filter>Public Include Files\unittest</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\unittest\AutoCleanupFolder.hpp">
+    <ClInclude Include="..\include\ulib\unittest\AutoCleanupFolder.hpp">
       <Filter>Public Include Files\unittest</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\CrashReporter.hpp">
+    <ClInclude Include="..\include\ulib\CrashReporter.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\IoCContainer.hpp">
+    <ClInclude Include="..\include\ulib\IoCContainer.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\config\Atl.hpp">
+    <ClInclude Include="..\include\ulib\config\Atl.hpp">
       <Filter>Public Include Files\config</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\config\Win32.hpp">
+    <ClInclude Include="..\include\ulib\config\Win32.hpp">
       <Filter>Public Include Files\config</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\win32\ErrorMessage.hpp">
+    <ClInclude Include="..\include\ulib\win32\ErrorMessage.hpp">
       <Filter>Public Include Files\win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\win32\IniFile.hpp">
+    <ClInclude Include="..\include\ulib\win32\IniFile.hpp">
       <Filter>Public Include Files\win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\win32\Process.hpp">
+    <ClInclude Include="..\include\ulib\win32\Process.hpp">
       <Filter>Public Include Files\win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\ReaderWriterMutex.hpp">
+    <ClInclude Include="..\include\ulib\ReaderWriterMutex.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\thread\LightweightMutex.hpp">
+    <ClInclude Include="..\include\ulib\thread\LightweightMutex.hpp">
       <Filter>Public Include Files\thread</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\thread\Mutex.hpp">
+    <ClInclude Include="..\include\ulib\thread\Mutex.hpp">
       <Filter>Public Include Files\thread</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\thread\MutexLock.hpp">
+    <ClInclude Include="..\include\ulib\thread\MutexLock.hpp">
       <Filter>Public Include Files\thread</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\thread\ReaderWriterMutex.hpp">
+    <ClInclude Include="..\include\ulib\thread\ReaderWriterMutex.hpp">
       <Filter>Public Include Files\thread</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\thread\RecursiveMutex.hpp">
+    <ClInclude Include="..\include\ulib\thread\RecursiveMutex.hpp">
       <Filter>Public Include Files\thread</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\thread\Thread.hpp">
+    <ClInclude Include="..\include\ulib\thread\Thread.hpp">
       <Filter>Public Include Files\thread</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\thread\Event.hpp">
+    <ClInclude Include="..\include\ulib\thread\Event.hpp">
       <Filter>Public Include Files\thread</Filter>
     </ClInclude>
   </ItemGroup>

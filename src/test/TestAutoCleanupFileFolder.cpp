@@ -7,8 +7,8 @@
 
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "unittest/AutoCleanupFolder.hpp"
-#include "unittest/AutoCleanupFile.hpp"
+#include <ulib/unittest/AutoCleanupFolder.hpp>
+#include <ulib/unittest/AutoCleanupFile.hpp>
 #include <cstdio>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

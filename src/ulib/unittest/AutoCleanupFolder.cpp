@@ -7,9 +7,9 @@
 
 // includes
 #include "stdafx.h"
-#include "unittest/AutoCleanupFolder.hpp"
-#include "Path.hpp"
-#include "FileFinder.hpp"
+#include <ulib/unittest/AutoCleanupFolder.hpp>
+#include <ulib/Path.hpp>
+#include <ulib/FileFinder.hpp>
 #include <deque>
 
 using UnitTest::AutoCleanupFolder;

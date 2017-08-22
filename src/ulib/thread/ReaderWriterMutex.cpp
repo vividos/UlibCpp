@@ -5,8 +5,8 @@
 /// \file ReaderWriterMutex.cpp reader/writer mutex
 //
 #include "stdafx.h"
-#include "thread/ReaderWriterMutex.hpp"
-#include "SystemException.hpp"
+#include <ulib/thread/ReaderWriterMutex.hpp>
+#include <ulib/SystemException.hpp>
 
 /// define this to track reader races
 #define TRACK_READER_RACES

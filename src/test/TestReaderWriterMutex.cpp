@@ -7,7 +7,7 @@
 
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "thread/ReaderWriterMutex.hpp"
+#include <ulib/thread/ReaderWriterMutex.hpp>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

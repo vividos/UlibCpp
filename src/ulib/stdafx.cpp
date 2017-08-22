@@ -8,29 +8,29 @@
 #include "stdafx.h"
 
 // include all public headers here, in order to check if they compile
-#include "CommandLineParser.hpp"
-#include "CrashReporter.hpp"
-#include "DynamicLibrary.hpp"
-#include "Exception.hpp"
-#include "FileFinder.hpp"
-#include "IoCContainer.hpp"
-#include "Observer.hpp"
-#include "Path.hpp"
-#include "ProgramOptions.hpp"
-#include "SystemException.hpp"
-#include "Timer.hpp"
-#include "UTF8.hpp"
+#include <ulib/CommandLineParser.hpp>
+#include <ulib/CrashReporter.hpp>
+#include <ulib/DynamicLibrary.hpp>
+#include <ulib/Exception.hpp>
+#include <ulib/FileFinder.hpp>
+#include <ulib/IoCContainer.hpp>
+#include <ulib/Observer.hpp>
+#include <ulib/Path.hpp>
+#include <ulib/ProgramOptions.hpp>
+#include <ulib/SystemException.hpp>
+#include <ulib/Timer.hpp>
+#include <ulib/UTF8.hpp>
 
-#include "thread/Event.hpp"
-#include "thread/LightweightMutex.hpp"
-#include "thread/Mutex.hpp"
-#include "thread/MutexLock.hpp"
-#include "thread/RecursiveMutex.hpp"
-#include "thread/Thread.hpp"
+#include <ulib/thread/Event.hpp>
+#include <ulib/thread/LightweightMutex.hpp>
+#include <ulib/thread/Mutex.hpp>
+#include <ulib/thread/MutexLock.hpp>
+#include <ulib/thread/RecursiveMutex.hpp>
+#include <ulib/thread/Thread.hpp>
 
-#include "win32/ErrorMessage.hpp"
-#include "win32/IniFile.hpp"
-#include "win32/Process.hpp"
+#include <ulib/win32/ErrorMessage.hpp>
+#include <ulib/win32/IniFile.hpp>
+#include <ulib/win32/Process.hpp>
 
-#include "unittest/AutoCleanupFile.hpp"
-#include "unittest/AutoCleanupFolder.hpp"
+#include <ulib/unittest/AutoCleanupFile.hpp>
+#include <ulib/unittest/AutoCleanupFolder.hpp>

@@ -16,7 +16,7 @@
   </metadata>
   <files>
     <file src="build\native\Vividos.UlibCpp.Static.targets" target="build\native\Vividos.UlibCpp.Static.targets" />
-    <file src="..\include\**" target="lib\native\include\ulib\" />
+    <file src="..\include\ulib\**" target="lib\native\include\ulib\" />
     <file src="..\..\bin\Release\Win32\ulib\ulib.lib" target="lib\native\lib\x86\ulib.lib" />
     <file src="..\..\bin\Release\x64\ulib\ulib.lib" target="lib\native\lib\x64\ulib.lib" />
   </files>

@@ -5,8 +5,8 @@
 /// \file CrashReporter.cpp Application crash reporting
 //
 #include "stdafx.h"
-#include "CrashReporter.hpp"
-#include "Path.hpp"
+#include <ulib/CrashReporter.hpp>
+#include <ulib/Path.hpp>
 #include <strsafe.h>
 #include <ctime>
 #include <memory>

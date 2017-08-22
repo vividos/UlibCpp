@@ -7,7 +7,7 @@
 
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "Exception.hpp"
+#include <ulib/Exception.hpp>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

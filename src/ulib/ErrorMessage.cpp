@@ -6,7 +6,7 @@
 //
 
 #include "stdafx.h"
-#include "win32/ErrorMessage.hpp"
+#include <ulib/win32/ErrorMessage.hpp>
 
 CString Win32::ErrorMessage::ToString()
 {

@@ -6,9 +6,9 @@
 //
 
 #include "stdafx.h"
-#include "ProgramOptions.hpp"
-#include "CommandLineParser.hpp"
-#include "Path.hpp"
+#include <ulib/ProgramOptions.hpp>
+#include <ulib/CommandLineParser.hpp>
+#include <ulib/Path.hpp>
 
 void ProgramOptions::RegisterOption(const CString& shortOptionChars, const CString& longOption,
    const CString& helpText, unsigned int numArgs, T_fnOptionHandler fnOptionHandler)

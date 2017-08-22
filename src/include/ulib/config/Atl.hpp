@@ -21,9 +21,9 @@
 
 #include <atlcoll.h>
 #include <atlstr.h>
-#include <atltypes.h>
 #define _WTL_NO_CSTRING
 #define _WTL_NO_WTYPES
+#include <atltypes.h>
 
 #include <atlwin.h>
 #include <atlcom.h>
@@ -47,3 +47,7 @@
 #else
 #pragma comment(linker, "/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #endif
+
+// undef the macros so that std::min and std::max work as they should be
+#undef min
+#undef max

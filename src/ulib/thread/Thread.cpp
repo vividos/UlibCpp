@@ -6,7 +6,7 @@
 //
 
 #include "stdafx.h"
-#include "thread/Thread.hpp"
+#include <ulib/thread/Thread.hpp>
 
 #ifdef WIN32
 

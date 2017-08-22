@@ -7,7 +7,7 @@
 
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "CommandLineParser.hpp"
+#include <ulib/CommandLineParser.hpp>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
