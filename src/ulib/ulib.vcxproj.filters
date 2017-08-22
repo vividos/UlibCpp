@@ -30,6 +30,9 @@
     <Filter Include="Source Files\thread">
       <UniqueIdentifier>{0c07266a-6028-45c1-8db2-2811202c0dfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\win32">
+      <UniqueIdentifier>{e70c2317-a0c9-4766-8e4a-78d2627ca736}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -116,6 +119,9 @@
     <ClInclude Include="..\include\ulib\thread\Event.hpp">
       <Filter>Public Include Files\thread</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\win32\ResourceData.hpp">
+      <Filter>Public Include Files\win32</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -147,6 +153,9 @@
     </ClCompile>
     <ClCompile Include="thread\Thread.cpp">
       <Filter>Source Files\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\ResourceData.cpp">
+      <Filter>Source Files\win32</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

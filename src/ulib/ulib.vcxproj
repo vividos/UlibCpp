@@ -160,6 +160,7 @@
     <ClInclude Include="..\include\ulib\win32\ErrorMessage.hpp" />
     <ClInclude Include="..\include\ulib\win32\IniFile.hpp" />
     <ClInclude Include="..\include\ulib\win32\Process.hpp" />
+    <ClInclude Include="..\include\ulib\win32\ResourceData.hpp" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +179,7 @@
     <ClCompile Include="thread\Thread.cpp" />
     <ClCompile Include="unittest\AutoCleanupFolder.cpp" />
     <ClCompile Include="UTF8.cpp" />
+    <ClCompile Include="win32\ResourceData.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
