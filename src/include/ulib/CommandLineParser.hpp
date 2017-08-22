@@ -12,7 +12,7 @@ class CommandLineParser
 {
 public:
    /// parses single long command line string
-   CommandLineParser(const CString& commandLine = GetCommandLine());
+   CommandLineParser(explicit const CString& commandLine = GetCommandLine());
 
    /// parses _tmain parameter
    CommandLineParser(int argc, TCHAR* argv[]);

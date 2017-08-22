@@ -34,7 +34,8 @@ AutoCleanupFolder::AutoCleanupFolder()
 
    do
    {
-      m_folderName.Format(_T("%stest-%06x"), basePath.GetString(), counter++);
+      m_folderName.Format(_T("%stest-%06x"), basePath.GetString(), counter);
+      counter++;
 
    } while(INVALID_FILE_ATTRIBUTES != ::GetFileAttributes(m_folderName));
 

@@ -171,24 +171,18 @@ void ProgramOptions::Parse(CommandLineParser& parser)
                }
 
                ATLASSERT(optInfo.m_fnOptionHandler != NULL);
-               bool ret2 = optInfo.m_fnOptionHandler(argsList);
+               bool ret = optInfo.m_fnOptionHandler(argsList);
 
-               if (!ret2)
-               {
-                  if (m_fnOptionOutputHandler)
-                     m_fnOptionOutputHandler(CString(_T("Syntax error for option: ") + argument));
-               }
+               if (!ret && m_fnOptionOutputHandler)
+                  m_fnOptionOutputHandler(CString(_T("Syntax error for option: ") + argument));
 
                break;
             }
          } // end for
 
-         if (!foundOption)
-         {
-            // unknown option
-            if (m_fnOptionOutputHandler)
-               m_fnOptionOutputHandler(CString(_T("Unknown option: ") + argument));
-         }
+         // unknown option
+         if (!foundOption && m_fnOptionOutputHandler)
+            m_fnOptionOutputHandler(CString(_T("Unknown option: ") + argument));
       }
       else
       {
@@ -197,12 +191,9 @@ void ProgramOptions::Parse(CommandLineParser& parser)
          if (m_fnParameterHandler)
             handled = m_fnParameterHandler(argument);
 
-         if (!handled)
-         {
-            // output: unhandled option
-            if (m_fnOptionOutputHandler)
-               m_fnOptionOutputHandler(CString(_T("Unknown parameter: ") + argument));
-         }
+         // output: unhandled option
+         if (!handled && m_fnOptionOutputHandler)
+            m_fnOptionOutputHandler(CString(_T("Unknown parameter: ") + argument));
       }
    }
 }
