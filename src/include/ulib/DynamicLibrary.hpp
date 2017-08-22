@@ -11,7 +11,7 @@ class DynamicLibrary
 {
 public:
    /// ctor; loads module
-   DynamicLibrary(explicit LPCTSTR moduleFilename)
+   DynamicLibrary(LPCTSTR moduleFilename)
       :m_module(LoadLibrary(moduleFilename))
    {
    }
