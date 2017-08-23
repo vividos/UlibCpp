@@ -166,7 +166,6 @@
   <ItemGroup>
     <ClCompile Include="CommandLineParser.cpp" />
     <ClCompile Include="CrashReporter.cpp" />
-    <ClCompile Include="ErrorMessage.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="ProgramOptions.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -179,6 +178,7 @@
     <ClCompile Include="thread\Thread.cpp" />
     <ClCompile Include="unittest\AutoCleanupFolder.cpp" />
     <ClCompile Include="UTF8.cpp" />
+    <ClCompile Include="win32\ErrorMessage.cpp" />
     <ClCompile Include="win32\ResourceData.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

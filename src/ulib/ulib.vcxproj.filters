@@ -130,9 +130,6 @@
     <ClCompile Include="Path.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ErrorMessage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CommandLineParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -153,6 +150,9 @@
     </ClCompile>
     <ClCompile Include="thread\Thread.cpp">
       <Filter>Source Files\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\ErrorMessage.cpp">
+      <Filter>Source Files\win32</Filter>
     </ClCompile>
     <ClCompile Include="win32\ResourceData.cpp">
       <Filter>Source Files\win32</Filter>
