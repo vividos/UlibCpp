@@ -6,7 +6,6 @@
 //
 #pragma once
 
-// includes
 #include <vector>
 
 namespace Win32

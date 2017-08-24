@@ -4,8 +4,6 @@
 //
 /// \file ResourceData.cpp resource data class
 //
-
-// includes
 #include "stdafx.h"
 #include <ulib/win32/ResourceData.hpp>
 

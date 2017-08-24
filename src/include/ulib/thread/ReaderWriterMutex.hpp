@@ -6,7 +6,6 @@
 //
 #pragma once
 
-// includes
 #include <memory>
 
 /// \brief reader-writer mutex

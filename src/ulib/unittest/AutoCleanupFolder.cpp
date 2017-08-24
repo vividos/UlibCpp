@@ -4,8 +4,6 @@
 //
 /// \file AutoCleanupFolder.cpp auto-deleting folder
 //
-
-// includes
 #include "stdafx.h"
 #include <ulib/unittest/AutoCleanupFolder.hpp>
 #include <ulib/Path.hpp>
