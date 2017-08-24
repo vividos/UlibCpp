@@ -6,12 +6,9 @@
 //
 #pragma once
 
-// IoCContainer is only available when compiling for C++17
-#if _HAS_CXX17
-
 #include <string>
 #include <map>
-#include <any>
+#include <boost/any.hpp>
 #include <type_traits>
 
 /// inversion of control container
@@ -45,7 +42,7 @@ public:
          throw std::runtime_error(std::string("class not registered: ") + typeid(TInterface).name());
 
       std::reference_wrapper<TInterface> ref =
-         std::any_cast<std::reference_wrapper<TInterface>>(iter->second);
+         boost::any_cast<std::reference_wrapper<TInterface>>(iter->second);
 
       return ref.get();
    }
@@ -61,10 +58,8 @@ private:
 
 private:
    /// instance map type
-   typedef std::map<std::string, std::any> T_mapAllInstances;
+   typedef std::map<std::string, boost::any> T_mapAllInstances;
 
    /// instance map
    T_mapAllInstances m_mapAllInstances;
 };
-
-#endif // _HAS_CXX17
