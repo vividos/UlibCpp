@@ -60,7 +60,7 @@ void GetMinidumpFilename(LPTSTR minidumpFilename, UINT numMaxChars)
 
    size_t lenBasePath = _tcslen(minidumpFilename);
    TCHAR* start = minidumpFilename + lenBasePath;
-   unsigned int numRemaining = numMaxChars - lenBasePath;
+   size_t numRemaining = numMaxChars - lenBasePath;
 
    // add date
    time_t nowt = ::time(&nowt);
