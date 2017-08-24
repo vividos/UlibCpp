@@ -24,6 +24,18 @@
 #include <ulib/TimeZone.hpp>
 #include <ulib/UTF8.hpp>
 
+#include <ulib/log/AndroidLogcatAppender.hpp>
+#include <ulib/log/Appender.hpp>
+#include <ulib/log/ConsoleAppender.hpp>
+#include <ulib/log/Layout.hpp>
+#include <ulib/log/Log.hpp>
+#include <ulib/log/Logger.hpp>
+#include <ulib/log/LoggingEvent.hpp>
+#include <ulib/log/OutputDebugStringAppender.hpp>
+#include <ulib/log/PatternLayout.hpp>
+#include <ulib/log/SimpleLayout.hpp>
+#include <ulib/log/TextStreamAppender.hpp>
+
 #include <ulib/stream/EndianAwareFilter.hpp>
 #include <ulib/stream/FileStream.hpp>
 #include <ulib/stream/IStream.hpp>

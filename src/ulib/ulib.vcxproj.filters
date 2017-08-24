@@ -39,6 +39,12 @@
     <Filter Include="Public Include Files\stream">
       <UniqueIdentifier>{2c0292df-2e9a-490c-8fb0-89202200edce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Public Include Files\log">
+      <UniqueIdentifier>{593ff242-8012-4d95-b4dc-78db64e163b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\log">
+      <UniqueIdentifier>{0ea52432-4b83-4e94-9bb9-a0b800e4c4c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -170,6 +176,39 @@
     <ClInclude Include="TimeSpanImpl.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\log\AndroidLogcatAppender.hpp">
+      <Filter>Public Include Files\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\log\Appender.hpp">
+      <Filter>Public Include Files\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\log\ConsoleAppender.hpp">
+      <Filter>Public Include Files\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\log\Layout.hpp">
+      <Filter>Public Include Files\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\log\Log.hpp">
+      <Filter>Public Include Files\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\log\Logger.hpp">
+      <Filter>Public Include Files\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\log\LoggingEvent.hpp">
+      <Filter>Public Include Files\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\log\OutputDebugStringAppender.hpp">
+      <Filter>Public Include Files\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\log\PatternLayout.hpp">
+      <Filter>Public Include Files\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\log\SimpleLayout.hpp">
+      <Filter>Public Include Files\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\log\TextStreamAppender.hpp">
+      <Filter>Public Include Files\log</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -222,6 +261,12 @@
     </ClCompile>
     <ClCompile Include="TimeZone.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="log\Logger.cpp">
+      <Filter>Source Files\log</Filter>
+    </ClCompile>
+    <ClCompile Include="log\PatternLayout.cpp">
+      <Filter>Source Files\log</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
