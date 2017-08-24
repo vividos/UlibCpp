@@ -18,7 +18,7 @@ class ReaderWriterMutex::Impl
 {
 public:
    /// dtor
-   ~Impl() throw()
+   ~Impl()
    {
       if (m_hReadyToRead != NULL)
          CloseHandle(m_hReadyToRead);
