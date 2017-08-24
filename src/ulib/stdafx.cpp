@@ -10,6 +10,7 @@
 // include all public headers here, in order to check if they compile
 #include <ulib/CommandLineParser.hpp>
 #include <ulib/CrashReporter.hpp>
+#include <ulib/DateTime.hpp>
 #include <ulib/DynamicLibrary.hpp>
 #include <ulib/Exception.hpp>
 #include <ulib/FileFinder.hpp>
@@ -19,6 +20,8 @@
 #include <ulib/ProgramOptions.hpp>
 #include <ulib/SystemException.hpp>
 #include <ulib/Timer.hpp>
+#include <ulib/TimeSpan.hpp>
+#include <ulib/TimeZone.hpp>
 #include <ulib/UTF8.hpp>
 
 #include <ulib/stream/EndianAwareFilter.hpp>

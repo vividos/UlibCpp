@@ -155,6 +155,21 @@
     <ClInclude Include="..\include\ulib\stream\ITextStream.hpp">
       <Filter>Public Include Files\stream</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\DateTime.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\TimeZone.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\TimeSpan.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ISO8601Parser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeSpanImpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -195,6 +210,18 @@
     </ClCompile>
     <ClCompile Include="stream\TextStreamFilter.cpp">
       <Filter>Source Files\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="DateTime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ISO8601Parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeSpan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeZone.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

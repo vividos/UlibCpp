@@ -11,3 +11,6 @@
 
 #include <ulib/config/Win32.hpp>
 #include <ulib/config/Atl.hpp>
+
+// don't link against Boost.DateTime; only header functionality is used
+#define BOOST_DATE_TIME_NO_LIB

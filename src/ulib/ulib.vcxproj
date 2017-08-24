@@ -138,6 +138,7 @@
     <ClInclude Include="..\include\ulib\config\Win32.hpp" />
     <ClInclude Include="..\include\ulib\config\Wtl.hpp" />
     <ClInclude Include="..\include\ulib\CrashReporter.hpp" />
+    <ClInclude Include="..\include\ulib\DateTime.hpp" />
     <ClInclude Include="..\include\ulib\DynamicLibrary.hpp" />
     <ClInclude Include="..\include\ulib\Exception.hpp" />
     <ClInclude Include="..\include\ulib\FileFinder.hpp" />
@@ -162,6 +163,8 @@
     <ClInclude Include="..\include\ulib\thread\RecursiveMutex.hpp" />
     <ClInclude Include="..\include\ulib\thread\Thread.hpp" />
     <ClInclude Include="..\include\ulib\Timer.hpp" />
+    <ClInclude Include="..\include\ulib\TimeSpan.hpp" />
+    <ClInclude Include="..\include\ulib\TimeZone.hpp" />
     <ClInclude Include="..\include\ulib\unittest\AutoCleanupFile.hpp" />
     <ClInclude Include="..\include\ulib\unittest\AutoCleanupFolder.hpp" />
     <ClInclude Include="..\include\ulib\UTF8.hpp" />
@@ -170,11 +173,15 @@
     <ClInclude Include="..\include\ulib\win32\IniFile.hpp" />
     <ClInclude Include="..\include\ulib\win32\Process.hpp" />
     <ClInclude Include="..\include\ulib\win32\ResourceData.hpp" />
+    <ClInclude Include="ISO8601Parser.hpp" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TimeSpanImpl.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandLineParser.cpp" />
     <ClCompile Include="CrashReporter.cpp" />
+    <ClCompile Include="DateTime.cpp" />
+    <ClCompile Include="ISO8601Parser.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="ProgramOptions.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -187,6 +194,8 @@
     <ClCompile Include="stream\TextStreamFilter.cpp" />
     <ClCompile Include="thread\ReaderWriterMutex.cpp" />
     <ClCompile Include="thread\Thread.cpp" />
+    <ClCompile Include="TimeSpan.cpp" />
+    <ClCompile Include="TimeZone.cpp" />
     <ClCompile Include="unittest\AutoCleanupFolder.cpp" />
     <ClCompile Include="UTF8.cpp" />
     <ClCompile Include="win32\ErrorMessage.cpp" />
