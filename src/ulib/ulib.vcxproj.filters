@@ -128,6 +128,9 @@
     <ClInclude Include="..\include\ulib\config\Wtl.hpp">
       <Filter>Public Include Files\config</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\win32\DocHostUI.hpp">
+      <Filter>Public Include Files\win32</Filter>
+    </ClInclude>
     <ClInclude Include="..\include\ulib\stream\MemoryStream.hpp">
       <Filter>Public Include Files\stream</Filter>
     </ClInclude>

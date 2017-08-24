@@ -37,6 +37,7 @@
 #include <ulib/thread/RecursiveMutex.hpp>
 #include <ulib/thread/Thread.hpp>
 
+#include <ulib/win32/DocHostUI.hpp>
 #include <ulib/win32/ErrorMessage.hpp>
 #include <ulib/win32/IniFile.hpp>
 #include <ulib/win32/Process.hpp>

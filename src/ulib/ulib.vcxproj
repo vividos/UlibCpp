@@ -165,6 +165,7 @@
     <ClInclude Include="..\include\ulib\unittest\AutoCleanupFile.hpp" />
     <ClInclude Include="..\include\ulib\unittest\AutoCleanupFolder.hpp" />
     <ClInclude Include="..\include\ulib\UTF8.hpp" />
+    <ClInclude Include="..\include\ulib\win32\DocHostUI.hpp" />
     <ClInclude Include="..\include\ulib\win32\ErrorMessage.hpp" />
     <ClInclude Include="..\include\ulib\win32\IniFile.hpp" />
     <ClInclude Include="..\include\ulib\win32\Process.hpp" />
