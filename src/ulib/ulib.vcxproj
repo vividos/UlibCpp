@@ -145,6 +145,14 @@
     <ClInclude Include="..\include\ulib\Observer.hpp" />
     <ClInclude Include="..\include\ulib\Path.hpp" />
     <ClInclude Include="..\include\ulib\ProgramOptions.hpp" />
+    <ClInclude Include="..\include\ulib\stream\EndianAwareFilter.hpp" />
+    <ClInclude Include="..\include\ulib\stream\FileStream.hpp" />
+    <ClInclude Include="..\include\ulib\stream\IStream.hpp" />
+    <ClInclude Include="..\include\ulib\stream\ITextStream.hpp" />
+    <ClInclude Include="..\include\ulib\stream\MemoryStream.hpp" />
+    <ClInclude Include="..\include\ulib\stream\StreamException.hpp" />
+    <ClInclude Include="..\include\ulib\stream\TextFileStream.hpp" />
+    <ClInclude Include="..\include\ulib\stream\TextStreamFilter.hpp" />
     <ClInclude Include="..\include\ulib\SystemException.hpp" />
     <ClInclude Include="..\include\ulib\thread\Event.hpp" />
     <ClInclude Include="..\include\ulib\thread\LightweightMutex.hpp" />
@@ -174,6 +182,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="stream\FileStream.cpp" />
+    <ClCompile Include="stream\TextStreamFilter.cpp" />
     <ClCompile Include="thread\ReaderWriterMutex.cpp" />
     <ClCompile Include="thread\Thread.cpp" />
     <ClCompile Include="unittest\AutoCleanupFolder.cpp" />

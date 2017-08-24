@@ -33,6 +33,12 @@
     <Filter Include="Source Files\win32">
       <UniqueIdentifier>{e70c2317-a0c9-4766-8e4a-78d2627ca736}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\stream">
+      <UniqueIdentifier>{dab24f27-4663-4d46-abfb-986da8ee024a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public Include Files\stream">
+      <UniqueIdentifier>{2c0292df-2e9a-490c-8fb0-89202200edce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -122,6 +128,30 @@
     <ClInclude Include="..\include\ulib\config\Wtl.hpp">
       <Filter>Public Include Files\config</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\stream\MemoryStream.hpp">
+      <Filter>Public Include Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\stream\StreamException.hpp">
+      <Filter>Public Include Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\stream\TextFileStream.hpp">
+      <Filter>Public Include Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\stream\TextStreamFilter.hpp">
+      <Filter>Public Include Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\stream\EndianAwareFilter.hpp">
+      <Filter>Public Include Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\stream\FileStream.hpp">
+      <Filter>Public Include Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\stream\IStream.hpp">
+      <Filter>Public Include Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\stream\ITextStream.hpp">
+      <Filter>Public Include Files\stream</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -156,6 +186,12 @@
     </ClCompile>
     <ClCompile Include="win32\ResourceData.cpp">
       <Filter>Source Files\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="stream\FileStream.cpp">
+      <Filter>Source Files\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="stream\TextStreamFilter.cpp">
+      <Filter>Source Files\stream</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
