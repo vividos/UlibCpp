@@ -28,9 +28,9 @@ public:
    // operators
 
    /// returns CString
-   explicit operator const CString&() const { return m_path; }
+   operator const CString&() const { return m_path; }
    /// returns raw string pointer
-   explicit operator LPCTSTR() const { return m_path; }
+   operator LPCTSTR() const { return m_path; }
 
    // getters
 
