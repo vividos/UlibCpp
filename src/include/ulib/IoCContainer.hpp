@@ -9,7 +9,7 @@
 #include <string>
 #include <map>
 #include <boost/any.hpp>
-#include <type_traits>
+#include <boost/ref.hpp>
 
 /// inversion of control container
 class IoCContainer
@@ -24,7 +24,7 @@ public:
 
    /// registers ref for class
    template <typename TClass>
-   void Register(std::reference_wrapper<TClass> ref)
+   void Register(boost::reference_wrapper<TClass> ref)
    {
       std::string name = typeid(TClass).raw_name();
       m_mapAllInstances.insert(std::make_pair(name, ref));
@@ -42,7 +42,7 @@ public:
          throw std::runtime_error(std::string("class not registered: ") + typeid(TInterface).name());
 
       std::reference_wrapper<TInterface> ref =
-         boost::any_cast<std::reference_wrapper<TInterface>>(iter->second);
+         boost::any_cast<boost::reference_wrapper<TInterface>>(iter->second);
 
       return ref.get();
    }
