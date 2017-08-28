@@ -43,6 +43,8 @@ FileStream::FileStream(LPCTSTR filename, EFileMode fileMode, EFileAccess fileAcc
 
    if (fileMode == modeAppend)
       Seek(0L, FileStream::seekEnd);
+
+   // cppcheck-suppress resourceLeak
 }
 
 /// \exception StreamException thrown when reading fails

@@ -28,5 +28,5 @@ REM --template vs       Output format for warnings
 REM --check-config
 cppcheck.exe ^
    ..\ulib ..\include -DWIN32 -D_WINDOWS -DNDEBUG -D_UNICODE -D__cplusplus ^
-   --suppressions-list=cppcheck-suppress.txt ^
+   --suppressions-list=cppcheck-suppress.txt --inline-suppr ^
    -j 4 --platform=win32W --language=c++ --std=c++11 %FORMAT% --enable=all --template vs 2> %OUTFILE%
