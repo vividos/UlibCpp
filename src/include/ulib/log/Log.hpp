@@ -7,6 +7,7 @@
 #pragma once
 
 // includes
+#include <ulib/config/Common.hpp>
 #include <memory>
 
 /// \brief Logging facilities

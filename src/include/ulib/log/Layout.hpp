@@ -24,10 +24,10 @@ namespace Log
       }
 
       /// appends header to output; override when necessary
-      virtual void AppendHeader(CString& outputText) { outputText; }
+      virtual void AppendHeader(CString& outputText) { UNUSED(outputText); }
 
       /// appends footer to output; override when necessary
-      virtual void AppendFooter(CString& outputText) { outputText; }
+      virtual void AppendFooter(CString& outputText) { UNUSED(outputText); }
 
       /// formats logging event to string
       virtual void Format(CString& outputText, const LoggingEventPtr loggingEvent) = 0;

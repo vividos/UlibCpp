@@ -6,10 +6,11 @@
 //
 #pragma once
 
+#include <ulib/config/Common.hpp>
 #include <atliface.h>
 
 /// default implementation for IDocHostUIHandlerDispatch interface
-class IDocHostUIHandlerDispatchImpl: public IDocHostUIHandlerDispatch
+class IDocHostUIHandlerDispatchImpl : public IDocHostUIHandlerDispatch
 {
 public:
    /// called by the document host to display a shortcut menu
@@ -24,7 +25,8 @@ public:
    /// \param pdwDoubleClick one or more of the DOCHOSTUIDBLCLK flags
    virtual HRESULT STDMETHODCALLTYPE GetHostInfo(DWORD* pdwFlags, DWORD* pdwDoubleClick)
    {
-      pdwFlags; pdwDoubleClick;
+      UNUSED(pdwFlags);
+      UNUSED(pdwDoubleClick);
       return E_NOTIMPL;
    }
 
@@ -58,7 +60,7 @@ public:
       return E_NOTIMPL;
    }
 
-   /// called when the frame window has been activated or deactivated 
+   /// called when the frame window has been activated or deactivated
    virtual HRESULT STDMETHODCALLTYPE OnFrameWindowActivate(VARIANT_BOOL /*fActivate*/)
    {
       return E_NOTIMPL;
@@ -138,7 +140,7 @@ public:
    }
 
    /// ctor
-   inline IDocHostUIHandlerDispatchImpl(): m_dwRef(0){}
+   inline IDocHostUIHandlerDispatchImpl() : m_dwRef(0) {}
    /// dtor
    inline virtual ~IDocHostUIHandlerDispatchImpl() { ATLASSERT(m_dwRef == 0); }
 
