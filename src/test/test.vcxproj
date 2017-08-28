@@ -151,6 +151,7 @@
     </ClCompile>
     <ClCompile Include="TestAutoCleanupFileFolder.cpp" />
     <ClCompile Include="TestCommandLineParser.cpp" />
+    <ClCompile Include="TestDateTime.cpp" />
     <ClCompile Include="TestException.cpp" />
     <ClCompile Include="TestPath.cpp" />
     <ClCompile Include="TestReaderWriterMutex.cpp" />

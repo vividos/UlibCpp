@@ -38,6 +38,9 @@
     <ClCompile Include="TestReaderWriterMutex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestDateTime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="TestString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
