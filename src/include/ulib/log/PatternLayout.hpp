@@ -37,13 +37,17 @@ namespace Log
    {
    public:
       /// ctor
-      PatternLayout(const CString& pattern)
+      explicit PatternLayout(const CString& pattern)
          :m_pattern(pattern)
       {
+         // nothing to do
       }
 
       /// dtor
-      virtual ~PatternLayout() {}
+      virtual ~PatternLayout()
+      {
+         // nothing to cleanup
+      }
 
       /// formats output using pattern
       virtual void Format(CString& outputText, const LoggingEventPtr loggingEvent);

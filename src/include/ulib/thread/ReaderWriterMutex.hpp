@@ -36,7 +36,7 @@ class ReaderLock
 {
 public:
    /// ctor; locks the mutex as reader
-   ReaderLock(ReaderWriterMutex& mutex);
+   explicit ReaderLock(ReaderWriterMutex& mutex);
    /// dtor; releases the mutex
    ~ReaderLock();
 
@@ -54,7 +54,7 @@ class WriterLock
 {
 public:
    /// ctor; locks the mutex as writer
-   WriterLock(ReaderWriterMutex& mutex);
+   explicit WriterLock(ReaderWriterMutex& mutex);
    /// dtor; releases the mutex
    ~WriterLock();
 

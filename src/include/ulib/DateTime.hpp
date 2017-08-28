@@ -26,7 +26,7 @@ public:
       unsigned int uiMillisecond = 0);
 
    /// ctor; initialize with min or max status
-   DateTime(T_enStatus status);
+   explicit DateTime(T_enStatus status);
 
    /// copy ctor
    DateTime(const DateTime& dt);

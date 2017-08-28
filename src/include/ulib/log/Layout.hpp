@@ -18,7 +18,10 @@ namespace Log
    {
    public:
       /// dtor
-      virtual ~Layout() {}
+      virtual ~Layout()
+      {
+         // nothing to cleanup
+      }
 
       /// appends header to output; override when necessary
       virtual void AppendHeader(CString& outputText) { outputText; }

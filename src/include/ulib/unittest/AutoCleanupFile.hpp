@@ -15,7 +15,7 @@ namespace UnitTest
    {
    public:
       /// ctor
-      AutoCleanupFile(LPCTSTR filename)
+      explicit AutoCleanupFile(LPCTSTR filename)
          :m_filename(filename)
       {
       }

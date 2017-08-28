@@ -18,13 +18,17 @@ namespace Log
    {
    public:
       /// ctor
-      TextStreamAppender(std::shared_ptr<Stream::ITextStream> textStream)
+      explicit TextStreamAppender(std::shared_ptr<Stream::ITextStream> textStream)
          :m_textStream(textStream)
       {
+         // nothing to do
       }
 
       /// dtor
-      virtual ~TextStreamAppender() {}
+      virtual ~TextStreamAppender()
+      {
+         // nothing to cleanup
+      }
 
       /// outputs logging event using text stream
       virtual void DoAppend(const LoggingEventPtr loggingEvent)

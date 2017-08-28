@@ -17,7 +17,10 @@ namespace Log
    {
    public:
       /// dtor
-      virtual ~SimpleLayout() {}
+      virtual ~SimpleLayout()
+      {
+         // nothing to cleanup
+      }
 
       /// formats the simple log message
       virtual void Format(CString& outputText, const LoggingEventPtr loggingEvent)

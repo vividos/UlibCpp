@@ -11,7 +11,7 @@ class IniFile
 {
 public:
    /// ctor
-   IniFile(const CString& iniFilename)
+   explicit IniFile(const CString& iniFilename)
       :m_iniFilename(iniFilename)
    {
    }

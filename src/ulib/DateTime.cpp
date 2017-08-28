@@ -75,6 +75,9 @@ DateTime::DateTime(const DateTime& dt)
 
 DateTime& DateTime::operator=(const DateTime& rhs)
 {
+   if (&rhs == this)
+      return *this;
+
    m_spImpl = rhs.m_spImpl; // copy on write
    return *this;
 }

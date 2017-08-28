@@ -40,7 +40,10 @@ namespace Stream
       }
 
       /// dtor
-      virtual ~ITextStream() {}
+      virtual ~ITextStream()
+      {
+         // nothing to cleanup
+      }
 
       // stream capabilities
 

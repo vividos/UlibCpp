@@ -42,6 +42,9 @@ TimeSpan::TimeSpan(const TimeSpan& dt)
 
 TimeSpan& TimeSpan::operator=(const TimeSpan& rhs)
 {
+   if (&rhs == this)
+      return *this;
+
    m_spImpl = rhs.m_spImpl;
    return *this;
 }

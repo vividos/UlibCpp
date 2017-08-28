@@ -22,7 +22,7 @@ public:
    TimeSpan(int iHours, int iMins, int iSecs, int iMillisecs = 0);
 
    /// ctor; initialize with min or max status
-   TimeSpan(T_enStatus status);
+   explicit TimeSpan(T_enStatus status);
 
    /// copy ctor
    TimeSpan(const TimeSpan& dt);

@@ -22,7 +22,10 @@ namespace Stream
       };
 
       /// dtor
-      virtual ~IStream() {}
+      virtual ~IStream()
+      {
+         // nothing to cleanup
+      }
 
       // stream capabilities
 

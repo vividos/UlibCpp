@@ -51,6 +51,7 @@ private:
    /// default ctor
    IoCContainer()
    {
+      // nothing to do
    }
 
    IoCContainer(const IoCContainer&) = delete;              ///< removed copy ctor

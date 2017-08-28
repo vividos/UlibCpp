@@ -300,6 +300,7 @@ ReaderWriterMutex::ReaderWriterMutex()
 
 ReaderWriterMutex::~ReaderWriterMutex()
 {
+   // nothing to cleanup
 }
 
 ReaderLock::ReaderLock(ReaderWriterMutex& mutex)

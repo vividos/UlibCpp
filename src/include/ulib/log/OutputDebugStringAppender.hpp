@@ -17,7 +17,10 @@ namespace Log
    {
    public:
       /// dtor
-      virtual ~OutputDebugStringAppender() {}
+      virtual ~OutputDebugStringAppender()
+      {
+         // nothing to cleanup
+      }
 
       /// outputs logging event using OutputDebugString
       virtual void DoAppend(const LoggingEventPtr loggingEvent)

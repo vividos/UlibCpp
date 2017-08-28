@@ -16,7 +16,10 @@ namespace Log
    {
    public:
       /// dtor
-      virtual ~AndroidLogcatAppender() {}
+      virtual ~AndroidLogcatAppender()
+      {
+         // nothing to cleanup
+      }
 
       /// outputs logging event using OutputDebugString
       virtual void DoAppend(const LoggingEventPtr loggingEvent)

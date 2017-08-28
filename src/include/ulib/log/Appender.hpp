@@ -18,10 +18,16 @@ namespace Log
    {
    public:
       /// ctor
-      Appender() {}
+      Appender()
+      {
+         // nothing to do
+      }
 
       /// dtor
-      virtual ~Appender() {}
+      virtual ~Appender()
+      {
+         // nothing to cleanup
+      }
 
       /// returns layout object being used
       LayoutPtr Layout() { return m_layout; }

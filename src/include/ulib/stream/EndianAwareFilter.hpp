@@ -16,7 +16,7 @@ namespace Stream
    {
    public:
       /// ctor
-      EndianAwareFilter(IStream& stream)
+      explicit EndianAwareFilter(IStream& stream)
          :m_stream(stream)
       {
       }

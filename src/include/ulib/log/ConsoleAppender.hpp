@@ -17,7 +17,10 @@ namespace Log
    {
    public:
       /// dtor
-      virtual ~ConsoleAppender() {}
+      virtual ~ConsoleAppender()
+      {
+         // nothing to cleanup
+      }
 
       /// outputs logging event using _tprintf
       virtual void DoAppend(const LoggingEventPtr loggingEvent)

@@ -92,8 +92,21 @@ namespace Stream
       virtual ULONGLONG Position() { return static_cast<ULONGLONG>(m_currentPos); }
       virtual ULONGLONG Length() { return static_cast<ULONGLONG>(m_memoryData.size()); }
 
-      virtual void Flush() {}
-      virtual void Close() { try { m_memoryData.clear(); } catch (...) {} }
+      virtual void Flush()
+      {
+         // nothing to do for memory stream
+      }
+
+      virtual void Close()
+      {
+         try
+         {
+            m_memoryData.clear();
+         }
+         catch (...)
+         {
+         }
+      }
 
    private:
       /// data bytes
