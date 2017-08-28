@@ -209,6 +209,9 @@
     <ClInclude Include="..\include\ulib\log\TextStreamAppender.hpp">
       <Filter>Public Include Files\log</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\config\Common.hpp">
+      <Filter>Public Include Files\config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
