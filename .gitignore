@@ -292,5 +292,9 @@ __pycache__/
 src/.sonarqube/
 src/bw-output/
 
+# Coverity Scan
+src/cov-int/
+src/cov-int.zip
+
 # my folders
 stuff/
