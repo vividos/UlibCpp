@@ -1,0 +1,21 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ProjectToBuild Include="UlibCpp.sln">
+      <Properties>Configuration=Debug;Platform=x86</Properties>
+    </ProjectToBuild>
+    <ProjectToBuild Include="UlibCpp.sln">
+      <Properties>Configuration=Release;Platform=x86</Properties>
+    </ProjectToBuild>
+    <ProjectToBuild Include="UlibCpp.sln">
+      <Properties>Configuration=Debug;Platform=x64</Properties>
+    </ProjectToBuild>
+    <ProjectToBuild Include="UlibCpp.sln">
+      <Properties>Configuration=Release;Platform=x64</Properties>
+    </ProjectToBuild>
+  </ItemGroup>
+
+  <Target Name="Build">
+    <Message Text="Building all configurations and platforms..." />
+    <MSBuild Projects="@(ProjectToBuild)" Targets="Restore;Build" BuildInParallel="true" />
+  </Target>
+</Project>
