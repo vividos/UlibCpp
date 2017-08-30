@@ -51,9 +51,9 @@ CString ResourceData::AsString(bool storedAsUnicode)
    CString text;
 
    if (storedAsUnicode)
-      text = CString(static_cast<LPCWSTR>(data)), size / sizeof(WCHAR);
+      text = CString(static_cast<LPCWSTR>(data), size / sizeof(WCHAR));
    else
-      text = CString(static_cast<LPCSTR>(data)), size / sizeof(CHAR);
+      text = CString(static_cast<LPCSTR>(data), size / sizeof(CHAR));
 
    CloseResource();
 
