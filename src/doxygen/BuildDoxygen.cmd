@@ -7,3 +7,6 @@ REM Runs doxygen to document sourcecode
 REM
 
 doxygen doxygen.cfg
+
+REM don't break build when doxygen reports errors
+exit 0

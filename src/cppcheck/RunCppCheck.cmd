@@ -30,3 +30,6 @@ cppcheck.exe ^
    ..\ulib ..\include -DWIN32 -D_WINDOWS -DNDEBUG -D_UNICODE -D__cplusplus ^
    --suppressions-list=cppcheck-suppress.txt --inline-suppr ^
    -j 4 --platform=win32W --language=c++ --std=c++11 %FORMAT% --enable=all --template vs 2> %OUTFILE%
+
+REM don't break build when cppcheck reports errors
+exit 0
