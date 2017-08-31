@@ -131,6 +131,7 @@ TCHAR TextStreamFilter::ReadChar()
 
    default:
       ATLASSERT(false);
+      break;
    }
 
    return ch;

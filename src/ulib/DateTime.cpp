@@ -294,6 +294,10 @@ CString DateTime::FormatISO8601(T_enISO8601Format enFormat, bool bBasic, const T
       cszDate += cszFraction;
    }
    break;
+
+   default:
+      ATLASSERT(false); // invalid format
+      break;
    }
 
    // add timezone

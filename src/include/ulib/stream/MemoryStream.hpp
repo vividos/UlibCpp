@@ -82,6 +82,10 @@ namespace Stream
          case seekEnd:
             m_currentPos = static_cast<size_t>(seekOffset) > m_memoryData.size() ? 0 : m_memoryData.size() - static_cast<size_t>(seekOffset);
             break;
+
+         default:
+            ATLASSERT(false); // invalid seek origin
+            break;
          }
 
          if (m_currentPos > m_memoryData.size())

@@ -176,7 +176,7 @@ public:
       return E_NOINTERFACE;
    }
 
-protected:
+private:
    /// reference count
    LONG m_dwRef;
 };
