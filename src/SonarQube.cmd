@@ -20,7 +20,7 @@ rmdir .\bw-output /s /q 2> nul
 
 SonarQube.Scanner.MSBuild.exe begin ^
     /k:"UlibCpp" ^
-    /v:"4.0.0" ^
+    /v:"4.0.1" ^
     /d:"sonar.cfamily.build-wrapper-output=%CD%\bw-output" ^
     /d:"sonar.host.url=https://sonarqube.com" ^
     /d:"sonar.organization=vividos-github" ^
