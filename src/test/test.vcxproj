@@ -156,6 +156,7 @@
     <ClCompile Include="TestPath.cpp" />
     <ClCompile Include="TestReaderWriterMutex.cpp" />
     <ClCompile Include="TestString.cpp" />
+    <ClCompile Include="TestSystemException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ulib\ulib.vcxproj">
