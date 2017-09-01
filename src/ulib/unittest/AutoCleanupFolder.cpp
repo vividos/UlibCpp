@@ -35,7 +35,7 @@ AutoCleanupFolder::AutoCleanupFolder()
       m_folderName.Format(_T("%stest-%06x"), basePath.GetString(), counter);
       counter++;
 
-   } while(INVALID_FILE_ATTRIBUTES != ::GetFileAttributes(m_folderName));
+   } while (INVALID_FILE_ATTRIBUTES != ::GetFileAttributes(m_folderName));
 
    Path::CreateDirectoryRecursive(m_folderName);
    Path::AddEndingBackslash(m_folderName);
@@ -45,6 +45,18 @@ AutoCleanupFolder::AutoCleanupFolder()
 /// folder; this is done to eventually clean up the created base folder; this
 /// might fail, though, since there could be more unit test folders.
 AutoCleanupFolder::~AutoCleanupFolder()
+{
+   try
+   {
+      CleanUp();
+   }
+   catch (...)
+   {
+      // ignore any exceptions
+   }
+}
+
+void AutoCleanupFolder::CleanUp()
 {
    std::deque<CString> dequeFolders;
    dequeFolders.push_back(m_folderName);

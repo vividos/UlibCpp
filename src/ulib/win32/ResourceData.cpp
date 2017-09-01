@@ -106,10 +106,8 @@ void ResourceData::CloseResource()
 {
    if (m_global != nullptr)
    {
-      // normally not needed on win32, but for completeness;
-      // on WinCE these two doesn't exists
+      // on WinCE this function doesn't exist
 #ifndef _WIN32_WCE
-      UnlockResource(m_global);
       FreeResource(m_global);
 #endif
    }

@@ -25,6 +25,10 @@ namespace UnitTest
       }
 
    private:
+      /// cleans up folder
+      void CleanUp();
+
+   private:
       /// folder name
       CString m_folderName;
    };
