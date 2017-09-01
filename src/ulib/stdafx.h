@@ -15,3 +15,9 @@
 
 // don't link against Boost.DateTime; only header functionality is used
 #define BOOST_DATE_TIME_NO_LIB
+
+// redefine ATLVERIFY when analyzing using Coverity Scan
+#if !defined(_DEBUG) && defined(__COVERITY__)
+#undef ATLVERIFY
+#define ATLVERIFY(expr) (void)(expr)
+#endif
