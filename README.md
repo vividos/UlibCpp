@@ -2,8 +2,7 @@
 
 # Description
 
-ulib is my "Universal Library" in C++. It contains classes and functions
-commonly used in my C++ projects.
+UlibCpp is a collection of useful C++ classes that help writing Win32 console, ATL and WTL applications faster.
 
 # Build status
 
