@@ -7,7 +7,7 @@ REM Runs SonarQube analysis build
 REM
 
 REM set this to your Visual Studio installation folder
-set VSINSTALL="%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community"
+set VSINSTALL=%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community
 
 REM set this to your SonarQube tools folder
 set SONARQUBE=D:\devel\tools\SonarQube
@@ -18,7 +18,6 @@ set OPENCPPCOVERAGE=D:\devel\tools\OpenCppCoverage\
 REM
 REM Preparations
 REM
-
 call "%VSINSTALL%\Common7\Tools\VsDevCmd.bat"
 
 set PATH=%PATH%;%SONARQUBE%\build-wrapper-win-x86;%SONARQUBE%\sonar-scanner-msbuild;%OPENCPPCOVERAGE%
