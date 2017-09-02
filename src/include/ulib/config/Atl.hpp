@@ -14,7 +14,7 @@
 #define ATL_NO_LEAN_AND_MEAN
 
 /// no min-max macros, we use std::min / std::max instead
-#define NOMINMAX
+#define NOMINMAX 1
 
 // min and max macros are used in atlcom.h, etc., so temporarily define them here
 #ifndef min
