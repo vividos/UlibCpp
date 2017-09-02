@@ -6,12 +6,22 @@ REM
 REM Runs SonarQube analysis build
 REM
 
-call "%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"
+REM set this to your Visual Studio installation folder
+set VSINSTALL="%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community"
 
 REM set this to your SonarQube tools folder
 set SONARQUBE=D:\devel\tools\SonarQube
 
-PATH=%PATH%;%SONARQUBE%\build-wrapper-win-x86;%SONARQUBE%\sonar-scanner-msbuild
+REM and this to your OpenCppCoverage folder
+set OPENCPPCOVERAGE=D:\devel\tools\OpenCppCoverage\
+
+REM
+REM Preparations
+REM
+
+call "%VSINSTALL%\Common7\Tools\VsDevCmd.bat"
+
+set PATH=%PATH%;%SONARQUBE%\build-wrapper-win-x86;%SONARQUBE%\sonar-scanner-msbuild;%OPENCPPCOVERAGE%
 
 REM
 REM Build using SonarQube scanner for MSBuild
@@ -28,15 +38,21 @@ SonarQube.Scanner.MSBuild.exe begin ^
     /d:sonar.cs.vstest.reportsPaths="%CD%\TestResults\*.trx"
 
 REM
-REM Build all
+REM Rebuild Release|x86
 REM
 build-wrapper-win-x86-64.exe --out-dir bw-output msbuild UlibCpp.sln /m /property:Configuration=Release /property:Platform=x86 /target:Rebuild
 
 REM
 REM Run unit tests
 REM
-vstest.console.exe /Platform:x86 /InIsolation /logger:trx ^
-   "..\bin\Release\Win32\test\test.dll"
+OpenCppCoverage.exe ^
+   --continue_after_cpp_exception --cover_children ^
+   --sources ulib --sources test --sources include\ulib ^
+   --excluded_sources packages\boost ^
+   --export_type html:CoverageReport ^
+   --modules test.dll ^
+   -- "%VSINSTALL%\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" ^
+   "..\bin\Debug\Win32\test\test.dll" /Platform:x86 /InIsolation /logger:trx
 
 SonarQube.Scanner.MSBuild.exe end /d:"sonar.login=c59d3403d04744579f89e55e23c27a171293577e"
 
