@@ -381,14 +381,15 @@ namespace UnitTest
          Assert::IsTrue(s3.IsEmpty());
       }
 
-      /// tests SpanExcluding()
+      /// tests SpanExcluding(), which returns the leftmost part of the string
+      /// that doesn't contain the chars in the given set.
       TEST_METHOD(TestSpanExcluding)
       {
          CString s1(_T("cabbage"));
-         CString s2 = s1.SpanExcluding(_T("abc"));
+         CString s2 = s1.SpanExcluding(_T("bge"));
          CString s3 = s1.SpanExcluding(_T("xyz"));
 
-         //Assert::AreEqual(_T("ge"), s2.GetString()); // TODO wrong?
+         Assert::AreEqual(_T("ca"), s2.GetString());
          Assert::AreEqual(_T("cabbage"), s3.GetString());
       }
 
