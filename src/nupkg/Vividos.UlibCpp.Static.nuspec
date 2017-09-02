@@ -22,5 +22,9 @@
     <file src="..\..\bin\Release\x64\ulib\ulib.lib" target="lib\native\lib\x64\release\ulib.lib" />
     <file src="..\..\bin\Debug\Win32\ulib\ulib.lib" target="lib\native\lib\x86\debug\ulib.lib" />
     <file src="..\..\bin\Debug\x64\ulib\ulib.lib" target="lib\native\lib\x64\debug\ulib.lib" />
+    <file src="..\..\intermediate\Release\Win32\ulib\ulib.pdb" target="lib\native\lib\x86\release\ulib.pdb" />
+    <file src="..\..\intermediate\Release\x64\ulib\ulib.pdb" target="lib\native\lib\x64\release\ulib.pdb" />
+    <file src="..\..\intermediate\Debug\Win32\ulib\ulib.pdb" target="lib\native\lib\x86\debug\ulib.pdb" />
+    <file src="..\..\intermediate\Debug\x64\ulib\ulib.pdb" target="lib\native\lib\x64\debug\ulib.pdb" />
   </files>
 </package>
