@@ -10,6 +10,7 @@
 
 /// \brief lightweight, non-recursive mutex
 /// \details a mutex that is optimized for non-contention cases
+/// \see http://preshing.com/20111124/always-use-a-lightweight-mutex/
 class LightweightMutex
 {
 public:
