@@ -51,6 +51,17 @@ CString Path::FilenameOnly() const
    return m_path.Mid(pos + 1, pos2 - pos - 1);
 }
 
+CString Path::ExtensionOnly() const
+{
+   int pos = m_path.ReverseFind(Path::SeparatorCh);
+
+   int pos2 = m_path.ReverseFind(_T('.'));
+   if (pos2 == -1 || pos2 < pos)
+      return CString();
+
+   return m_path.Mid(pos2);
+}
+
 CString Path::FolderName() const
 {
    int pos = m_path.ReverseFind(Path::SeparatorCh);

@@ -43,6 +43,9 @@ public:
    /// returns filename without extension
    CString FilenameOnly() const;
 
+   /// returns extension only, with leading dot
+   CString ExtensionOnly() const;
+
    /// returns folder name, without filename, but ending slash
    CString FolderName() const;
 
