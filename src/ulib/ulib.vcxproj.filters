@@ -212,6 +212,9 @@
     <ClInclude Include="..\include\ulib\config\Common.hpp">
       <Filter>Public Include Files\config</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\win32\Clipboard.hpp">
+      <Filter>Public Include Files\win32</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -273,6 +276,9 @@
     </ClCompile>
     <ClCompile Include="FileFinder.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\Clipboard.cpp">
+      <Filter>Source Files\win32</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

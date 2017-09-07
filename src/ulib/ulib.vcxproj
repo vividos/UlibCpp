@@ -180,6 +180,7 @@
     <ClInclude Include="..\include\ulib\unittest\AutoCleanupFile.hpp" />
     <ClInclude Include="..\include\ulib\unittest\AutoCleanupFolder.hpp" />
     <ClInclude Include="..\include\ulib\UTF8.hpp" />
+    <ClInclude Include="..\include\ulib\win32\Clipboard.hpp" />
     <ClInclude Include="..\include\ulib\win32\DocHostUI.hpp" />
     <ClInclude Include="..\include\ulib\win32\ErrorMessage.hpp" />
     <ClInclude Include="..\include\ulib\win32\IniFile.hpp" />
@@ -213,6 +214,7 @@
     <ClCompile Include="TimeZone.cpp" />
     <ClCompile Include="unittest\AutoCleanupFolder.cpp" />
     <ClCompile Include="UTF8.cpp" />
+    <ClCompile Include="win32\Clipboard.cpp" />
     <ClCompile Include="win32\ErrorMessage.cpp" />
     <ClCompile Include="win32\ResourceData.cpp" />
   </ItemGroup>
