@@ -7,7 +7,7 @@
 #include "stdafx.h"
 #include <ulib/stream/FileStream.hpp>
 #include <ulib/stream/StreamException.hpp>
-#include <ulib/Win32/ErrorMessage.hpp>
+#include <ulib/win32/ErrorMessage.hpp>
 
 using Stream::FileStream;
 
