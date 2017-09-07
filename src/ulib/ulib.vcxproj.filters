@@ -271,6 +271,9 @@
     <ClCompile Include="log\PatternLayout.cpp">
       <Filter>Source Files\log</Filter>
     </ClCompile>
+    <ClCompile Include="FileFinder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

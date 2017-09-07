@@ -2,14 +2,24 @@
 // ulib - a collection of useful classes
 // Copyright (C) 2008-2017 Michael Fink
 //
-/// \file FileFinder.hpp file finder
+/// \file FileFinder.hpp File finder
 //
 #pragma once
+
+#include <vector>
 
 /// file finder
 class FileFinder
 {
 public:
+   /// finds all files in given path, with a file spec (e.g. *.png) and returns them
+   /// \param[in] path path to use for searching
+   /// \param[in] fileSpec file specification, e.g. *.png or *.*
+   /// \param[in] findFolders indicates if folders should be found instead of files
+   /// \param[in] recursive indicates if all subfolders should be searched recursively, too
+   /// \return list of found full filenames (or folder names)
+   static std::vector<CString> FindAllInPath(const CString& path, const CString& fileSpec, bool findFolders, bool recursive);
+
    /// ctor; starts finding files
    FileFinder(const CString& baseFolder, const CString& fileSpec)
       :m_findHandle(INVALID_HANDLE_VALUE),
@@ -19,7 +29,7 @@ public:
          m_baseFolder += _T("\\");
 
       ::ZeroMemory(&m_findData, sizeof(m_findData));
-      m_findHandle = ::FindFirstFile(baseFolder + fileSpec, &m_findData);
+      m_findHandle = ::FindFirstFile(m_baseFolder + fileSpec, &m_findData);
    }
 
    /// dtor

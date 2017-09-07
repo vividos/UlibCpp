@@ -153,6 +153,7 @@
     <ClCompile Include="TestCommandLineParser.cpp" />
     <ClCompile Include="TestDateTime.cpp" />
     <ClCompile Include="TestException.cpp" />
+    <ClCompile Include="TestFileFinder.cpp" />
     <ClCompile Include="TestPath.cpp" />
     <ClCompile Include="TestReaderWriterMutex.cpp" />
     <ClCompile Include="TestString.cpp" />

@@ -193,6 +193,7 @@
     <ClCompile Include="CommandLineParser.cpp" />
     <ClCompile Include="CrashReporter.cpp" />
     <ClCompile Include="DateTime.cpp" />
+    <ClCompile Include="FileFinder.cpp" />
     <ClCompile Include="ISO8601Parser.cpp" />
     <ClCompile Include="log\Logger.cpp" />
     <ClCompile Include="log\PatternLayout.cpp" />
