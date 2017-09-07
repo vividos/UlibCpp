@@ -20,6 +20,14 @@ void ProgramOptions::RegisterOption(const CString& shortOptionChars, const CStri
    m_optionsList.push_back(info);
 }
 
+void ProgramOptions::RegisterOption(const CString& shortOptionChars, const CString& longOption, const CString& helpText,
+   T_fnOptionHandlerNoArg fnOptionHandler)
+{
+   T_fnOptionHandler fnOptionHandler2 = std::bind([&]() -> bool { return fnOptionHandler(); });
+
+   RegisterOption(shortOptionChars, longOption, helpText, 0, fnOptionHandler2);
+}
+
 void ProgramOptions::RegisterOption(const CString& shortOptionChars, const CString& longOption,
    const CString& helpText, T_fnOptionHandlerSingleArg fnOptionHandler)
 {
