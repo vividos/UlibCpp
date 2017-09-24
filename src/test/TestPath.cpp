@@ -36,5 +36,22 @@ namespace UnitTest
          Assert::AreEqual(_T("."), p3.ExtensionOnly(), "extension must be .");
          Assert::AreEqual(_T(""), p4.ExtensionOnly(), "extension must be empty");
       }
+
+      /// Tests for GetCommonRootPath() method
+      TEST_METHOD(TestGetCommonRootPath)
+      {
+         CString path1 = _T("C:\\win\\desktop\\temp.txt");
+         CString path2 = _T("c:\\win\\tray\\sample.txt");
+         CString path3 = _T("E:\\acme\\three");
+
+         Assert::AreEqual(_T("C:\\win\\"), Path::GetCommonRootPath(path1, path2));
+         Assert::AreEqual(_T(""), Path::GetCommonRootPath(path1, path3));
+         Assert::AreEqual(_T(""), Path::GetCommonRootPath(path2, path3));
+
+         Assert::AreEqual(_T("C:\\win\\desktop\\"), Path::GetCommonRootPath(path1, _T("C:\\win\\desktop\\")));
+         Assert::AreEqual(_T("C:\\win\\desktop\\"), Path::GetCommonRootPath(path1, _T("C:\\win\\desktop")));
+
+         Assert::AreEqual(_T("E:\\acme\\three\\"), Path::GetCommonRootPath(path3, path3));
+      }
    };
 }

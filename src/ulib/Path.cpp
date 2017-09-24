@@ -132,6 +132,27 @@ void Path::AddEndingBackslash(CString& path)
       path += Path::Separator;
 }
 
+CString Path::GetCommonRootPath(const CString& path1, const CString& path2)
+{
+   Path canonPath1(path1);
+   Path canonPath2(path2);
+   canonPath1.Canonicalize();
+   canonPath2.Canonicalize();
+
+   if (::PathIsSameRoot(canonPath1.ToString(), canonPath2.ToString()) != TRUE)
+   {
+      return CString();
+   }
+
+   CString commonRootPath;
+   PathCommonPrefix(canonPath1.ToString(), canonPath2.ToString(), commonRootPath.GetBuffer(MAX_PATH));
+   commonRootPath.ReleaseBuffer();
+
+   Path::AddEndingBackslash(commonRootPath);
+
+   return commonRootPath;
+}
+
 CString Path::SpecialFolder(int csidl)
 {
    CString specialFolder;

@@ -82,6 +82,9 @@ public:
       return path1.Combine(part2);
    }
 
+   /// returns the common root path of both given paths; returns empty string when there's no common root
+   static CString GetCommonRootPath(const CString& path1, const CString& path2);
+
    /// returns special folder; see CSIDL_* constants
    static CString SpecialFolder(int csidl);
 
