@@ -245,7 +245,8 @@ void TextStreamFilter::Write(const CString& text)
       std::vector<char> buffer;
       StringToUTF8(text, buffer);
 
-      m_stream.Write(buffer.data(), static_cast<DWORD>(buffer.size()), numWriteBytes);
+      // don't write null byte at the end
+      m_stream.Write(buffer.data(), static_cast<DWORD>(buffer.size() - 1), numWriteBytes);
    }
    break;
 
