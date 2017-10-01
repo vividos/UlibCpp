@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/vividos/UlibCpp</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <summary>UlibCpp is a collection of useful C++ classes that help writing Win32 console, ATL and WTL applications faster.</summary>
-    <description>UlibCpp is a collection of useful C++ classes that help writing Win32 console, ATL and WTL applications faster. This is the static library package. Supported platforms are Win32 and x64. The package was built with Visual Studio 2017 Update 3. Use this package together with Boost 1.65. The library is licensed under the BSD 2-clause license.</description>
+    <description>UlibCpp is a collection of useful C++ classes that help writing Win32 console, ATL and WTL applications faster. This is the static library package. Supported platforms are Win32 and x64. The package was built with Visual Studio 2017 Update 3. Use this package together with Boost 1.65.1. The library is licensed under the BSD 2-clause license.</description>
     <releaseNotes>Compatibility changes, bug fixes and changes to remove SonarQube and Coverity Scan warnings.</releaseNotes>
     <copyright>Copyright 2017 Michael Fink</copyright>
     <tags>native C++</tags>
