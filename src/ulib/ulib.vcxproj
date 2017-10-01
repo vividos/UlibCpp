@@ -162,7 +162,9 @@
     <ClInclude Include="..\include\ulib\stream\FileStream.hpp" />
     <ClInclude Include="..\include\ulib\stream\IStream.hpp" />
     <ClInclude Include="..\include\ulib\stream\ITextStream.hpp" />
+    <ClInclude Include="..\include\ulib\stream\MemoryReadStream.hpp" />
     <ClInclude Include="..\include\ulib\stream\MemoryStream.hpp" />
+    <ClInclude Include="..\include\ulib\stream\NullStream.hpp" />
     <ClInclude Include="..\include\ulib\stream\StreamException.hpp" />
     <ClInclude Include="..\include\ulib\stream\TextFileStream.hpp" />
     <ClInclude Include="..\include\ulib\stream\TextStreamFilter.hpp" />

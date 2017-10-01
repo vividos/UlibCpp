@@ -40,7 +40,9 @@
 #include <ulib/stream/FileStream.hpp>
 #include <ulib/stream/IStream.hpp>
 #include <ulib/stream/ITextStream.hpp>
+#include <ulib/stream/MemoryReadStream.hpp>
 #include <ulib/stream/MemoryStream.hpp>
+#include <ulib/stream/NullStream.hpp>
 #include <ulib/stream/StreamException.hpp>
 #include <ulib/stream/TextFileStream.hpp>
 #include <ulib/stream/TextStreamFilter.hpp>

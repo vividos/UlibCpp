@@ -215,6 +215,12 @@
     <ClInclude Include="..\include\ulib\win32\Clipboard.hpp">
       <Filter>Public Include Files\win32</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\stream\MemoryReadStream.hpp">
+      <Filter>Public Include Files\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\stream\NullStream.hpp">
+      <Filter>Public Include Files\stream</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
