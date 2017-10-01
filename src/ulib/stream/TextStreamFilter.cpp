@@ -174,15 +174,13 @@ void TextStreamFilter::ReadLine(CString& line)
                break;
 
             // threre might be a LF, but we don't know for sure, so check
-            ch = ReadChar();
-            if (c_cLF == ch)
+            TCHAR nextCh = ReadChar();
+            if (c_cLF == nextCh)
                break; // recognized CRLF
 
-            // some other char, just do normal processing by appending CR
-            line += c_cCR;
-
-            // put back character
-            PutBackChar(ch);
+            // some other char, just do normal processing by appending CR, and
+            // putting back character
+            PutBackChar(nextCh);
          }
       }
       else
