@@ -118,13 +118,20 @@ void Clipboard::SetHtml(const CString& htmlFragment, const CString& sourceURL)
 
 void Clipboard::SetData(UINT format, const BYTE* dataPtr, UINT size)
 {
+   Clear();
+
    HGLOBAL hglbCopy = GlobalAlloc(GMEM_MOVEABLE, size);
 
-   LPVOID clipboardDataPtr = GlobalLock(hglbCopy);
-   memcpy(clipboardDataPtr, dataPtr, size);
-   GlobalUnlock(hglbCopy);
+   if (hglbCopy != nullptr)
+   {
+      LPVOID clipboardDataPtr = GlobalLock(hglbCopy);
+      if (clipboardDataPtr != nullptr)
+         memcpy(clipboardDataPtr, dataPtr, size);
 
-   SetClipboardData(format, hglbCopy);
+      GlobalUnlock(hglbCopy);
+
+      SetClipboardData(format, hglbCopy);
+   }
 }
 
 UINT Clipboard::RegisterFormat(LPCTSTR formatName) const
