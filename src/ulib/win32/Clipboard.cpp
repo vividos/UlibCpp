@@ -113,7 +113,7 @@ void Clipboard::SetHtml(const CString& htmlFragment, const CString& sourceURL)
 
    UINT cfhtml = RegisterFormat(_T("HTML Format"));
 
-   SetData(cfhtml, reinterpret_cast<const BYTE*>(utf8text.data()), utf8text.size());
+   SetData(cfhtml, reinterpret_cast<const BYTE*>(utf8text.data()), static_cast<UINT>(utf8text.size()));
 }
 
 void Clipboard::SetData(UINT format, const BYTE* dataPtr, UINT size)
