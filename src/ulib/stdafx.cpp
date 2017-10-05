@@ -19,6 +19,7 @@
 #include <ulib/Observer.hpp>
 #include <ulib/Path.hpp>
 #include <ulib/ProgramOptions.hpp>
+#include <ulib/Singleton.hpp>
 #include <ulib/SystemException.hpp>
 #include <ulib/Timer.hpp>
 #include <ulib/TimeSpan.hpp>

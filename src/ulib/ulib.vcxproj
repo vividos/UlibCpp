@@ -160,6 +160,7 @@
     <ClInclude Include="..\include\ulib\Observer.hpp" />
     <ClInclude Include="..\include\ulib\Path.hpp" />
     <ClInclude Include="..\include\ulib\ProgramOptions.hpp" />
+    <ClInclude Include="..\include\ulib\Singleton.hpp" />
     <ClInclude Include="..\include\ulib\stream\EndianAwareFilter.hpp" />
     <ClInclude Include="..\include\ulib\stream\FileStream.hpp" />
     <ClInclude Include="..\include\ulib\stream\IStream.hpp" />

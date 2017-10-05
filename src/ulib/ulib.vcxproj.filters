@@ -233,6 +233,9 @@
     <ClInclude Include="..\include\ulib\TraceOutputStopwatch.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\Singleton.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
