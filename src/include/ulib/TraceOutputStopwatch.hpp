@@ -2,7 +2,7 @@
 // ulib - a collection of useful classes
 // Copyright (C) 2008-2014,2017 Michael Fink
 //
-/// \file TraceOutputStopWatch.hpp Stopwatch class that does trace output
+/// \file TraceOutputStopwatch.hpp Stopwatch class that does trace output
 //
 #pragma once
 
