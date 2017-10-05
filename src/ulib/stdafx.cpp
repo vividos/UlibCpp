@@ -23,6 +23,7 @@
 #include <ulib/Timer.hpp>
 #include <ulib/TimeSpan.hpp>
 #include <ulib/TimeZone.hpp>
+#include <ulib/TraceOutputStopwatch.hpp>
 #include <ulib/UTF8.hpp>
 
 #include <ulib/log/AndroidLogcatAppender.hpp>
