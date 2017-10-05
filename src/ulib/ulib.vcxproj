@@ -143,6 +143,7 @@
     <ClInclude Include="..\include\ulib\DynamicLibrary.hpp" />
     <ClInclude Include="..\include\ulib\Exception.hpp" />
     <ClInclude Include="..\include\ulib\FileFinder.hpp" />
+    <ClInclude Include="..\include\ulib\HighResolutionTimer.hpp" />
     <ClInclude Include="..\include\ulib\IoCContainer.hpp" />
     <ClInclude Include="..\include\ulib\log\AndroidLogcatAppender.hpp" />
     <ClInclude Include="..\include\ulib\log\Appender.hpp" />
@@ -197,6 +198,7 @@
     <ClCompile Include="CrashReporter.cpp" />
     <ClCompile Include="DateTime.cpp" />
     <ClCompile Include="FileFinder.cpp" />
+    <ClCompile Include="HighResolutionTimer.cpp" />
     <ClCompile Include="ISO8601Parser.cpp" />
     <ClCompile Include="log\Logger.cpp" />
     <ClCompile Include="log\PatternLayout.cpp" />

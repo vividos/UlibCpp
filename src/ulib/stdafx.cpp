@@ -14,6 +14,7 @@
 #include <ulib/DynamicLibrary.hpp>
 #include <ulib/Exception.hpp>
 #include <ulib/FileFinder.hpp>
+#include <ulib/HighResolutionTimer.hpp>
 #include <ulib/IoCContainer.hpp>
 #include <ulib/Observer.hpp>
 #include <ulib/Path.hpp>

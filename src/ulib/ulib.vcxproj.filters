@@ -221,6 +221,9 @@
     <ClInclude Include="..\include\ulib\stream\NullStream.hpp">
       <Filter>Public Include Files\stream</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\HighResolutionTimer.hpp">
+      <Filter>Public Include Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -285,6 +288,9 @@
     </ClCompile>
     <ClCompile Include="win32\Clipboard.cpp">
       <Filter>Source Files\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="HighResolutionTimer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
