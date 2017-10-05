@@ -59,6 +59,7 @@
 #include <ulib/win32/ErrorMessage.hpp>
 #include <ulib/win32/IniFile.hpp>
 #include <ulib/win32/Process.hpp>
+#include <ulib/win32/Win7Taskbar.hpp>
 
 #include <ulib/unittest/AutoCleanupFile.hpp>
 #include <ulib/unittest/AutoCleanupFolder.hpp>

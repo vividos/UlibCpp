@@ -224,6 +224,9 @@
     <ClInclude Include="..\include\ulib\HighResolutionTimer.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\win32\Win7Taskbar.hpp">
+      <Filter>Public Include Files\win32</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -291,6 +294,9 @@
     </ClCompile>
     <ClCompile Include="HighResolutionTimer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\Win7Taskbar.cpp">
+      <Filter>Source Files\win32</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
