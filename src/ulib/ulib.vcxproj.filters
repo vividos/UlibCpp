@@ -227,6 +227,9 @@
     <ClInclude Include="..\include\ulib\win32\Win7Taskbar.hpp">
       <Filter>Public Include Files\win32</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\config\CompileTimeWarningError.hpp">
+      <Filter>Public Include Files\config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

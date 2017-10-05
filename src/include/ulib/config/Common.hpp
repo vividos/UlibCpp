@@ -6,6 +6,8 @@
 //
 #pragma once
 
+#include <ulib/config/CompileTimeWarningError.hpp>
+
 #ifndef UNUSED
 /// Use this to mark any (potentially) unused function parameter names in the
 /// function body.
