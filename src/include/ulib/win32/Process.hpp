@@ -6,6 +6,7 @@
 //
 #pragma once
 
+/// \brief Win32 specific classes
 namespace Win32
 {
    /// Win32 process
