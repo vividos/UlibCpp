@@ -17,11 +17,6 @@ template <typename T>
 class Singleton
 {
 public:
-   /// ctor
-   Singleton()
-   {
-   }
-
    /// \brief returns instance of singleton
    /// ensures that singleton is only created once
    static T& Instance()

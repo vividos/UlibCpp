@@ -17,7 +17,7 @@ namespace Win32
    {
    public:
       /// ctor; opens clipboard
-      Clipboard(HWND hwnd = nullptr);
+      explicit Clipboard(HWND hwnd = nullptr);
 
       /// dtor
       ~Clipboard();

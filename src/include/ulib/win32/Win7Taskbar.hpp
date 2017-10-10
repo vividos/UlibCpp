@@ -42,7 +42,7 @@ namespace Win32
       friend class Taskbar;
 
       /// ctor; can only be called from Taskbar
-      TaskbarProgressBar(const std::shared_ptr<TaskbarImpl>& impl)
+      explicit TaskbarProgressBar(const std::shared_ptr<TaskbarImpl>& impl)
          :m_impl(impl)
       {
          SetState(TBPF_INDETERMINATE);
@@ -58,7 +58,7 @@ namespace Win32
    {
    public:
       /// accesses task bar; uses task bar icon associated with given window
-      Taskbar(HWND hwnd);
+      explicit Taskbar(HWND hwnd);
 
       /// returns if task bar is available (Windows 7 and higher)
       bool IsAvailable() const;
@@ -66,6 +66,7 @@ namespace Win32
       /// dtor
       ~Taskbar()
       {
+         // nothing to cleanup
       }
 
       TaskbarProgressBar OpenProgressBar()

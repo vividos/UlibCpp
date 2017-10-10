@@ -28,14 +28,14 @@ HighResolutionTimer::HighResolutionTimer()
    m_totalElapsed.QuadPart = 0LL;
 }
 
-void HighResolutionTimer::Start() throw()
+void HighResolutionTimer::Start()
 {
    ATLASSERT(m_isStarted == false);
    ATLVERIFY(TRUE == ::QueryPerformanceCounter(&m_startTime));
    m_isStarted = true;
 }
 
-void HighResolutionTimer::Stop() throw()
+void HighResolutionTimer::Stop()
 {
    ATLASSERT(m_isStarted == true);
 
@@ -45,13 +45,13 @@ void HighResolutionTimer::Stop() throw()
    m_isStarted = false;
 }
 
-void HighResolutionTimer::Reset() throw()
+void HighResolutionTimer::Reset()
 {
    ATLASSERT(m_isStarted == false); // must be stopped when calling Reset()
    m_totalElapsed.QuadPart = 0;
 }
 
-void HighResolutionTimer::Restart() throw()
+void HighResolutionTimer::Restart()
 {
    // can either be stopped or started when restarting
    if (m_isStarted)
@@ -60,7 +60,7 @@ void HighResolutionTimer::Restart() throw()
    Start();
 }
 
-double HighResolutionTimer::Elapsed() const throw()
+double HighResolutionTimer::Elapsed() const
 {
    if (!m_isStarted)
       return 0.0; // no time elapsed, since timer isn't started
@@ -70,7 +70,7 @@ double HighResolutionTimer::Elapsed() const throw()
    return static_cast<double>(lCountNow.QuadPart - m_startTime.QuadPart) / GetPerformanceFrequency();
 }
 
-double HighResolutionTimer::TotalElapsed() const throw()
+double HighResolutionTimer::TotalElapsed() const
 {
    LARGE_INTEGER lCountNow = { 0 };
    ATLVERIFY(TRUE == ::QueryPerformanceCounter(&lCountNow));

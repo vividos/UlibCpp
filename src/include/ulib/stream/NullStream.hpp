@@ -16,7 +16,7 @@ namespace Stream
    {
    public:
       /// ctor
-      NullStream() {}
+      NullStream() { /* nothing to do here */ }
       virtual bool CanRead() const override { return true; }
       virtual bool CanWrite() const override { return true; }
       virtual bool CanSeek() const override { return true; }
@@ -34,12 +34,12 @@ namespace Stream
          numBytesWritten = numBytesToWrite;
       }
 
-      virtual void WriteByte(BYTE) override {}
+      virtual void WriteByte(BYTE) override { /* nothing to do here */ }
       virtual ULONGLONG Seek(LONGLONG, IStream::ESeekOrigin) override { return Position(); }
       virtual ULONGLONG Position() override { return 0; }
       virtual ULONGLONG Length() override { return 0; }
-      virtual void Flush() override {}
-      virtual void Close() override {}
+      virtual void Flush() override { /* nothing to do here */ }
+      virtual void Close() override { /* nothing to do here */ }
    };
 
 } // namespace Stream

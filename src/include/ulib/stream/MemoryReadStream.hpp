@@ -66,6 +66,10 @@ namespace Stream
          case seekEnd:
             m_currentPos = static_cast<DWORD_PTR>(offset) > m_length ? 0 : m_length - static_cast<DWORD_PTR>(offset);
             break;
+
+         default:
+            ATLASSERT(false); // invalid seek origin
+            break;
          }
 
          if (m_currentPos > m_length)
@@ -86,6 +90,7 @@ namespace Stream
 
       virtual void Flush() override
       {
+         // nothing to do here
       }
 
       virtual void Close() override
