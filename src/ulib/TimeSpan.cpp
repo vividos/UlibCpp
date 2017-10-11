@@ -8,7 +8,9 @@
 #include <ulib/TimeSpan.hpp>
 #include <ulib/Exception.hpp>
 #include "TimeSpanImpl.hpp"
+#pragma warning(disable: 6054) // String 'x' might not be zero-terminated.
 #include <boost/date_time.hpp>
+#pragma warning(default: 6054)
 
 TimeSpan::TimeSpan()
    :m_spImpl(new TimeSpanImpl)

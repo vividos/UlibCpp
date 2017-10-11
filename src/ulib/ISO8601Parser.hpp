@@ -6,7 +6,9 @@
 //
 #pragma once
 
+#pragma warning(disable: 6054) // String 'x' might not be zero-terminated.
 #include <boost/date_time.hpp>
+#pragma warning(default: 6054)
 
 /// \brief parser for ISO 8601 date formats
 class ISO8601Parser

@@ -79,7 +79,8 @@ bool FileStream::AtEndOfStream() const
          return true;
 
       // not at EOF, so seek back
-      rThis.Seek(static_cast<LONGLONG>(currentPos), Stream::IStream::seekBegin);
+      ULONGLONG newPos = rThis.Seek(static_cast<LONGLONG>(currentPos), Stream::IStream::seekBegin);
+      ATLASSERT(newPos == currentPos); UNUSED(newPos);
    }
    catch (const Stream::StreamException&)
    {

@@ -6,6 +6,7 @@
 //
 #pragma once
 
+#include <ulib/config/Common.hpp>
 #include <ulib/stream/IStream.hpp>
 #include <vector>
 
@@ -42,9 +43,12 @@ namespace Stream
          return m_currentPos >= m_length;
       }
 
-      virtual void Write(const void* bData, DWORD dwLength, DWORD& dwBytesWritten) override
+      virtual void Write(const void* dataToWrite, DWORD lengthInBytes, DWORD& numBytesWritten) override
       {
-         (bData); (dwLength); (dwBytesWritten);
+         UNUSED(dataToWrite);
+         UNUSED(lengthInBytes);
+         UNUSED(numBytesWritten);
+
          ATLASSERT(false); // can't write to stream
       }
 

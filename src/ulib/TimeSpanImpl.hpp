@@ -7,7 +7,9 @@
 
 #include "stdafx.h"
 #include <ulib/TimeSpan.hpp>
+#pragma warning(disable: 6054) // String 'x' might not be zero-terminated.
 #include <boost/date_time.hpp>
+#pragma warning(default: 6054)
 
 /// \brief time span implementation
 /// \details uses boost::date_time classes

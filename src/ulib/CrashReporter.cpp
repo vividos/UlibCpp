@@ -12,7 +12,7 @@
 #include <memory>
 
 #pragma warning(disable: 4091) // 'typedef ': ignored on left of '' when no variable is declared
-#include <dbghelp.h>
+#include <DbgHelp.h>
 #pragma warning(default: 4091)
 
 #pragma comment(lib, "dbghelp.lib")

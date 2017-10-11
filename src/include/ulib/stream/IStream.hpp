@@ -80,7 +80,7 @@ namespace Stream
    {
       DWORD numBytesWritten;
       Write(&byteToWrite, 1, numBytesWritten);
-      ATLVERIFY(1 == numBytesWritten);
+      ATLASSERT(1 == numBytesWritten);
    }
 
 } // namespace Stream

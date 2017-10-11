@@ -9,7 +9,9 @@
 #include <ulib/Exception.hpp>
 #include "TimeSpanImpl.hpp"
 #include "ISO8601Parser.hpp"
+#pragma warning(disable: 6054) // String 'x' might not be zero-terminated.
 #include <boost/date_time.hpp>
+#pragma warning(default: 6054)
 
 /// \brief DateTime implementation
 /// \details uses boost::date_time classes

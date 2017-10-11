@@ -88,7 +88,9 @@ namespace Stream
       /// flushes out text stream
       virtual void Flush() = 0;
 
-   protected:
+   private:
+      friend class TextStreamFilter;
+
       /// current text encoding
       ETextEncoding m_textEncoding;
 
