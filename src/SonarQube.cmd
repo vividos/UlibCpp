@@ -51,7 +51,7 @@ OpenCppCoverage.exe ^
    --export_type html:CoverageReport ^
    --modules test.dll ^
    -- "%VSINSTALL%\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" ^
-   "..\bin\Debug\Win32\test\test.dll" /Platform:x86 /InIsolation /logger:trx
+   "..\bin\Release\Win32\test\test.dll" /Platform:x86 /InIsolation /logger:trx
 
 SonarQube.Scanner.MSBuild.exe end /d:"sonar.login=c59d3403d04744579f89e55e23c27a171293577e"
 
