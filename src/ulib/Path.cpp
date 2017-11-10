@@ -183,6 +183,16 @@ CString Path::TempFolder()
    return tempFolder;
 }
 
+CString Path::ModuleFilename(HMODULE moduleHandle)
+{
+   CString filename;
+
+   ::GetModuleFileName(moduleHandle, filename.GetBuffer(MAX_PATH), MAX_PATH);
+   filename.ReleaseBuffer();
+
+   return filename;
+}
+
 bool Path::CreateDirectoryRecursive(LPCTSTR directoryName)
 {
    CString parentDirectory = directoryName;

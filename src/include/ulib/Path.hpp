@@ -94,6 +94,9 @@ public:
    /// returns the temp folder
    static CString TempFolder();
 
+   /// returns file name of given module name (e.g. kernel32.dll); nullptr means the currently running .exe module
+   static CString ModuleFilename(HMODULE moduleHandle);
+
    /// creates a directory, possibly also creating non-existent parent directories
    static bool CreateDirectoryRecursive(LPCTSTR directoryName);
 

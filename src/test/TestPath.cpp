@@ -53,5 +53,15 @@ namespace UnitTest
 
          Assert::AreEqual(_T("E:\\acme\\three\\"), Path::GetCommonRootPath(path3, path3));
       }
+
+      /// Tests ModuleFilename() method
+      TEST_METHOD(TestModuleFilename)
+      {
+         CString filenameCurrentModule = Path::ModuleFilename();
+         CString filenameKernel32Dll = Path::ModuleFilename(GetModuleHandle(_T("kernel32.dll")));
+
+         Assert::IsFalse(filenameCurrentModule.IsEmpty());
+         Assert::IsFalse(filenameKernel32Dll.IsEmpty());
+      }
    };
 }
