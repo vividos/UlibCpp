@@ -54,3 +54,9 @@
 // undef the macros so that std::min and std::max work as they should be
 #undef min
 #undef max
+
+// redefine ATLVERIFY when analyzing using Coverity Scan
+#if !defined(_DEBUG) && defined(__COVERITY__)
+#undef ATLVERIFY
+#define ATLVERIFY(expr) (void)(expr)
+#endif
