@@ -3,7 +3,7 @@ REM
 REM ulib - a collection of useful classes
 REM Copyright (C) 2000-2017 Michael Fink
 REM
-REM Runs SonarQube analysis build
+REM Runs SonarCloud analysis build
 REM
 
 REM set this to your Visual Studio installation folder
@@ -31,7 +31,7 @@ SonarQube.Scanner.MSBuild.exe begin ^
     /k:"UlibCpp" ^
     /v:"4.1.0" ^
     /d:"sonar.cfamily.build-wrapper-output=%CD%\bw-output" ^
-    /d:"sonar.host.url=https://sonarqube.com" ^
+    /d:"sonar.host.url=https://sonarcloud.io" ^
     /d:"sonar.organization=vividos-github" ^
     /d:"sonar.login=c59d3403d04744579f89e55e23c27a171293577e" ^
     /d:sonar.cs.vstest.reportsPaths="%CD%\TestResults\*.trx"
