@@ -12,7 +12,9 @@
 #include <ulib/log/LoggingEvent.hpp>
 
 #define BOOST_THREAD_NO_LIB
+#pragma warning(disable: 6387 6388 28159 28251)
 #include <boost/thread/once.hpp>
+#pragma warning(default: 6387 6388 28159 28251)
 
 using Log::Logger;
 using Log::LoggerPtr;

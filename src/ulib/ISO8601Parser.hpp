@@ -7,8 +7,10 @@
 #pragma once
 
 #pragma warning(disable: 6054) // String 'x' might not be zero-terminated.
+#pragma warning(disable: 28251) // Inconsistent annotation for 'F': this instance has no annotations
 #include <boost/date_time.hpp>
 #pragma warning(default: 6054)
+#pragma warning(default: 28251)
 
 /// \brief parser for ISO 8601 date formats
 class ISO8601Parser
