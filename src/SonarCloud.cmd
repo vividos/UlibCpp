@@ -1,7 +1,7 @@
 @echo off
 REM
 REM ulib - a collection of useful classes
-REM Copyright (C) 2000-2017 Michael Fink
+REM Copyright (C) 2000-2018 Michael Fink
 REM
 REM Runs SonarCloud analysis build
 REM
@@ -33,7 +33,7 @@ SonarQube.Scanner.MSBuild.exe begin ^
     /d:"sonar.cfamily.build-wrapper-output=%CD%\bw-output" ^
     /d:"sonar.host.url=https://sonarcloud.io" ^
     /d:"sonar.organization=vividos-github" ^
-    /d:"sonar.login=c59d3403d04744579f89e55e23c27a171293577e" ^
+    /d:"sonar.login=%SONARLOGIN%" ^
     /d:sonar.cs.vstest.reportsPaths="%CD%\TestResults\*.trx"
 
 REM
@@ -53,6 +53,6 @@ OpenCppCoverage.exe ^
    -- "%VSINSTALL%\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" ^
    "..\bin\Release\Win32\test\test.dll" /Platform:x86 /InIsolation /logger:trx
 
-SonarQube.Scanner.MSBuild.exe end /d:"sonar.login=c59d3403d04744579f89e55e23c27a171293577e"
+SonarQube.Scanner.MSBuild.exe end /d:"sonar.login=%SONARLOGIN%"
 
 pause
