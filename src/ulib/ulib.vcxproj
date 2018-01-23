@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="..\include\ulib\CommandLineParser.hpp" />
     <ClInclude Include="..\include\ulib\config\Atl.hpp" />
+    <ClInclude Include="..\include\ulib\config\atlribbon.h" />
     <ClInclude Include="..\include\ulib\config\Common.hpp" />
     <ClInclude Include="..\include\ulib\config\CompileTimeWarningError.hpp" />
     <ClInclude Include="..\include\ulib\config\Win32.hpp" />

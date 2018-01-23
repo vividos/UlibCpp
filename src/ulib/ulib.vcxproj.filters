@@ -236,6 +236,9 @@
     <ClInclude Include="..\include\ulib\Singleton.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\config\atlribbon.h">
+      <Filter>Public Include Files\config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
