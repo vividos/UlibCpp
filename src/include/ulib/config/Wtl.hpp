@@ -35,7 +35,12 @@ extern CAppModule _Module; ///< app module
 #include <atlcrack.h>
 #include <atlsplit.h>
 #if _WIN32_WINNT >= _WIN32_WINNT_WIN7
-#include <atlribbon.h>
+   #if _WTL_VER < 0x1000
+      // fix for broken atlribbon.h under VS2017
+      #include "atlribbon.h"
+   #else
+      #include <atlribbon.h>
+   #endif
 #endif
 
 #pragma warning(pop)
