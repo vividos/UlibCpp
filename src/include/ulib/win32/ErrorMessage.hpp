@@ -16,13 +16,16 @@ namespace Win32
    public:
       /// ctor
       /// \param[in] errorCode win32 error code
-      explicit ErrorMessage(DWORD errorCode = GetLastError())
+      explicit ErrorMessage(DWORD errorCode = LastError())
          :m_errorCode(errorCode)
       {
       }
 
       /// Returns formatted error message
       CString ToString();
+
+      /// Returns last error code
+      static DWORD LastError();
 
    private:
       /// error code

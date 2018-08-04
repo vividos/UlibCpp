@@ -29,3 +29,8 @@ CString Win32::ErrorMessage::ToString()
 
    return errorMessage;
 }
+
+DWORD Win32::ErrorMessage::LastError() throw()
+{
+   return GetLastError();
+}
