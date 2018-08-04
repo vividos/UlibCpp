@@ -299,3 +299,4 @@ src/cov-int.zip
 # my folders
 stuff/
 src/CoverageReport
+src/ulib-coverage.xml
