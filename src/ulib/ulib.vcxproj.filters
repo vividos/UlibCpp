@@ -242,6 +242,12 @@
     <ClInclude Include="..\include\ulib\win32\VersionInfoResource.hpp">
       <Filter>Public Include Files\win32</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\config\Android.hpp">
+      <Filter>Public Include Files\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ulib\config\BoostAsio.hpp">
+      <Filter>Public Include Files\config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

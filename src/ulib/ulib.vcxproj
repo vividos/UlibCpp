@@ -23,7 +23,7 @@
     <ProjectGuid>{85AC59DD-F1E7-497C-9182-460B557ED473}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>ulib</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -134,8 +134,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\include\ulib\CommandLineParser.hpp" />
+    <ClInclude Include="..\include\ulib\config\Android.hpp" />
     <ClInclude Include="..\include\ulib\config\Atl.hpp" />
     <ClInclude Include="..\include\ulib\config\atlribbon.h" />
+    <ClInclude Include="..\include\ulib\config\BoostAsio.hpp" />
     <ClInclude Include="..\include\ulib\config\Common.hpp" />
     <ClInclude Include="..\include\ulib\config\CompileTimeWarningError.hpp" />
     <ClInclude Include="..\include\ulib\config\Win32.hpp" />
