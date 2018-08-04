@@ -150,7 +150,7 @@ void VersionInfoResource::GetLangAndCodepages(std::vector<LANGANDCODEPAGE>& lang
    UINT size = 0;
    LPVOID data = QueryValue(_T("\\VarFileInfo\\Translation"), &size);
 
-   ATLASSERT((uiSize % sizeof(LANGANDCODEPAGE)) == 0);
+   ATLASSERT((size % sizeof(LANGANDCODEPAGE)) == 0);
 
    LANGANDCODEPAGE* langAndCodepage = reinterpret_cast<LANGANDCODEPAGE*>(data);
 
@@ -169,9 +169,7 @@ CString VersionInfoResource::GetStringValue(const LANGANDCODEPAGE& langAndCodepa
    UINT size = 0;
    LPCWSTR text = reinterpret_cast<LPCWSTR>(QueryValue(buffer, &size));
 
-   //   ATLASSERT((uiSize & 1) == 0);
-   //   ATLASSERT(pszText[uiSize/sizeof(WCHAR)] == 0);
-   ATLASSERT(size == 0 || text[uiSize - 1] == 0);
+   ATLASSERT(size == 0 || text[size - 1] == 0);
 
    return (text == NULL || *text == 0) ? CString(_T("???")) : CString(text);
 }
