@@ -167,6 +167,7 @@
     <ClCompile Include="TestResourceData.cpp" />
     <ClCompile Include="TestString.cpp" />
     <ClCompile Include="TestSystemException.cpp" />
+    <ClCompile Include="win32\TestVersionInfoResource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ulib\ulib.vcxproj">

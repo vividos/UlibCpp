@@ -16,6 +16,9 @@
     <Filter Include="Source Files\stream">
       <UniqueIdentifier>{439f051b-2e10-423f-8c47-0be18c0b65f7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\win32">
+      <UniqueIdentifier>{e03a2809-91a1-4f73-ba4d-6cd5584ec84d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -79,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="TestConfig.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\TestVersionInfoResource.cpp">
+      <Filter>Source Files\win32</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

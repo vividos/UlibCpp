@@ -239,6 +239,9 @@
     <ClInclude Include="..\include\ulib\config\atlribbon.h">
       <Filter>Public Include Files\config</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\win32\VersionInfoResource.hpp">
+      <Filter>Public Include Files\win32</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -308,6 +311,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="win32\Win7Taskbar.cpp">
+      <Filter>Source Files\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\VersionInfoResource.cpp">
       <Filter>Source Files\win32</Filter>
     </ClCompile>
   </ItemGroup>

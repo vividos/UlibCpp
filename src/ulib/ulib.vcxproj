@@ -193,6 +193,7 @@
     <ClInclude Include="..\include\ulib\win32\IniFile.hpp" />
     <ClInclude Include="..\include\ulib\win32\Process.hpp" />
     <ClInclude Include="..\include\ulib\win32\ResourceData.hpp" />
+    <ClInclude Include="..\include\ulib\win32\VersionInfoResource.hpp" />
     <ClInclude Include="..\include\ulib\win32\Win7Taskbar.hpp" />
     <ClInclude Include="ISO8601Parser.hpp" />
     <ClInclude Include="stdafx.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="win32\Clipboard.cpp" />
     <ClCompile Include="win32\ErrorMessage.cpp" />
     <ClCompile Include="win32\ResourceData.cpp" />
+    <ClCompile Include="win32\VersionInfoResource.cpp" />
     <ClCompile Include="win32\Win7Taskbar.cpp" />
   </ItemGroup>
   <ItemGroup>
