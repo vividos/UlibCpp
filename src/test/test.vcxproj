@@ -157,6 +157,7 @@
     <ClCompile Include="stream\TestTextStreamFilter.cpp" />
     <ClCompile Include="TestAutoCleanupFileFolder.cpp" />
     <ClCompile Include="TestCommandLineParser.cpp" />
+    <ClCompile Include="TestConfig.cpp" />
     <ClCompile Include="TestDateTime.cpp" />
     <ClCompile Include="TestErrorMessage.cpp" />
     <ClCompile Include="TestException.cpp" />

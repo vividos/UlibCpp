@@ -13,3 +13,10 @@
 /// function body.
 #define UNUSED(x) (void)(x)
 #endif
+
+/// determines the size of an array, in elements; uses C++11
+template <typename T>
+inline constexpr auto sizeof_array(const T& theArray)
+{
+   return (sizeof(theArray) / sizeof(theArray[0]));
+}

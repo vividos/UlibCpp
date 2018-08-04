@@ -77,6 +77,9 @@
     <ClCompile Include="TestResourceData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="test.rc">
