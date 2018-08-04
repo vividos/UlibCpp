@@ -52,8 +52,8 @@ namespace UnitTest
                fixedFileInfo.dwFileSubtype,        // e.g. VFT2_DRV_KEYBOARD
                fixedFileInfo.dwFileDateMS,         // e.g. 0
                fixedFileInfo.dwFileDateLS,         // e.g. 0
-               fixedFileInfo.GetFileOS(),
-               fixedFileInfo.GetFileType());
+               fixedFileInfo.GetFileOS().GetString(),
+               fixedFileInfo.GetFileType().GetString());
          }
 
          // show languages and codepages
@@ -90,8 +90,8 @@ namespace UnitTest
                for (unsigned int j = 0; j < sizeof(allNames) / sizeof(*allNames); j++)
                {
                   ATLTRACE(_T("  name \"%-17s: [%s]"),
-                     CString(allNames[j]) + _T("\""),
-                     vir.GetStringValue(langAndCodepagesList[i], allNames[j]));
+                     (CString(allNames[j]) + _T("\"")).GetString(),
+                     vir.GetStringValue(langAndCodepagesList[i], allNames[j]).GetString());
                }
             }
          }
