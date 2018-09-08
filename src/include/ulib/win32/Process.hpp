@@ -42,6 +42,7 @@ namespace Win32
       /// creates process with given command line
       bool Create(const CString& commandLine)
       {
+#pragma warning (disable: 6335) // Leaking process information handle 'm_processInfo.hProcess'.
          BOOL ret = ::CreateProcess(
             nullptr,
             const_cast<LPTSTR>(static_cast<LPCTSTR>(commandLine)),
@@ -49,6 +50,7 @@ namespace Win32
             m_workingDirectory.IsEmpty() ? nullptr : m_workingDirectory.GetString(),
             &m_startupInfo,
             &m_processInfo);
+#pragma warning (default: 6335)
 
          return ret != FALSE;
       }

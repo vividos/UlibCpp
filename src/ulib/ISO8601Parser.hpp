@@ -7,9 +7,11 @@
 #pragma once
 
 #pragma warning(disable: 6054) // String 'x' might not be zero-terminated.
+#pragma warning(disable: 6330) // warning C6330: 'char' passed as _Param_(1) when 'unsigned char' is required in call to 'isspace'.
 #pragma warning(disable: 28251) // Inconsistent annotation for 'F': this instance has no annotations
 #include <boost/date_time.hpp>
 #pragma warning(default: 6054)
+#pragma warning(default: 6330)
 #pragma warning(default: 28251)
 
 /// \brief parser for ISO 8601 date formats

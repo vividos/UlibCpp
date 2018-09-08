@@ -20,6 +20,8 @@ public:
    /// ctor
    LightweightMutex()
    {
+#pragma warning(disable: 6320) // Exception-filter expression is the constant EXCEPTION_EXECUTE_HANDLER. This might mask exceptions that were not intended to be handled.
+#pragma warning(disable: 6322) // Empty _except block.
       __try
       {
          InitializeCriticalSection(&m_criticalSection);
@@ -28,6 +30,8 @@ public:
       {
          // the function can raise STATUS_NO_MEMORY exception on Windows XP
       }
+#pragma warning(default: 6320)
+#pragma warning(default: 6322)
    }
 
    /// dtor

@@ -26,6 +26,7 @@ static CrashReporter::T_fnShowCrashDialog g_fnShowCrashDialog = nullptr;
 /// writes minidump file
 bool WriteMinidump(HANDLE fileHandle, _EXCEPTION_POINTERS* exceptionInfo)
 {
+#pragma warning(disable: 6320) // Exception-filter expression is the constant EXCEPTION_EXECUTE_HANDLER. This might mask exceptions that were not intended to be handled.
    __try
    {
       MINIDUMP_EXCEPTION_INFORMATION miniDumpExceptionInfo = { 0 };
@@ -48,6 +49,7 @@ bool WriteMinidump(HANDLE fileHandle, _EXCEPTION_POINTERS* exceptionInfo)
    {
       return false;
    }
+#pragma warning(default: 6320)
 }
 
 /// creates minidump filename in given buffer
@@ -69,7 +71,7 @@ void GetMinidumpFilename(LPTSTR minidumpFilename, UINT numMaxChars)
    localtime_s(&now, &nowt);
 
    _sntprintf_s(start, numRemaining, numRemaining,
-      _T("%04u-%02u-%02u %02u_%02u_%02u.mdmp"),
+      _T("%04i-%02i-%02i %02i_%02i_%02i.mdmp"),
       now.tm_year + 1900,
       now.tm_mon + 1,
       now.tm_mday,

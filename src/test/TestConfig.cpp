@@ -21,8 +21,8 @@ namespace UnitTest
       {
          int a[14], b[1];
 
-         Assert::AreEqual<unsigned int>(14, sizeof_array(a), _T("size of array must match"));
-         Assert::AreEqual<unsigned int>(1, sizeof_array(b), _T("size of array must match"));
+         Assert::AreEqual<unsigned long long>(14, sizeof_array(a), _T("size of array must match"));
+         Assert::AreEqual<unsigned long long>(1, sizeof_array(b), _T("size of array must match"));
       }
    };
 

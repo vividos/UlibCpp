@@ -37,6 +37,8 @@ void Thread::SetName(LPCSTR pszThreadName, DWORD dwThreadId)
    info.dwThreadID = dwThreadId;
    info.dwFlags = 0;
 
+#pragma warning(disable: 6320) // Exception-filter expression is the constant EXCEPTION_EXECUTE_HANDLER. This might mask exceptions that were not intended to be handled.
+#pragma warning(disable: 6322) // Empty _except block.
    __try
    {
       RaiseException(MS_VC_EXCEPTION, 0, sizeof(info)/sizeof(ULONG_PTR), (ULONG_PTR*)&info);
@@ -45,5 +47,7 @@ void Thread::SetName(LPCSTR pszThreadName, DWORD dwThreadId)
    {
       // ignore exception
    }
+#pragma warning(default: 6320)
+#pragma warning(default: 6322)
 #endif // WIN32
 }
