@@ -16,6 +16,12 @@ using Win32::Taskbar;
 class TaskbarImpl
 {
 public:
+   /// ctor
+   TaskbarImpl(HWND hwnd)
+      :m_hwnd(hwnd)
+   {
+   }
+
    HWND m_hwnd;   ///< window handle of window
    CComPtr<ITaskbarList3> m_taskBarList;  ///< task bar list interface 3
 };
@@ -40,9 +46,8 @@ void TaskbarProgressBar::SetPos(UINT currentPos, UINT maxPos)
 }
 
 Taskbar::Taskbar(HWND hwnd)
-   :m_impl(new TaskbarImpl)
+   :m_impl(new TaskbarImpl(hwnd))
 {
-   m_impl->m_hwnd = hwnd;
    HRESULT hr = m_impl->m_taskBarList.CoCreateInstance(CLSID_TaskbarList, nullptr, CLSCTX_ALL);
    ATLVERIFY(SUCCEEDED(hr));
 }
