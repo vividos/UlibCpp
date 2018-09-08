@@ -5,6 +5,7 @@ VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56814D4D-84AE-4AA1-8F9A-6B41912315EB}"
 	ProjectSection(SolutionItems) = preProject
+		..\Changelog.md = ..\Changelog.md
 		..\LICENSE.md = ..\LICENSE.md
 		..\README.md = ..\README.md
 		nupkg\Vividos.UlibCpp.Static.nuspec = nupkg\Vividos.UlibCpp.Static.nuspec
@@ -61,5 +62,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CAEC634C-5505-4420-81B1-8C5311B74A45}
 	EndGlobalSection
 EndGlobal
