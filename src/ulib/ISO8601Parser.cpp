@@ -28,16 +28,14 @@ bool ISO8601Parser::ParseDateTime(LPCTSTR timestamp, std::wstring& strRemaining)
 {
    // convert to ptime using time input facet
    // http://stackoverflow.com/questions/2838524/use-boost-date-time-to-parse-and-create-http-dates
-   //typedef boost::posix_time::wtime_input_facet time_input_facet;
    typedef boost::local_time::wlocal_time_input_facet time_input_facet;
 
    // note: inputFacet is not deleted here; it is done somewhere inside the stream classes
-   time_input_facet* inputFacet =
-      //new time_input_facet(L"%Y-%m-%dT%H:%M:%S%F%Q");
-      new time_input_facet(L"%Y-%m-%dT%H:%M:%S%F");
    // note: we don't use
    //    inputFacet->set_iso_extended_format();
    // here, since it doesn't include the T divider
+   time_input_facet* inputFacet =
+      new time_input_facet(L"%Y-%m-%dT%H:%M:%S%F");
 
    std::wstringstream ss;
    ss.imbue(std::locale(ss.getloc(), inputFacet));
