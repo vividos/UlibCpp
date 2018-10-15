@@ -27,7 +27,7 @@ REM Build using SonarQube scanner for MSBuild
 REM
 rmdir .\bw-output /s /q 2> nul
 
-SonarQube.Scanner.MSBuild.exe begin ^
+SonarScanner.MSBuild.exe begin ^
     /k:"UlibCpp" ^
     /v:"4.1.3" ^
     /d:"sonar.cfamily.build-wrapper-output=%CD%\bw-output" ^
@@ -53,6 +53,6 @@ OpenCppCoverage.exe ^
    -- "%VSINSTALL%\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" ^
    "..\bin\Release\Win32\test\test.dll" /Platform:x86 /InIsolation /logger:trx
 
-SonarQube.Scanner.MSBuild.exe end /d:"sonar.login=%SONARLOGIN%"
+SonarScanner.MSBuild.exe end /d:"sonar.login=%SONARLOGIN%"
 
 pause
