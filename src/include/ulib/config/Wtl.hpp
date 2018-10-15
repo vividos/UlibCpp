@@ -34,10 +34,10 @@ extern CAppModule _Module; ///< app module
 #include <atlddx.h>
 #include <atlcrack.h>
 #include <atlsplit.h>
+
 #if _WIN32_WINNT >= _WIN32_WINNT_WIN7
    #if _WTL_VER < 0x1000
-      // fix for broken atlribbon.h under VS2017
-      #include "atlribbon.h"
+      #error ulib only supports WTL 10 and higher; please upgrade!
    #else
       #include <atlribbon.h>
    #endif

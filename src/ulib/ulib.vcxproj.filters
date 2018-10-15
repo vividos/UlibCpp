@@ -236,9 +236,6 @@
     <ClInclude Include="..\include\ulib\Singleton.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\ulib\config\atlribbon.h">
-      <Filter>Public Include Files\config</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\ulib\win32\VersionInfoResource.hpp">
       <Filter>Public Include Files\win32</Filter>
     </ClInclude>
