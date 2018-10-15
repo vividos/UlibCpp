@@ -1,5 +1,10 @@
 # UlibCpp Changelog
 
+# Version 4.1.3
+
+Compiled with Visual Studio 2017 Version 15.8.7 and Boost 1.68. Use this
+package together with the WTL 10.0.8280 or later package.
+
 # Version 4.1.2
 
 Compiled with Visual Studio 2017 Version 15.8.3 and Boost 1.68.
