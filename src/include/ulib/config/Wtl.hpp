@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2009,2012,2017 Michael Fink
+// Copyright (C) 2009,2012,2017,2018 Michael Fink
 //
 /// \file Wtl.hpp configuration for WTL 8 or higher
 //
@@ -15,6 +15,9 @@
 
 // ignore warnings in Win32 API header files that WTL includes
 #pragma warning(disable: 4091) // 'typedef ' : ignored on left of 'T1' when no variable is declared
+
+// ignore constexpr warnings in WTL headers
+#pragma warning(disable: 4127) // conditional expression is constant
 
 #define _WTL_NO_CSTRING ///< don't use WTL CString
 #define _WTL_NO_WTYPES ///< don't use WTL types, such as CSize, CRect, etc.
