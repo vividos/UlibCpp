@@ -15,7 +15,7 @@
 
 // ignore /analyze warnings in Boost.Asio header files
 #pragma warning(push)
-#pragma warning(disable: 6001 6031 6255 6258 6330 6386 6387 26439)
+#pragma warning(disable: 4996 6001 6031 6255 6258 6330 6386 6387 26439)
 
 // includes
 #include <boost/asio.hpp>
