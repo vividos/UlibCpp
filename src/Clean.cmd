@@ -22,9 +22,12 @@ msbuild UlibCpp.sln /m /property:Configuration=Debug /property:Platform=x86 /tar
 msbuild UlibCpp.sln /m /property:Configuration=Release /property:Platform=x64 /target:Clean
 msbuild UlibCpp.sln /m /property:Configuration=Release /property:Platform=x64 /target:Clean
 
+rmdir .vs /s /q
 rmdir .\bw-output /s /q
 rmdir .\.sonarqube /s /q
 rmdir CoverageReport /s /q
+del LastCoverageResults.log
+del ulib-coverage.xml
 rmdir TestResults /s /q
 rmdir packages /s /q
 rmdir doxygen\obj /s /q
