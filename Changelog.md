@@ -1,5 +1,12 @@
 # UlibCpp Changelog
 
+# Version 4.1.4
+
+Compiled with Visual Studio 2017 Version 15.8.9 and Boost 1.68.
+
+This version suppresses warning 4996 about deprecated features when compiling
+with C++17 and incliuding ulib\config\BoostAsio.hpp.
+
 # Version 4.1.3
 
 Compiled with Visual Studio 2017 Version 15.8.7 and Boost 1.68. Use this
