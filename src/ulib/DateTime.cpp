@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006-2014,2017 Michael Fink
+// Copyright (C) 2006-2014,2017,2019 Michael Fink
 //
 /// \file DateTime.cpp date/time class
 //
@@ -359,6 +359,6 @@ void DateTime::PrepareCopy()
 {
    ATLASSERT(m_spImpl != NULL);
 
-   if (!m_spImpl.unique())
+   if (m_spImpl.use_count() > 1)
       m_spImpl.reset(new DateTimeImpl(m_spImpl->m_dt));
 }

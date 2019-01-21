@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006-2014,2017 Michael Fink
+// Copyright (C) 2006-2014,2017,2019 Michael Fink
 //
 /// \file TimeSpan.cpp time span class
 //
@@ -275,6 +275,6 @@ void TimeSpan::PrepareCopy()
 {
    ATLASSERT(m_spImpl != nullptr);
 
-   if (!m_spImpl.unique())
+   if (m_spImpl.use_count() > 1)
       m_spImpl.reset(new TimeSpanImpl(m_spImpl->m_span));
 }
