@@ -1,5 +1,11 @@
 # UlibCpp Changelog
 
+# Version 4.1.5
+
+Compiled with Visual Studio 2017 Version 15.9.5 and Boost 1.68.
+
+This version suppresses more warnings when including Boost and WTL headers.
+
 # Version 4.1.4
 
 Compiled with Visual Studio 2017 Version 15.8.9 and Boost 1.68.
