@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2008-2014,2017 Michael Fink
+// Copyright (C) 2008-2014,2017,2019 Michael Fink
 //
 /// \file Singleton.hpp Singleton template class
 //
@@ -24,7 +24,8 @@ public:
       T* tmp = m_instance.load(std::memory_order_consume);
       if (!tmp)
       {
-         std::mutex::scoped_lock l(m_instantiationMutex);
+         std::unique_lock<std::recursive_mutex> l(m_instantiationMutex);
+
          tmp = m_instance.load(std::memory_order_consume);
          if (!tmp)
          {

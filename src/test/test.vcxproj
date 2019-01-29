@@ -166,6 +166,7 @@
     <ClCompile Include="TestPath.cpp" />
     <ClCompile Include="TestReaderWriterMutex.cpp" />
     <ClCompile Include="TestResourceData.cpp" />
+    <ClCompile Include="TestSingleton.cpp" />
     <ClCompile Include="TestString.cpp" />
     <ClCompile Include="TestSystemException.cpp" />
     <ClCompile Include="win32\TestVersionInfoResource.cpp" />
