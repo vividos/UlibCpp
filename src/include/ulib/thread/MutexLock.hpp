@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2013-2014,2017 Michael Fink
+// Copyright (C) 2013-2014,2017,2019 Michael Fink
 //
 /// \file MutexLock.hpp generic mutex lock classes
 //
@@ -22,6 +22,18 @@ public:
    ~MutexLock()
    {
       m_mutex.Unlock();
+   }
+
+   /// move ctor; moves an already locked mutex to this object
+   MutexLock(MutexLock&& lock)
+      :m_mutex(std::move(lock.m_mutex))
+   {
+   }
+
+   /// move assignment operator
+   MutexLock& operator=(MutexLock&& lock)
+   {
+      m_mutex = std::move(lock.m_mutex);
    }
 
 private:
@@ -48,6 +60,18 @@ public:
    ~MutexTryLock()
    {
       m_mutex.Unlock();
+   }
+
+   /// move ctor; moves an already locked mutex to this object
+   MutexTryLock(MutexTryLock&& lock)
+      :m_mutex(std::move(lock.m_mutex))
+   {
+   }
+
+   /// move assignment operator
+   MutexTryLock& operator=(MutexTryLock&& lock)
+   {
+      m_mutex = std::move(lock.m_mutex);
    }
 
    /// tries locking mutex until timeout (in milliseconds)
@@ -81,6 +105,18 @@ public:
    ~MutexUnLocker()
    {
       m_mutex.Lock();
+   }
+
+   /// move ctor; moves an already locked mutex to this object
+   MutexUnLocker(MutexUnLocker&& lock)
+      :m_mutex(std::move(lock.m_mutex))
+   {
+   }
+
+   /// move assignment operator
+   MutexUnLocker& operator=(MutexUnLocker&& lock)
+   {
+      m_mutex = std::move(lock.m_mutex);
    }
 
 private:
