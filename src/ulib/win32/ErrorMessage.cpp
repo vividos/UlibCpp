@@ -14,7 +14,7 @@
 
 CString Win32::ErrorMessage::ToString()
 {
-#ifdef WIN32
+#ifdef _WIN32
    LPVOID messageBuffer = nullptr;
    ::FormatMessage(
       FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
@@ -46,7 +46,7 @@ CString Win32::ErrorMessage::ToString()
 
 DWORD Win32::ErrorMessage::LastError()
 {
-#ifdef WIN32
+#ifdef _WIN32
    return GetLastError();
 #endif
 

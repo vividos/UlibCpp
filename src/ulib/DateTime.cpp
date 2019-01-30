@@ -93,7 +93,7 @@ DateTime DateTime::Now()
       tmNow.tm_hour, tmNow.tm_min, tmNow.tm_sec);
 #endif
 
-#ifdef WIN32
+#ifdef _WIN32
    SYSTEMTIME stNow;
    GetSystemTime(&stNow);
    return DateTime(stNow.wYear, stNow.wMonth, stNow.wDay,

@@ -8,7 +8,7 @@
 #include "stdafx.h"
 #include <ulib/thread/Thread.hpp>
 
-#ifdef WIN32
+#ifdef _WIN32
 
 #ifndef MS_VC_EXCEPTION
 /// exception code for visual studio functions
@@ -30,7 +30,7 @@ typedef struct tagTHREADNAME_INFO
 
 void Thread::SetName(LPCSTR pszThreadName, DWORD dwThreadId)
 {
-#ifdef WIN32
+#ifdef _WIN32
    THREADNAME_INFO info;
    info.dwType = 0x1000;
    info.szName = pszThreadName;

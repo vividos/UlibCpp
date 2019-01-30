@@ -7,13 +7,13 @@
 #pragma once
 
 // including SDKDDKVer.h defines the highest available Windows platform.
-#ifdef WIN32
+#ifdef _WIN32
 #include <SDKDDKVer.h>
 #endif
 
 #include <ulib/config/Common.hpp>
 
-#ifdef WIN32
+#ifdef _WIN32
 #include <ulib/config/Win32.hpp>
 #include <ulib/config/Atl.hpp>
 #else

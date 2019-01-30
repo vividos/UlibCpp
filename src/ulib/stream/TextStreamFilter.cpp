@@ -34,7 +34,7 @@ TextStreamFilter::TextStreamFilter(Stream::IStream& stream,
 #endif
 
    if (lineEndingMode == lineEndingNative)
-#ifdef WIN32
+#ifdef _WIN32
       m_lineEndingMode = lineEndingCRLF;
 #elif defined(__ANDROID__)
       m_lineEndingMode = lineEndingLF;
