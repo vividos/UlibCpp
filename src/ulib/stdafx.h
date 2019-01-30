@@ -7,11 +7,18 @@
 #pragma once
 
 // including SDKDDKVer.h defines the highest available Windows platform.
+#ifdef WIN32
 #include <SDKDDKVer.h>
+#endif
 
 #include <ulib/config/Common.hpp>
+
+#ifdef WIN32
 #include <ulib/config/Win32.hpp>
 #include <ulib/config/Atl.hpp>
+#else
+#include <ulib/config/Android.hpp>
+#endif
 
 // don't link against Boost.DateTime; only header functionality is used
 #define BOOST_DATE_TIME_NO_LIB
