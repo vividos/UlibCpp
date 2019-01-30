@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2013-2016,2017 Michael Fink
+// Copyright (C) 2013-2016,2017,2019 Michael Fink
 //
 /// \file Android.hpp Android NDK config
 //
@@ -20,8 +20,7 @@ typedef uint_least32_t UINT;
 typedef uint_least8_t BYTE;
 typedef uint_least16_t WORD;
 typedef uint_least16_t USHORT;
-typedef uint_least32_t DWORD
-typedef uint_least16_t UINT;
+typedef uint_least32_t DWORD;
 typedef unsigned long long ULONGLONG;
 typedef signed long long LONGLONG;
 
@@ -41,6 +40,7 @@ typedef CHAR TCHAR;
 #define _T(x) x
 #endif
 
+typedef TCHAR* LPTSTR;
 typedef const TCHAR* LPCTSTR;
 
 typedef TCHAR _TCHAR;
@@ -52,6 +52,8 @@ typedef TCHAR _TCHAR;
 #define _tprintf printf
 #define _tcsftime strftime
 #endif
+
+typedef void* HMODULE;
 
 // Win32 functions
 inline LPCTSTR GetCommandLine() { return _T(""); }
