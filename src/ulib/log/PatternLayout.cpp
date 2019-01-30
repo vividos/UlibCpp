@@ -5,7 +5,7 @@
 /// \file PatternLayout.cpp pattern layout implementation
 //
 #include "stdafx.h"
-#include <ulib/Log/PatternLayout.hpp>
+#include <ulib/log/PatternLayout.hpp>
 
 void Log::PatternLayout::Format(CString& outputText, const LoggingEventPtr loggingEvent)
 {
