@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006,2007,2008,2012,2013,2017 Michael Fink
+// Copyright (C) 2006,2007,2008,2012,2013,2017,2019 Michael Fink
 //
 /// \file Thread.cpp Thread class
 //
@@ -50,4 +50,13 @@ void Thread::SetName(LPCSTR pszThreadName, DWORD dwThreadId)
 #pragma warning(default: 6320)
 #pragma warning(default: 6322)
 #endif // WIN32
+}
+
+DWORD Thread::CurrentId()
+{
+#if defined(WIN32)
+   return ::GetCurrentThreadId();
+#elif defined(__ANDROID__)
+   return static_cast<DWORD>(pthread_self());
+#endif
 }

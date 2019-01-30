@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006,2007,2008,2012,2013,2017 Michael Fink
+// Copyright (C) 2006,2007,2008,2012,2013,2017,2019 Michael Fink
 //
 /// \file Thread.hpp Thread class
 //
@@ -22,8 +22,5 @@ public:
    static void SetName(LPCSTR pszThreadName, DWORD dwThreadId = DWORD(-1));
 
    /// returns current thread ID
-   static DWORD CurrentId()
-   {
-      return ::GetCurrentThreadId();
-   }
+   static DWORD CurrentId();
 };
