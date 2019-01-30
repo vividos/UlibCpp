@@ -4,7 +4,10 @@
 
 Compiled with Visual Studio 2017 Version 15.9.5 and Boost 1.68.
 
-This version suppresses more warnings when including Boost and WTL headers.
+This version suppresses more warnings when including Boost and WTL headers. Also:
+
+- made MutexLock, MutexTryLock and MutexUnLocker movable
+- fixed including Singleton.hpp when compiling for C++17
 
 # Version 4.1.4
 
