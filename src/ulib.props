@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
-    <BoostPath>D:\devel\packages\boost_1_64_0\</BoostPath>
     <CppCheckPath>C:\Program Files\Cppcheck\</CppCheckPath>
     <DoxygenPath>D:\devel\tools\doxygen\bin\</DoxygenPath>
     <DotPath>D:\devel\tools\dot\bin\</DotPath>
@@ -15,15 +14,12 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;$(BoostPath)boost;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <BuildMacro Include="BoostPath">
-      <Value>$(BoostPath)</Value>
-    </BuildMacro>
     <BuildMacro Include="CppCheckPath">
       <Value>$(CppCheckPath)</Value>
     </BuildMacro>
