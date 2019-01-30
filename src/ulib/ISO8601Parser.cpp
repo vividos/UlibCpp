@@ -40,7 +40,7 @@ bool ISO8601Parser::ParseDateTime(LPCTSTR timestamp, std::wstring& strRemaining)
    std::wstringstream ss;
    ss.imbue(std::locale(ss.getloc(), inputFacet));
 
-   ss.str(timestamp);
+   ss.str(CStringW(timestamp).GetString());
 
    boost::local_time::local_date_time localDateTime =
       boost::local_time::local_sec_clock::local_time(boost::local_time::time_zone_ptr());
