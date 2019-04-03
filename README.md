@@ -12,8 +12,6 @@ AppVeyor: [![Build status](https://ci.appveyor.com/api/projects/status/barfr2cil
 
 SonarCloud: [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=UlibCpp)](https://sonarcloud.io/dashboard?id=UlibCpp)
 
-Coverity Scan: [![Build status](https://scan.coverity.com/projects/13639/badge.svg)](https://scan.coverity.com/projects/vividos-ulibcpp)
-
 ## License
 
 Licensed under the [LICENSE.md](LICENSE.md "BSD 2-clause license").
