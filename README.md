@@ -10,7 +10,7 @@ NuGet: [![NuGet package](https://img.shields.io/nuget/v/Vividos.UlibCpp.Static.s
 
 AppVeyor: [![Build status](https://ci.appveyor.com/api/projects/status/barfr2cil647t8du?svg=true)](https://ci.appveyor.com/project/vividos/ulibcpp)
 
-SonarCloud: [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=UlibCpp)](https://sonarcloud.io/dashboard?id=UlibCpp)
+SonarCloud: [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=UlibCpp&metric=alert_status)](https://sonarcloud.io/dashboard?id=UlibCpp)
 
 ## License
 
