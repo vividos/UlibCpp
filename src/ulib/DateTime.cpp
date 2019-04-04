@@ -45,7 +45,8 @@ DateTime::DateTime(unsigned int uiYear, unsigned int uiMonth, unsigned int uiDay
    {
       m_spImpl->m_dt = boost::posix_time::ptime(
          boost::gregorian::date(USHORT(uiYear), USHORT(uiMonth), USHORT(uiDay)),
-         boost::posix_time::time_duration(uiHour, uiMinute, uiSecond, uiMillisecond * 1000));
+         boost::posix_time::time_duration(uiHour, uiMinute, uiSecond,
+			 boost::posix_time::time_duration::fractional_seconds_type(uiMillisecond) * 1000));
    }
    catch (...)
    {
@@ -120,7 +121,8 @@ void DateTime::SetDateTime(unsigned int uiYear, unsigned int uiMonth, unsigned i
    {
       m_spImpl->m_dt = boost::posix_time::ptime(
          boost::gregorian::date(USHORT(uiYear), USHORT(uiMonth), USHORT(uiDay)),
-         boost::posix_time::time_duration(uiHour, uiMinute, uiSecond, uiMillisecond * 1000));
+         boost::posix_time::time_duration(uiHour, uiMinute, uiSecond,
+			 boost::posix_time::time_duration::fractional_seconds_type(uiMillisecond) * 1000));
    }
    catch (...)
    {
