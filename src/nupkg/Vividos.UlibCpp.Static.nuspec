@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Vividos.UlibCpp.Static</id>
-    <version>4.1.5.0</version>
+    <version>4.1.6.0</version>
     <title>$title$</title>
     <authors>Michael Fink</authors>
     <owners>Michael Fink</owners>
@@ -10,8 +10,8 @@
     <projectUrl>https://github.com/vividos/UlibCpp</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <summary>UlibCpp is a collection of useful C++ classes that help writing Win32 console, ATL and WTL applications faster.</summary>
-    <description>UlibCpp is a collection of useful C++ classes that help writing Win32 console, ATL and WTL applications faster. This is the static library package. Supported platforms are Win32 and x64. The package was built with Visual Studio 2017 Version 15.9.5. Use this package together with Boost 1.68.0 and WTL 10. The library is licensed under the BSD 2-clause license.</description>
-    <releaseNotes>New classes: VersionInfoResource; new methods: sizeof_array, Win32::ErrorMessage::LastError()</releaseNotes>
+    <description>UlibCpp is a collection of useful C++ classes that help writing Win32 console, ATL and WTL applications faster. This is the static library package. Supported platforms are Win32 and x64. The package was built with Visual Studio 2019 Version 16.1.4. Use this package together with Boost 1.70.0 and WTL 10. The library is licensed under the BSD 2-clause license.</description>
+    <releaseNotes>No new classes or functions.</releaseNotes>
     <copyright>Copyright 2017-2019 Michael Fink</copyright>
     <tags>native C++</tags>
   </metadata>
