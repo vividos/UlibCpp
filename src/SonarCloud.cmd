@@ -10,10 +10,10 @@ REM set this to your Visual Studio installation folder
 set VSINSTALL=%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community
 
 REM set this to your SonarQube tools folder
-set SONARQUBE=D:\devel\tools\SonarQube
+set SONARQUBE=C:\Projekte\Tools\SonarQube
 
 REM and this to your OpenCppCoverage folder
-set OPENCPPCOVERAGE=D:\devel\tools\OpenCppCoverage\
+set OPENCPPCOVERAGE=C:\Projekte\Tools\OpenCppCoverage\
 
 REM
 REM Preparations
