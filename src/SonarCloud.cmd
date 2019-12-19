@@ -20,11 +20,15 @@ REM Preparations
 REM
 call "%VSINSTALL%\Common7\Tools\VsDevCmd.bat"
 
+if "%SONARLOGIN%" == "" echo "Environment variable SONARLOGIN is not set! Obtain a new token and set the environment variable!"
+if "%SONARLOGIN%" == "" exit 1
+
 set PATH=%PATH%;%SONARQUBE%\build-wrapper-win-x86;%SONARQUBE%\sonar-scanner-msbuild;%OPENCPPCOVERAGE%
 
 REM
 REM Build using SonarQube scanner for MSBuild
 REM
+rmdir .\.sonarqube /s /q 2> nul
 rmdir .\bw-output /s /q 2> nul
 
 SonarScanner.MSBuild.exe begin ^
@@ -32,9 +36,10 @@ SonarScanner.MSBuild.exe begin ^
     /v:"4.1.7" ^
     /d:"sonar.cfamily.build-wrapper-output=%CD%\bw-output" ^
     /d:"sonar.host.url=https://sonarcloud.io" ^
-    /d:"sonar.organization=vividos-github" ^
+    /o:"vividos-github" ^
     /d:"sonar.login=%SONARLOGIN%" ^
     /d:sonar.cs.vstest.reportsPaths="%CD%\TestResults\*.trx"
+if errorlevel 1 goto end
 
 REM
 REM Rebuild Release|x86
@@ -54,5 +59,7 @@ OpenCppCoverage.exe ^
    "..\bin\Release\Win32\test\test.dll" /Platform:x86 /InIsolation /logger:trx
 
 SonarScanner.MSBuild.exe end /d:"sonar.login=%SONARLOGIN%"
+
+:end
 
 pause
