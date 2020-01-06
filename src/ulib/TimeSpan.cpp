@@ -255,7 +255,7 @@ void TimeSpan::SetDateTimeSpan(int iHours, int iMins, int iSecs, int iMillisecs)
    {
       // note: multiplying milliseconds with 1000 here, since resolution is in microsecs
       m_spImpl->m_span = boost::posix_time::time_duration(iHours, iMins, iSecs,
-		  boost::posix_time::time_duration::fractional_seconds_type(iMillisecs) * 1000);
+         boost::posix_time::time_duration::fractional_seconds_type(iMillisecs) * 1000);
    }
    catch (...)
    {
