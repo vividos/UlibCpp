@@ -8,10 +8,11 @@
 
 #include <string>
 #include <map>
-#pragma warning(disable: 26439)
+#pragma warning(push)
+#pragma warning(disable: 26439 26812)
 #include <boost/any.hpp>
 #include <boost/ref.hpp>
-#pragma warning(default: 26439)
+#pragma warning(pop)
 
 /// inversion of control container
 class IoCContainer
