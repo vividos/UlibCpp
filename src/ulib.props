@@ -3,8 +3,8 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
     <CppCheckPath>C:\Program Files\Cppcheck\</CppCheckPath>
-    <DoxygenPath>D:\devel\tools\doxygen\bin\</DoxygenPath>
-    <DotPath>D:\devel\tools\dot\bin\</DotPath>
+    <DoxygenPath>C:\Projekte\Tools\doxygen\bin\</DoxygenPath>
+    <DotPath>C:\Projekte\Tools\dot\bin\</DotPath>
   </PropertyGroup>
   <PropertyGroup>
     <OutDir>$(SolutionDir)..\bin\$(Configuration)\$(PlatformName)\$(ProjectName)\</OutDir>
