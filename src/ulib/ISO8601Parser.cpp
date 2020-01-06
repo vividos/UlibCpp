@@ -45,7 +45,12 @@ bool ISO8601Parser::ParseDateTime(LPCTSTR timestamp, std::wstring& strRemaining)
    boost::local_time::local_date_time localDateTime =
       boost::local_time::local_sec_clock::local_time(boost::local_time::time_zone_ptr());
 
+   // this warning occurs because a Boost.DateTime internal method wants to convert a wchar_t
+   // based timezone string to char; disable it
+#pragma warning(push)
+#pragma warning(disable: 4244)
    ss >> localDateTime;
+#pragma warning(pop)
 
    if (ss.fail())
       return false;
