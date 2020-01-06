@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2000-2017 Michael Fink
+// Copyright (C) 2000-2020 Michael Fink
 //
 /// \file DynamicLibrary.hpp dynamic library loading
 //
@@ -16,10 +16,29 @@ public:
    {
    }
 
+   /// copy ctor; not available
+   DynamicLibrary(const DynamicLibrary& other) = delete;
+
+   // move ctor
+   DynamicLibrary(DynamicLibrary&& other) noexcept
+      :m_module(std::move(other.m_module))
+   {
+   }
+
    /// dtor; frees module again
    ~DynamicLibrary()
    {
       FreeLibrary(m_module);
+   }
+
+   /// copy assignment operator; not available
+   DynamicLibrary& operator=(const DynamicLibrary& other) = delete;
+
+   /// move assignment operator
+   DynamicLibrary& operator=(DynamicLibrary&& other) noexcept
+   {
+      m_module = std::move(other.m_module);
+      return *this;
    }
 
    /// checks if library is loaded

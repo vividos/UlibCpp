@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2009,2012,2017 Michael Fink
+// Copyright (C) 2009,2012,2017,2020 Michael Fink
 //
 /// \file ReaderWriterMutex.hpp reader/writer mutex
 //
@@ -14,13 +14,30 @@ class ReaderWriterMutex
 public:
    /// ctor
    ReaderWriterMutex();
+
+   /// copy ctor; not available
+   ReaderWriterMutex(const ReaderWriterMutex& other) = delete;
+
+   // move ctor
+   ReaderWriterMutex(ReaderWriterMutex&& other) noexcept
+      :m_spImpl(std::move(other.m_spImpl))
+   {
+   }
+
    /// dtor
    ~ReaderWriterMutex();
 
-private:
-   ReaderWriterMutex(const ReaderWriterMutex&) = delete;              ///< removed copy ctor
-   ReaderWriterMutex& operator=(const ReaderWriterMutex&) = delete;   ///< removed assign op
+   /// copy assignment operator; not available
+   ReaderWriterMutex& operator=(const ReaderWriterMutex& other) = delete;
 
+   /// move assignment operator
+   ReaderWriterMutex& operator=(ReaderWriterMutex&& other) noexcept
+   {
+      m_spImpl = std::move(other.m_spImpl);
+      return *this;
+   }
+
+private:
    friend class ReaderLock;
    friend class WriterLock;
 

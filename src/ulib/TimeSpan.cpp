@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006-2014,2017,2019 Michael Fink
+// Copyright (C) 2006-2014,2017,2019,2020 Michael Fink
 //
 /// \file TimeSpan.cpp time span class
 //
@@ -40,12 +40,23 @@ TimeSpan::TimeSpan(const TimeSpan& dt)
 {
 }
 
+TimeSpan::TimeSpan(TimeSpan&& dt) noexcept
+   :m_spImpl(std::move(dt.m_spImpl))
+{
+}
+
 TimeSpan& TimeSpan::operator=(const TimeSpan& rhs)
 {
    if (&rhs == this)
       return *this;
 
    m_spImpl = rhs.m_spImpl;
+   return *this;
+}
+
+TimeSpan& TimeSpan::operator=(TimeSpan&& rhs) noexcept
+{
+   m_spImpl = std::move(rhs.m_spImpl);
    return *this;
 }
 

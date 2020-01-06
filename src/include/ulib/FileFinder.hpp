@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2008-2017 Michael Fink
+// Copyright (C) 2008-2020 Michael Fink
 //
 /// \file FileFinder.hpp File finder
 //
@@ -32,6 +32,17 @@ public:
       m_findHandle = ::FindFirstFile(m_baseFolder + fileSpec, &m_findData);
    }
 
+   /// copy ctor; not available
+   FileFinder(const FileFinder&) = delete;
+
+   // move ctor
+   FileFinder(FileFinder&& other) noexcept
+      :m_baseFolder(std::move(other.m_baseFolder)),
+      m_findData(std::move(other.m_findData)),
+      m_findHandle(std::move(other.m_findHandle))
+   {
+   }
+
    /// dtor
    ~FileFinder()
    {
@@ -39,6 +50,19 @@ public:
       {
          ATLVERIFY(TRUE == ::FindClose(m_findHandle));
       }
+   }
+
+   /// copy assignment operator; not available
+   FileFinder& operator=(const FileFinder&) = delete;
+
+   /// move assignment operator
+   FileFinder& operator=(FileFinder&& other) noexcept
+   {
+      m_baseFolder = std::move(other.m_baseFolder);
+      m_findData = std::move(other.m_findData);
+      m_findHandle = std::move(other.m_findHandle);
+
+      return *this;
    }
 
    /// indicates if any files were found

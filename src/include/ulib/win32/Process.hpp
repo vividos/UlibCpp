@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2014,2017 Michael Fink
+// Copyright (C) 2014,2017,2020 Michael Fink
 //
 /// \file Process.hpp Win32 process
 //
@@ -22,6 +22,12 @@ namespace Win32
          ZeroMemory(&m_processInfo, sizeof(m_processInfo));
       }
 
+      /// copy ctor; not available
+      Process(const Process&) = delete;
+
+      // move ctor; not available
+      Process(Process&&) = delete;
+
       /// dtor
       ~Process()
       {
@@ -31,6 +37,12 @@ namespace Win32
          if (m_processInfo.hProcess != nullptr)
             CloseHandle(m_processInfo.hProcess);
       }
+
+      /// copy assignment operator; not available
+      Process& operator=(const Process&) = delete;
+
+      /// move assignment operator; not available
+      Process& operator=(Process&&) = delete;
 
       /// sets working directory for process
       void WorkingDirectory(const CString& workingDirectory)

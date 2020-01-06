@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006-2014,2017 Michael Fink
+// Copyright (C) 2006-2014,2017,2020 Michael Fink
 //
 /// \file TimeSpan.hpp time span class
 //
@@ -27,8 +27,14 @@ public:
    /// copy ctor
    TimeSpan(const TimeSpan& dt);
 
-   /// assignment operator
+   /// move ctor
+   TimeSpan(TimeSpan&& dt) noexcept;
+
+   /// copy assignment operator
    TimeSpan& operator=(const TimeSpan& rhs);
+
+   /// move assignment operator
+   TimeSpan& operator=(TimeSpan&& rhs) noexcept;
 
    // properties
 

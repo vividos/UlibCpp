@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2008-2017 Michael Fink
+// Copyright (C) 2008-2020 Michael Fink
 //
 /// \file Win7Taskbar.hpp Windows 7 Taskbar classes
 //
@@ -26,11 +26,23 @@ namespace Win32
          TBPF_PAUSED = 0x8
       };
 
+      /// copy ctor; not available
+      TaskbarProgressBar(const TaskbarProgressBar&) = delete;
+
+      // move ctor; not available
+      TaskbarProgressBar(TaskbarProgressBar&&) = delete;
+
       /// dtor; returns progress to "none"
       ~TaskbarProgressBar()
       {
          SetState(TBPF_NOPROGRESS);
       }
+
+      /// copy assignment operator; not available
+      TaskbarProgressBar& operator=(const TaskbarProgressBar&) = delete;
+
+      /// move assignment operator; not available
+      TaskbarProgressBar& operator=(TaskbarProgressBar&&) = delete;
 
       /// sets new progress bar state
       void SetState(TaskbarProgressBarState state);

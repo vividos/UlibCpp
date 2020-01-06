@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2008-2014,2017 Michael Fink
+// Copyright (C) 2008-2014,2017,2020 Michael Fink
 //
 /// \file LightweightMutex.hpp Lightweight mutex class
 //
@@ -34,10 +34,29 @@ public:
 #pragma warning(default: 6322)
    }
 
+   /// copy ctor; not available
+   LightweightMutex(const LightweightMutex& other) = delete;
+
+   // move ctor
+   LightweightMutex(LightweightMutex&& other) noexcept
+      :m_criticalSection(std::move(other.m_criticalSection))
+   {
+   }
+
    /// dtor
    ~LightweightMutex()
    {
       DeleteCriticalSection(&m_criticalSection);
+   }
+
+   /// copy assignment operator; not available
+   LightweightMutex& operator=(const LightweightMutex& other) = delete;
+
+   /// move assignment operator
+   LightweightMutex& operator=(LightweightMutex&& other) noexcept
+   {
+      m_criticalSection = std::move(other.m_criticalSection);
+      return *this;
    }
 
 private:

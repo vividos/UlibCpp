@@ -31,8 +31,14 @@ public:
    /// copy ctor
    DateTime(const DateTime& dt);
 
-   /// assignment operator
+   /// move ctor
+   DateTime(DateTime&& dt) noexcept;
+
+   /// copy assignment operator
    DateTime& operator=(const DateTime& rhs);
+
+   /// move assignment operator
+   DateTime& operator=(DateTime&& rhs) noexcept;
 
    /// returns current date/time
    static DateTime Now();

@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006-2014,2017,2019 Michael Fink
+// Copyright (C) 2006-2014,2017,2019,2020 Michael Fink
 //
 /// \file DateTime.cpp date/time class
 //
@@ -74,12 +74,23 @@ DateTime::DateTime(const DateTime& dt)
 {
 }
 
+DateTime::DateTime(DateTime&& dt) noexcept
+   : m_spImpl(std::move(dt.m_spImpl))
+{
+}
+
 DateTime& DateTime::operator=(const DateTime& rhs)
 {
    if (&rhs == this)
       return *this;
 
    m_spImpl = rhs.m_spImpl; // copy on write
+   return *this;
+}
+
+DateTime& DateTime::operator=(DateTime&& rhs) noexcept
+{
+   m_spImpl = std::move(rhs.m_spImpl);
    return *this;
 }
 
@@ -122,7 +133,7 @@ void DateTime::SetDateTime(unsigned int uiYear, unsigned int uiMonth, unsigned i
       m_spImpl->m_dt = boost::posix_time::ptime(
          boost::gregorian::date(USHORT(uiYear), USHORT(uiMonth), USHORT(uiDay)),
          boost::posix_time::time_duration(uiHour, uiMinute, uiSecond,
-			 boost::posix_time::time_duration::fractional_seconds_type(uiMillisecond) * 1000));
+            boost::posix_time::time_duration::fractional_seconds_type(uiMillisecond) * 1000));
    }
    catch (...)
    {
