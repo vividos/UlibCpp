@@ -45,7 +45,7 @@ if errorlevel 1 goto end
 REM
 REM Rebuild Release|x86
 REM
-build-wrapper-win-x86-64.exe --out-dir bw-output msbuild UlibCpp.sln /m /property:Configuration=Release /property:Platform=x86 /target:Rebuild
+build-wrapper-win-x86-64.exe --out-dir bw-output msbuild UlibCpp.sln /m /property:Configuration=SonarQube /property:Platform=x86 /target:Rebuild
 
 REM
 REM Run unit tests
