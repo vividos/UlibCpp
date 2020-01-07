@@ -189,6 +189,7 @@
     <ClInclude Include="..\include\ulib\TimeSpan.hpp" />
     <ClInclude Include="..\include\ulib\TimeZone.hpp" />
     <ClInclude Include="..\include\ulib\TraceOutputStopwatch.hpp" />
+    <ClInclude Include="..\include\ulib\ulib.hpp" />
     <ClInclude Include="..\include\ulib\unittest\AutoCleanupFile.hpp" />
     <ClInclude Include="..\include\ulib\unittest\AutoCleanupFolder.hpp" />
     <ClInclude Include="..\include\ulib\UTF8.hpp" />
