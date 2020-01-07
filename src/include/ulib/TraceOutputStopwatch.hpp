@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2008-2014,2017 Michael Fink
+// Copyright (C) 2008-2014,2017,2020 Michael Fink
 //
 /// \file TraceOutputStopwatch.hpp Stopwatch class that does trace output
 //
@@ -13,7 +13,7 @@ class TraceOutputStopwatch
 {
 public:
    /// ctor; starts timer
-   TraceOutputStopwatch(LPCTSTR timerName)
+   explicit TraceOutputStopwatch(LPCTSTR timerName)
       :m_timerName(timerName)
    {
       ATLTRACE(_T("Timer %s START\n"), timerName);

@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2008,2013,2017 Michael Fink
+// Copyright (C) 2008,2013,2017,2020 Michael Fink
 //
 /// \file Event.hpp event class
 //
@@ -15,7 +15,7 @@ class EventT
 {
 public:
    /// ctor
-   EventT(bool initialState)
+   explicit EventT(bool initialState)
    {
       HANDLE eventHandle = ::CreateEvent(
          nullptr, manualReset ? TRUE : FALSE, initialState ? TRUE : FALSE, nullptr);

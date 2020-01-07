@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2004,2005,2006,2007,2008,2018 Michael Fink
+// Copyright (C) 2004,2005,2006,2007,2008,2018,2020 Michael Fink
 //
 /// \file VersionInfoResource.hpp version info resource class
 //
@@ -40,7 +40,7 @@ namespace Win32
    {
    public:
       /// ctor
-      VersionInfoResource(LPCTSTR filename);
+      explicit VersionInfoResource(LPCTSTR filename);
 
       /// returns if version info is available
       bool IsAvail() const { return !m_versionInfoData.empty(); }

@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2013-2014,2017,2019 Michael Fink
+// Copyright (C) 2013-2014,2017,2019,2020 Michael Fink
 //
 /// \file MutexLock.hpp generic mutex lock classes
 //
@@ -12,7 +12,7 @@ class MutexLock
 {
 public:
    /// ctor; takes a lockable object
-   MutexLock(T& mutex)
+   explicit MutexLock(T& mutex)
       :m_mutex(mutex)
    {
       mutex.Lock();
@@ -51,7 +51,7 @@ class MutexTryLock
 {
 public:
    /// ctor; takes a lockable object, but doesn't lock it yet
-   MutexTryLock(T& mutex)
+   explicit MutexTryLock(T& mutex)
       :m_mutex(mutex)
    {
    }
@@ -95,7 +95,7 @@ class MutexUnLocker
 {
 public:
    /// ctor; takes a lockable object and unlocks it
-   MutexUnLocker(T& mutex)
+   explicit MutexUnLocker(T& mutex)
       :m_mutex(mutex)
    {
       mutex.Unlock();

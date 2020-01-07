@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2008-2017 Michael Fink
+// Copyright (C) 2008-2020 Michael Fink
 //
 /// \file Win7Taskbar.cpp Windows 7 task bar access
 //
@@ -17,7 +17,7 @@ class TaskbarImpl
 {
 public:
    /// ctor
-   TaskbarImpl(HWND hwnd)
+   explicit TaskbarImpl(HWND hwnd)
       :m_hwnd(hwnd)
    {
    }
