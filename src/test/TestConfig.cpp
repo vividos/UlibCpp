@@ -2,7 +2,7 @@
 // ulib - a collection of useful classes
 // Copyright (C) 2018 Michael Fink
 //
-/// \file TestConfog.cpp tests for config headers
+/// \file TestConfig.cpp tests for config headers
 //
 
 #include "stdafx.h"
