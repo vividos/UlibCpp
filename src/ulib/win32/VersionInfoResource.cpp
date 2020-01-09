@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2004,2005,2006,2007,2008,2018 Michael Fink
+// Copyright (C) 2004,2005,2006,2007,2008,2018,2020 Michael Fink
 //
 /// \file VersionInfoResource.cpp version info resource class
 //
@@ -111,18 +111,16 @@ CString FixedFileInfo::GetFileType() const
 
 VersionInfoResource::VersionInfoResource(LPCTSTR filename)
 {
-   LPTSTR filename2 = const_cast<LPTSTR>(filename);
-
    // find out length
    DWORD dummy = 0;
-   DWORD dwLen = ::GetFileVersionInfoSize(filename2, &dummy);
+   DWORD dwLen = ::GetFileVersionInfoSize(filename, &dummy);
 
    if (dwLen > 0)
    {
       m_versionInfoData.resize(dwLen);
 
       // get version info
-      ::GetFileVersionInfo(filename2, 0, dwLen, &m_versionInfoData[0]);
+      ::GetFileVersionInfo(filename, 0, dwLen, &m_versionInfoData[0]);
    }
 }
 
@@ -130,13 +128,11 @@ LPVOID VersionInfoResource::QueryValue(LPCTSTR subBlock, UINT* puiSize)
 {
    ATLASSERT(IsAvail());
 
-   LPTSTR subBlock2 = const_cast<LPTSTR>(subBlock);
-
    LPVOID data = NULL;
    UINT uiSize = 0;
 
    BOOL ret = VerQueryValue(&m_versionInfoData[0],
-      subBlock2,
+      subBlock,
       &data,
       puiSize != NULL ? puiSize : &uiSize);
 
@@ -148,11 +144,11 @@ void VersionInfoResource::GetLangAndCodepages(std::vector<LANGANDCODEPAGE>& lang
    ATLASSERT(IsAvail());
 
    UINT size = 0;
-   LPVOID data = QueryValue(_T("\\VarFileInfo\\Translation"), &size);
+   LPCVOID data = QueryValue(_T("\\VarFileInfo\\Translation"), &size);
 
    ATLASSERT((size % sizeof(LANGANDCODEPAGE)) == 0);
 
-   LANGANDCODEPAGE* langAndCodepage = reinterpret_cast<LANGANDCODEPAGE*>(data);
+   const LANGANDCODEPAGE* langAndCodepage = reinterpret_cast<const LANGANDCODEPAGE*>(data);
 
    for (unsigned int i = 0; i < size / sizeof(LANGANDCODEPAGE); i++)
       langAndCodepageList.push_back(langAndCodepage[i]);

@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2004,2005,2006,2007,2008,2017 Michael Fink
+// Copyright (C) 2004,2005,2006,2007,2008,2017,2020 Michael Fink
 //
 /// \file ResourceData.cpp resource data class
 //
@@ -20,14 +20,14 @@ ResourceData::ResourceData(LPCTSTR resourceName, LPCTSTR resourceType, HINSTANCE
 
 bool ResourceData::IsAvailable() const
 {
-   HRSRC resource = FindResource(m_instanceHandle, m_resourceName, m_resourceType);
+   const HRSRC resource = FindResource(m_instanceHandle, m_resourceName, m_resourceType);
    return resource != nullptr;
 }
 
 bool ResourceData::AsRawData(std::vector<BYTE>& rawData)
 {
    DWORD size = 0;
-   LPVOID data = GetResource(size);
+   LPCVOID data = GetResource(size);
    if (data == nullptr)
       return false;
 
@@ -43,7 +43,7 @@ bool ResourceData::AsRawData(std::vector<BYTE>& rawData)
 CString ResourceData::AsString(bool storedAsUnicode)
 {
    DWORD size = 0;
-   LPVOID data = GetResource(size);
+   LPCVOID data = GetResource(size);
    if (data == nullptr)
       return CString();
 
@@ -63,7 +63,7 @@ CString ResourceData::AsString(bool storedAsUnicode)
 bool ResourceData::AsFile(LPCTSTR filename)
 {
    DWORD size = 0;
-   LPVOID data = GetResource(size);
+   LPCVOID data = GetResource(size);
    if (data == nullptr)
       return false;
 

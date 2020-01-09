@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2007,2008,2017 Michael Fink
+// Copyright (C) 2007,2008,2017,2020 Michael Fink
 //
 /// \file Clipboard.cpp clipboard class
 //
@@ -47,7 +47,7 @@ CString Clipboard::GetText()
    HANDLE hglb = GetClipboardData(format);
    if (hglb != nullptr)
    {
-      LPVOID dataPtr = GlobalLock(hglb);
+      LPCVOID dataPtr = GlobalLock(hglb);
       if (dataPtr != nullptr)
       {
          CString text(reinterpret_cast<LPCTSTR>(dataPtr));
@@ -68,7 +68,7 @@ void Clipboard::GetData(UINT format, std::vector<BYTE>& data)
    HANDLE hglb = GetClipboardData(format);
    if (hglb != nullptr)
    {
-      LPVOID dataPtr = GlobalLock(hglb);
+      LPCVOID dataPtr = GlobalLock(hglb);
       if (dataPtr != nullptr)
       {
          SIZE_T size = GlobalSize(hglb);

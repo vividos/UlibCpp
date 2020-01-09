@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2012,2017 Michael Fink
+// Copyright (C) 2012,2017,2020 Michael Fink
 //
 /// \file ISO8601Parser.cpp ISO 8601 date parser
 //
@@ -34,7 +34,7 @@ bool ISO8601Parser::ParseDateTime(LPCTSTR timestamp, std::wstring& strRemaining)
    // note: we don't use
    //    inputFacet->set_iso_extended_format();
    // here, since it doesn't include the T divider
-   time_input_facet* inputFacet =
+   const time_input_facet* inputFacet =
       new time_input_facet(L"%Y-%m-%dT%H:%M:%S%F");
 
    std::wstringstream ss;

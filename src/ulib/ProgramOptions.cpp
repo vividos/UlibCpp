@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2008,2009,2013,2017 Michael Fink
+// Copyright (C) 2008,2009,2013,2017,2020 Michael Fink
 //
 /// \file ProgramOptions.cpp program options implementation
 //
@@ -79,7 +79,7 @@ bool ProgramOptions::OutputHelp()
    size_t maxOptionListIndex = m_optionsList.size();
    for (size_t optionListIndex = 0; optionListIndex < maxOptionListIndex; optionListIndex++)
    {
-      OptionInfo& optInfo = m_optionsList[optionListIndex];
+      const OptionInfo& optInfo = m_optionsList[optionListIndex];
 
       // add short option chars
       int maxShortOptions = optInfo.m_shortOptionChars.GetLength();
@@ -152,7 +152,7 @@ void ProgramOptions::Parse(CommandLineParser& parser)
          bool foundOption = false;
          for (size_t optionsIndex = 0, maxOptionsIndex = m_optionsList.size(); optionsIndex < maxOptionsIndex; optionsIndex++)
          {
-            OptionInfo& optInfo = m_optionsList[optionsIndex];
+            const OptionInfo& optInfo = m_optionsList[optionsIndex];
 
             // check long name first, then short name
             if ((!longSearchOption.IsEmpty() && longSearchOption == optInfo.m_longOption) ||
