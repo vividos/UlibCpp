@@ -75,6 +75,8 @@ CString FixedFileInfo::GetFileOS() const
       text += _T(" | VOS__PM32"); break;
    case VOS__WINDOWS32: // The file was designed for the Win32 API.
       text += _T(" | VOS__WINDOWS32"); break;
+   default:
+      text.AppendFormat(_T(" | 0x%04x"), dwFileOS & 0x0000FFFF); break;
    }
 
    return text;
