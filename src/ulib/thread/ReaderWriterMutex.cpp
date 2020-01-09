@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2009,2012,2017 Michael Fink
+// Copyright (C) 2009,2012,2017,2020 Michael Fink
 //
 /// \file ReaderWriterMutex.cpp reader/writer mutex
 //
@@ -68,6 +68,18 @@ public:
             dwLastError, __FILE__, __LINE__);
       }
    }
+
+   /// copy ctor; not available
+   Impl(const Impl&) = delete;
+
+   /// move ctor; not available
+   Impl(Impl&&) = delete;
+
+   /// copy assignment operator; not available
+   Impl& operator=(const Impl&) = delete;
+
+   /// move assignment operator; not available
+   Impl& operator=(Impl&&) = delete;
 
    /// acquires reader lock
    void AcquireReaderLock()

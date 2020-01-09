@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006,2007,2008,2012 Michael Fink
+// Copyright (C) 2006,2007,2008,2012,2020 Michael Fink
 //
 /// \file DocHostUI.hpp doc host ui implementation for IE WebBrowser control embedding
 //
@@ -141,8 +141,22 @@ public:
 
    /// ctor
    inline IDocHostUIHandlerDispatchImpl() : m_dwRef(0) {}
+
+   /// copy ctor; not available
+   IDocHostUIHandlerDispatchImpl(const IDocHostUIHandlerDispatchImpl&) = delete;
+
+   /// move ctor; not available
+   IDocHostUIHandlerDispatchImpl(IDocHostUIHandlerDispatchImpl&&) = delete;
+
    /// dtor
    inline virtual ~IDocHostUIHandlerDispatchImpl() { ATLASSERT(m_dwRef == 0); }
+
+   /// copy assignment operator; not available
+   IDocHostUIHandlerDispatchImpl& operator=(const IDocHostUIHandlerDispatchImpl&) = delete;
+
+   /// move assignment operator; not available
+   IDocHostUIHandlerDispatchImpl& operator=(IDocHostUIHandlerDispatchImpl&&) = delete;
+
 
    // IUnknown methods
 

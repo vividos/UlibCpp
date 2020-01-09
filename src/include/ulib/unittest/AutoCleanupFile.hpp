@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006,2007,2008,2012,2017 Michael Fink
+// Copyright (C) 2006,2007,2008,2012,2017,2020 Michael Fink
 //
 /// \file AutoCleanupFile.hpp auto-deleting file for unit tests
 //
@@ -19,11 +19,24 @@ namespace UnitTest
          :m_filename(filename)
       {
       }
+
+      /// copy ctor; not available
+      AutoCleanupFile(const AutoCleanupFile&) = delete;
+
+      /// move ctor; not available
+      AutoCleanupFile(AutoCleanupFile&&) = delete;
+
       /// dtor
       ~AutoCleanupFile()
       {
          ::DeleteFile(m_filename);
       }
+
+      /// copy assignment operator; not available
+      AutoCleanupFile& operator=(const AutoCleanupFile&) = delete;
+
+      /// move assignment operator; not available
+      AutoCleanupFile& operator=(AutoCleanupFile&&) = delete;
 
    private:
       /// filename

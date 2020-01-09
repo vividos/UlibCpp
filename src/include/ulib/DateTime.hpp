@@ -34,6 +34,9 @@ public:
    /// move ctor
    DateTime(DateTime&& dt) noexcept;
 
+   /// dtor
+   ~DateTime() {}
+
    /// copy assignment operator
    DateTime& operator=(const DateTime& rhs);
 

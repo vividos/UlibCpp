@@ -30,6 +30,9 @@ public:
    /// move ctor
    TimeSpan(TimeSpan&& dt) noexcept;
 
+   /// dtor
+   ~TimeSpan() {}
+
    /// copy assignment operator
    TimeSpan& operator=(const TimeSpan& rhs);
 
