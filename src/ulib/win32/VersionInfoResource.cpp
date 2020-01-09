@@ -6,7 +6,7 @@
 //
 #include "stdafx.h"
 #include <ulib/win32/VersionInfoResource.hpp>
-#include <winbase.h> // for VOS_* constants
+#include <WinBase.h> // for VOS_* constants
 #include <winver.h> // for VOS_* constants, when not in winbase.h
 
 #ifndef VOS_WINDOWSCE

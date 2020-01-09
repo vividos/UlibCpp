@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2017 Michael Fink
+// Copyright (C) 2017,2020 Michael Fink
 //
 /// \file ulib/stdafx.h Precompiled header support
 //
@@ -8,7 +8,7 @@
 
 // including SDKDDKVer.h defines the highest available Windows platform.
 #ifdef _WIN32
-#include <SDKDDKVer.h>
+#include <sdkddkver.h>
 #endif
 
 #include <ulib/config/Common.hpp>
