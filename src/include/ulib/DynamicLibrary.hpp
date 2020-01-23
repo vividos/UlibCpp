@@ -12,33 +12,8 @@ class DynamicLibrary
 public:
    /// ctor; loads module
    explicit DynamicLibrary(LPCTSTR moduleFilename)
-      :m_module(LoadLibrary(moduleFilename))
+      :m_module(LoadLibrary(moduleFilename), &FreeLibrary)
    {
-   }
-
-   /// copy ctor; not available
-   DynamicLibrary(const DynamicLibrary& other) = delete;
-
-   // move ctor
-   DynamicLibrary(DynamicLibrary&& other) noexcept
-      :m_module(std::move(other.m_module))
-   {
-   }
-
-   /// dtor; frees module again
-   ~DynamicLibrary()
-   {
-      FreeLibrary(m_module);
-   }
-
-   /// copy assignment operator; not available
-   DynamicLibrary& operator=(const DynamicLibrary& other) = delete;
-
-   /// move assignment operator
-   DynamicLibrary& operator=(DynamicLibrary&& other) noexcept
-   {
-      m_module = std::move(other.m_module);
-      return *this;
    }
 
    /// checks if library is loaded
@@ -47,17 +22,21 @@ public:
    /// checks if function with given name is available
    bool IsFunctionAvail(LPCSTR functionName) const
    {
-      return GetProcAddress(m_module, functionName) != nullptr;
+      return IsLoaded() &&
+         GetProcAddress(GetModule(), functionName) != nullptr;
    }
 
    /// returns function with given function name and given function signature
    template <typename Signature>
-   Signature GetFunction(LPCSTR functionName)
+   Signature GetFunction(LPCSTR functionName) const
    {
-      return reinterpret_cast<Signature>(GetProcAddress(m_module, functionName));
+      return reinterpret_cast<Signature>(GetProcAddress(GetModule(), functionName));
    }
+
+   /// returns module handle of library
+   HMODULE GetModule() const { return reinterpret_cast<HMODULE>(m_module.get()); }
 
 private:
    /// dynamic library module handle
-   HMODULE m_module;
+   std::shared_ptr<void> m_module;
 };
