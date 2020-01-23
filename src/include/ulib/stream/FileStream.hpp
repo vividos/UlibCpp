@@ -84,6 +84,9 @@ namespace Stream
 
       /// indicates if end of file is reached
       bool m_atEndOfFile;
+
+      /// file length
+      mutable ULONGLONG m_fileLength;
    };
 
 } // namespace Stream

@@ -12,6 +12,7 @@ assignment operators.
   Warning C4996 will show what calls have to be adjusted to the equivalent
   static methods.
 - Fixed some edge cases when parsing program options in ProgramOptions
+- Stream::FileStream now caches the file length when calling Length()
 
 # Version 4.1.7
 

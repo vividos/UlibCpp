@@ -17,7 +17,8 @@ using Stream::FileStream;
 /// \exception StreamException thrown when file couldn't be opened
 FileStream::FileStream(LPCTSTR filename, EFileMode fileMode, EFileAccess fileAccess, EFileShare fileShare)
    :m_fileAccess(fileAccess),
-   m_atEndOfFile(true)
+   m_atEndOfFile(true),
+   m_fileLength((ULONGLONG)-1)
 {
    ATLASSERT(filename != NULL);
 
@@ -72,15 +73,11 @@ bool FileStream::AtEndOfStream() const
       FileStream& rThis = const_cast<FileStream&>(*this);
 
       // find out current file pointer
-      ULONGLONG currentPos = rThis.Seek(0LL, Stream::IStream::seekCurrent);
-      ULONGLONG endPos = rThis.Seek(0LL, Stream::IStream::seekEnd);
+      ULONGLONG currentPos = rThis.Position();
+      ULONGLONG endPos = rThis.Length();
 
       if (currentPos == endPos)
          return true;
-
-      // not at EOF, so seek back
-      ULONGLONG newPos = rThis.Seek(static_cast<LONGLONG>(currentPos), Stream::IStream::seekBegin);
-      ATLASSERT(newPos == currentPos); UNUSED(newPos);
    }
    catch (const Stream::StreamException&)
    {
@@ -103,6 +100,14 @@ void FileStream::Write(const void* dataToWrite, DWORD lengthInBytes, DWORD& numB
 
    if (ret == FALSE)
       throw Stream::StreamException(_T("Write: ") + Win32::ErrorMessage().ToString(), __FILE__, __LINE__);
+
+   if (m_fileLength != (ULONGLONG)-1)
+   {
+      // invalidate file length when writing beyond current end of file
+      ULONGLONG position = Position();
+      if (position > m_fileLength)
+         m_fileLength = (ULONGLONG)-1;
+   }
 }
 
 /// \exception StreamException thrown when setting file position fails
@@ -142,6 +147,9 @@ ULONGLONG FileStream::Length()
 {
    ATLASSERT(m_spHandle.get() != NULL);
 
+   if (m_fileLength != (ULONGLONG)-1)
+      return m_fileLength;
+
 #ifdef _WIN32_WCE
    // CE has no GetFileSizeEx, so we have to use GetFileSize
    LARGE_INTEGER fileSize; fileSize.QuadPart = 0;
@@ -160,6 +168,9 @@ ULONGLONG FileStream::Length()
    if (ret == FALSE)
       throw Stream::StreamException(_T("Length: ") + Win32::ErrorMessage().ToString(), __FILE__, __LINE__);
 #endif
+
+   // cache in case we need it later
+   m_fileLength = fileSize.QuadPart;
 
    return fileSize.QuadPart;
 }
