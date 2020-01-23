@@ -7,6 +7,11 @@ Compiled with Visual Studio 2019 Version 16.4.3 and Boost 1.71.
 No new classes. Some classes were changed to include move ctors and move
 assignment operators.
 
+- Path contains a mixture of object methods and static methods; the object
+  methods are now marked deprecated, to be removed in version 4.3.0.
+  Warning C4996 will show what calls have to be adjusted to the equivalent
+  static methods.
+
 # Version 4.1.7
 
 Compiled with Visual Studio 2019 Version 16.4.1 and Boost 1.70.

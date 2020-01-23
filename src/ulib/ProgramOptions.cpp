@@ -67,7 +67,7 @@ bool ProgramOptions::OutputHelp()
    if (!m_fnOptionOutputHandler)
       return true;
 
-   CString appFilename = Path(m_executableFilename).FilenameAndExt();
+   CString appFilename = Path::FilenameAndExt(m_executableFilename);
 
    CString helpText;
    helpText.Format(

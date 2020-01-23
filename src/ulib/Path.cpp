@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2004,2005,2006,2007,2008,2017 Michael Fink
+// Copyright (C) 2004,2005,2006,2007,2008,2017,2020 Michael Fink
 //
 /// \file Path.cpp Path class
 //
@@ -8,20 +8,36 @@
 #include "stdafx.h"
 #include <ulib/Path.hpp>
 
+#pragma warning(disable: 4996) // deprecated method warnings/errors
+
 const TCHAR Path::Separator[2] = _T("\\");
 
-bool Path::Canonicalize()
+bool Path::Canonicalize(CString& path)
 {
    CString newPath;
-   BOOL ret = ::PathCanonicalize(newPath.GetBuffer(MAX_PATH), m_path);
+   BOOL ret = ::PathCanonicalize(newPath.GetBuffer(MAX_PATH), path);
    newPath.ReleaseBuffer();
 
    if (ret != FALSE)
-      m_path = newPath;
+      path = newPath;
 
    return ret != FALSE;
 }
 
+/// \note: deprecated, to be removed
+bool Path::Canonicalize()
+{
+   return Path::Canonicalize(m_path);
+}
+
+CString Path::Combine(const CString& part1, const CString& part2)
+{
+   CString newPath = part1;
+   AddEndingBackslash(newPath);
+   return newPath + part2;
+}
+
+/// \note: deprecated, to be removed
 Path Path::Combine(const CString& part2)
 {
    CString part1 = m_path;
@@ -31,80 +47,128 @@ Path Path::Combine(const CString& part2)
    return Path(part1 + part2);
 }
 
+/// \note: deprecated, to be removed
 CString Path::FilenameAndExt() const
 {
-   int pos = m_path.ReverseFind(Path::SeparatorCh);
-   if (pos == -1)
-      return m_path;
-
-   return m_path.Mid(pos + 1);
+   return Path::FilenameAndExt(m_path);
 }
 
+CString Path::FilenameAndExt(const CString& path)
+{
+   int pos = path.ReverseFind(Path::SeparatorCh);
+   if (pos == -1)
+      return path;
+
+   return path.Mid(pos + 1);
+}
+
+/// \note: deprecated, to be removed
 CString Path::FilenameOnly() const
 {
-   int pos = m_path.ReverseFind(Path::SeparatorCh);
-
-   int pos2 = m_path.ReverseFind(_T('.'));
-   if (pos2 == -1)
-      return m_path.Mid(pos + 1);
-
-   return m_path.Mid(pos + 1, pos2 - pos - 1);
+   return Path::FilenameOnly(m_path);
 }
 
+CString Path::FilenameOnly(const CString& path)
+{
+   int pos = path.ReverseFind(Path::SeparatorCh);
+
+   int pos2 = path.ReverseFind(_T('.'));
+   if (pos2 == -1)
+      return path.Mid(pos + 1);
+
+   return path.Mid(pos + 1, pos2 - pos - 1);
+}
+
+/// \note: deprecated, to be removed
 CString Path::ExtensionOnly() const
 {
-   int pos = m_path.ReverseFind(Path::SeparatorCh);
+   return Path::ExtensionOnly(m_path);
+}
 
-   int pos2 = m_path.ReverseFind(_T('.'));
+CString Path::ExtensionOnly(const CString& path)
+{
+   int pos = path.ReverseFind(Path::SeparatorCh);
+
+   int pos2 = path.ReverseFind(_T('.'));
    if (pos2 == -1 || pos2 < pos)
       return CString();
 
-   return m_path.Mid(pos2);
+   return path.Mid(pos2);
 }
 
+/// \note: deprecated, to be removed
 CString Path::FolderName() const
 {
-   int pos = m_path.ReverseFind(Path::SeparatorCh);
-   if (pos == -1)
-      return m_path;
-
-   return m_path.Left(pos + 1);
+   return Path::FolderName(m_path);
 }
 
+CString Path::FolderName(const CString& path)
+{
+   int pos = path.ReverseFind(Path::SeparatorCh);
+   if (pos == -1)
+      return path;
+
+   return path.Left(pos + 1);
+}
+
+/// \note: deprecated, to be removed
 CString Path::ShortPathName() const
 {
-   CString shortPathName;
-   DWORD ret = ::GetShortPathName(m_path, shortPathName.GetBuffer(MAX_PATH), MAX_PATH);
-   shortPathName.ReleaseBuffer();
-
-   return ret == 0 ? m_path : shortPathName;
+   return Path::ShortPathName(m_path);
 }
 
+CString Path::ShortPathName(const CString& path)
+{
+   CString shortPathName;
+   DWORD ret = ::GetShortPathName(path, shortPathName.GetBuffer(MAX_PATH), MAX_PATH);
+   shortPathName.ReleaseBuffer();
+
+   return ret == 0 ? path : shortPathName;
+}
+
+/// \note: deprecated, to be removed
 CString Path::MakeRelativeTo(const CString& rootPath)
+{
+   return Path::MakeRelativeTo(m_path, rootPath);
+}
+
+CString Path::MakeRelativeTo(const CString& path, const CString& rootPath)
 {
    CString relativePath;
 
-   DWORD pathAttr = ::GetFileAttributes(m_path) & FILE_ATTRIBUTE_DIRECTORY;
+   DWORD pathAttr = ::GetFileAttributes(path) & FILE_ATTRIBUTE_DIRECTORY;
 
    BOOL ret = ::PathRelativePathTo(
       relativePath.GetBuffer(MAX_PATH),
       rootPath, FILE_ATTRIBUTE_DIRECTORY,
-      m_path, pathAttr);
+      path, pathAttr);
 
    relativePath.ReleaseBuffer();
 
    return ret == FALSE ? CString() : relativePath;
 }
 
+/// \note: deprecated, to be removed
 bool Path::IsRelative() const
 {
-   BOOL ret = ::PathIsRelative(m_path);
+   return Path::IsRelative(m_path);
+}
+
+bool Path::IsRelative(const CString& path)
+{
+   BOOL ret = ::PathIsRelative(path);
    return ret != FALSE;
 }
 
+/// \note: deprecated, to be removed
 bool Path::FileExists() const
 {
-   DWORD ret = ::GetFileAttributes(m_path);
+   return Path::FileExists(m_path);
+}
+
+bool Path::FileExists(const CString& path)
+{
+   DWORD ret = ::GetFileAttributes(path);
    if (ret == INVALID_FILE_ATTRIBUTES)
       return false; // doesn't exist
 
@@ -114,9 +178,15 @@ bool Path::FileExists() const
    return true;
 }
 
+/// \note: deprecated, to be removed
 bool Path::FolderExists() const
 {
-   DWORD ret = ::GetFileAttributes(m_path);
+   return Path::FolderExists(m_path);
+}
+
+bool Path::FolderExists(const CString& path)
+{
+   DWORD ret = ::GetFileAttributes(path);
    if (ret == INVALID_FILE_ATTRIBUTES)
       return false; // doesn't exist
 
@@ -201,12 +271,12 @@ bool Path::CreateDirectoryRecursive(LPCTSTR directoryName)
       return false;
 
    parentDirectory.TrimRight(Path::SeparatorCh);
-   parentDirectory = Path(parentDirectory).FolderName();
+   parentDirectory = Path::FolderName(parentDirectory);
 
    if (parentDirectory == directoryName)
       return false;
 
-   if (!Path(parentDirectory).FolderExists())
+   if (!Path::FolderExists(parentDirectory))
       CreateDirectoryRecursive(parentDirectory);
 
    return ::CreateDirectory(directoryName, nullptr) != FALSE;

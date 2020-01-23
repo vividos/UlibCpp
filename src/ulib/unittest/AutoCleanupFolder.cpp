@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006,2007,2008,2012,2017 Michael Fink
+// Copyright (C) 2006,2007,2008,2012,2017,2020 Michael Fink
 //
 /// \file AutoCleanupFolder.cpp auto-deleting folder
 //
@@ -22,7 +22,7 @@ AutoCleanupFolder::AutoCleanupFolder()
 #ifdef _WIN32_WCE
    basePath = _T("\\Temp\\unittest");
 #else
-   basePath = Path::Combine(Path::TempFolder(), _T("unittest")).ToString();
+   basePath = Path::Combine(Path::TempFolder(), _T("unittest"));
 #endif
 
    Path::CreateDirectoryRecursive(basePath);
@@ -96,7 +96,7 @@ void AutoCleanupFolder::CleanUp()
 
    // try to remove parent dir, in case we're the last folder
    m_folderName.TrimRight(_T('\\'));
-   CString parentFolder = Path(m_folderName).FolderName();
+   CString parentFolder = Path::FolderName(m_folderName);
 
    if (!parentFolder.IsEmpty())
       ::RemoveDirectory(parentFolder);

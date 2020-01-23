@@ -49,7 +49,7 @@ namespace UnitTest
 
          Assert::IsTrue(resourceData.AsFile(filename));
 
-         Assert::IsTrue(Path(filename).FileExists(), _T("file must exist after call to AsFile()"));
+         Assert::IsTrue(Path::FileExists(filename), _T("file must exist after call to AsFile()"));
       }
    };
 
