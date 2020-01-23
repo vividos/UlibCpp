@@ -2,7 +2,10 @@
 
 # Version 4.2.0
 
-Compiled with Visual Studio 2019 Version 16.4.2 and Boost 1.71.
+Compiled with Visual Studio 2019 Version 16.4.3 and Boost 1.71.
+
+No new classes. Some classes were changed to include move ctors and move
+assignment operators.
 
 # Version 4.1.7
 
@@ -30,7 +33,7 @@ This version suppresses more warnings when including Boost and WTL headers. Also
 Compiled with Visual Studio 2017 Version 15.8.9 and Boost 1.68.
 
 This version suppresses warning 4996 about deprecated features when compiling
-with C++17 and incliuding ulib\config\BoostAsio.hpp.
+with C++17 and including `ulib\config\BoostAsio.hpp`.
 
 # Version 4.1.3
 
