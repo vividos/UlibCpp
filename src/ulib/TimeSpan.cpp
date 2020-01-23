@@ -318,7 +318,7 @@ CString TimeSpan::Format(LPCTSTR format) const
 
 CString TimeSpan::FormatISO8601() const
 {
-   Format(T_enTimeSpanFormat::formatHMS);
+   return Format(T_enTimeSpanFormat::formatHMS);
 }
 
 void TimeSpan::PrepareCopy()
