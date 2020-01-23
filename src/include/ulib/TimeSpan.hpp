@@ -83,7 +83,21 @@ public:
    /// sets time span components
    void SetDateTimeSpan(int hours, int minutes, int seconds, int milliseconds);
 
-   /// format time span as ISO 8601 (in "hh:mm:ss" format)
+   /// time span format
+   enum T_enTimeSpanFormat
+   {
+      formatHMS,     ///< "hh:mm:ss" format
+      formatISO8601, ///< ISO 8601, "PTxxHxxMxxS" format
+   };
+
+   /// formats time span using specified format
+   CString Format(T_enTimeSpanFormat format = formatHMS) const;
+
+   /// formats time span using given format, see _tcsftime
+   CString Format(LPCTSTR format) const;
+
+   /// format time span as ISO 8601 (in "PTxxHxxMxxS" format)
+   [[deprecated("Please use the Format() method with format formatHMS to format time span")]]
    CString FormatISO8601() const;
 
 private:

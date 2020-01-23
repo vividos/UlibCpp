@@ -13,6 +13,7 @@ assignment operators.
   static methods.
 - Fixed some edge cases when parsing program options in ProgramOptions
 - Stream::FileStream now caches the file length when calling Length()
+- Added TimeSpan::Format() and marked FormatISO8601() obsolete
 
 # Version 4.1.7
 

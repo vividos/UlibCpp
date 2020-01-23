@@ -624,6 +624,38 @@ namespace UnitTest
          Assert::IsTrue(!(ts2 >= ts3));
       }
 
+      /// Tests formatting TimeSpan using ISO8601 format
+      TEST_METHOD(TestSpanFormatISO8601)
+      {
+         TimeSpan span1;
+         TimeSpan span2{ TimeSpan::min };
+         TimeSpan span3{ TimeSpan::max };
+         TimeSpan span4(1, 40, 26, 123);
+         TimeSpan span5(-4, -10, 2, 123);
+
+         Assert::AreEqual(_T(""), span1.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
+         Assert::AreEqual(_T("min"), span2.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
+         Assert::AreEqual(_T("max"), span3.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
+         Assert::AreEqual(_T("PT01H40M26S"), span4.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
+         Assert::AreEqual(_T("PT04H10M02S"), span5.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
+      }
+
+      /// Tests formatting TimeSpan using HMS format
+      TEST_METHOD(TestSpanFormatHMS)
+      {
+         TimeSpan span1;
+         TimeSpan span2{ TimeSpan::min };
+         TimeSpan span3{ TimeSpan::max };
+         TimeSpan span4(1, 40, 26, 123);
+         TimeSpan span5(-4, -10, 2, 123);
+
+         Assert::AreEqual(_T(""), span1.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
+         Assert::AreEqual(_T("min"), span2.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
+         Assert::AreEqual(_T("max"), span3.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
+         Assert::AreEqual(_T("01:40:26"), span4.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
+         Assert::AreEqual(_T("-04:10:02"), span5.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
+      }
+
       TEST_METHOD(TestTimeZoneEnumerate)
       {
          std::vector<TimeZone> timeZoneList = TimeZone::EnumerateTimezones();

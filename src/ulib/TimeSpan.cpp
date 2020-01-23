@@ -264,23 +264,61 @@ void TimeSpan::SetDateTimeSpan(int hours, int minutes, int seconds, int millseco
    }
 }
 
-CString TimeSpan::FormatISO8601() const
+CString TimeSpan::Format(TimeSpan::T_enTimeSpanFormat format) const
 {
    ATLASSERT(m_spImpl != nullptr);
 
    if (m_spImpl->m_span.is_not_a_date_time())
-      return _T("");
+      return CString();
 
-   CString cszFormat(_T("P%H:%M:%S"));
+   if (m_spImpl->m_span == boost::date_time::min_date_time)
+      return _T("min");
+
+   if (m_spImpl->m_span == boost::date_time::max_date_time)
+      return _T("max");
+
+   switch (format)
+   {
+   case TimeSpan::formatHMS:
+      return (m_spImpl->m_span.is_negative() ? _T("-") : _T("")) + Format(_T("%H:%M:%S"));
+
+   case TimeSpan::formatISO8601:
+      return Format(_T("PT%HH%MM%SS"));
+
+   default:
+      ATLASSERT(false); // invalid format type
+      break;
+   }
+
+   return CString();
+}
+
+CString TimeSpan::Format(LPCTSTR format) const
+{
+   ATLASSERT(m_spImpl != nullptr);
+
+   if (m_spImpl->m_span.is_not_a_date_time())
+      return CString();
+
+   if (m_spImpl->m_span == boost::date_time::min_date_time)
+      return _T("min");
+
+   if (m_spImpl->m_span == boost::date_time::max_date_time)
+      return _T("max");
 
    struct tm tmTemp = boost::posix_time::to_tm(m_spImpl->m_span);
 
-   CString cszDateTime;
-   LPTSTR pszBuffer = cszDateTime.GetBufferSetLength(256);
-   _tcsftime(pszBuffer, cszDateTime.GetLength(), cszFormat, &tmTemp);
-   cszDateTime.ReleaseBuffer();
+   CString text;
+   LPTSTR buffer = text.GetBufferSetLength(256);
+   _tcsftime(buffer, text.GetLength(), format, &tmTemp);
+   text.ReleaseBuffer();
 
-   return cszDateTime;
+   return text;
+}
+
+CString TimeSpan::FormatISO8601() const
+{
+   Format(T_enTimeSpanFormat::formatHMS);
 }
 
 void TimeSpan::PrepareCopy()
