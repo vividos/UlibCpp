@@ -8,10 +8,10 @@
 
 #include <string>
 #include <map>
+#include <functional>
 #pragma warning(push)
 #pragma warning(disable: 26439 26451 26812)
 #include <boost/any.hpp>
-#include <boost/ref.hpp>
 #pragma warning(pop)
 
 /// inversion of control container
@@ -27,7 +27,7 @@ public:
 
    /// registers reference for class
    template <typename TClass>
-   void Register(boost::reference_wrapper<TClass> ref)
+   void Register(std::reference_wrapper<TClass> ref)
    {
       std::string name = typeid(TClass).raw_name();
       m_mapAllInstances.insert(std::make_pair(name, ref));
@@ -58,7 +58,9 @@ private:
    }
 
    IoCContainer(const IoCContainer&) = delete;              ///< removed copy ctor
-   IoCContainer& operator=(const IoCContainer&) = delete;   ///< removed assign op
+   IoCContainer(IoCContainer&&) = delete;                   ///< removed move ctor
+   IoCContainer& operator=(const IoCContainer&) = delete;   ///< removed copy assign operator
+   IoCContainer& operator=(IoCContainer&&) = delete;        ///< removed move assign operator
 
 private:
    /// instance map type
