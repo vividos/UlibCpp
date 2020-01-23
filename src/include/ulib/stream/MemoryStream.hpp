@@ -103,13 +103,7 @@ namespace Stream
 
       virtual void Close()
       {
-         try
-         {
-            m_memoryData.clear();
-         }
-         catch (...)
-         {
-         }
+         m_memoryData.clear();
       }
 
    private:
