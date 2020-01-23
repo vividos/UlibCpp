@@ -26,10 +26,36 @@ namespace Win32
          TBPF_PAUSED = 0x8
       };
 
+      /// copy ctor
+      TaskbarProgressBar(const TaskbarProgressBar& other)
+         :m_impl(other.m_impl)
+      {
+      }
+
+      // move ctor
+      TaskbarProgressBar(TaskbarProgressBar&& other)
+         :m_impl(std::move(other.m_impl))
+      {
+      }
+
       /// dtor; returns progress to "none"
       ~TaskbarProgressBar()
       {
          SetState(TBPF_NOPROGRESS);
+      }
+
+      /// copy assignment operator
+      TaskbarProgressBar& operator=(const TaskbarProgressBar& other)
+      {
+         m_impl = other.m_impl;
+         return *this;
+      }
+
+      /// move assignment operator; not available
+      TaskbarProgressBar& operator=(TaskbarProgressBar&& other)
+      {
+         m_impl = std::move(other.m_impl);
+         return *this;
       }
 
       /// sets new progress bar state
