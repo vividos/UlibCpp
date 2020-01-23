@@ -66,6 +66,9 @@ bool TestFileStream::CreateTestFile(const CString& filename)
    if (dwWritten != sizeof(abData))
       return false;
 
+   fs.Flush();
+   fs.Close();
+
    return true;
 }
 
@@ -496,4 +499,5 @@ void TestFileStream::TestAtEndOfStream()
 
    Assert::IsTrue(42 == fs.ReadByte());
    Assert::IsTrue(fs.AtEndOfStream());
+   Assert::IsTrue(1 == fs.Position());
 }

@@ -19,6 +19,12 @@
     <Filter Include="Source Files\win32">
       <UniqueIdentifier>{e03a2809-91a1-4f73-ba4d-6cd5584ec84d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\logger">
+      <UniqueIdentifier>{e83e0a00-2d7e-4dc3-90b4-423df97a5a99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\thread">
+      <UniqueIdentifier>{fa670a12-7e32-4fd3-9ab5-e89841feb930}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -94,6 +100,18 @@
     </ClCompile>
     <ClCompile Include="TestCpp17.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestUTF8.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="logger\TestLogger.cpp">
+      <Filter>Source Files\logger</Filter>
+    </ClCompile>
+    <ClCompile Include="stream\TestEndianAwareFilter.cpp">
+      <Filter>Source Files\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\TestThread.cpp">
+      <Filter>Source Files\thread</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -37,23 +37,36 @@ namespace UnitTest
             Win32::FixedFileInfo& fixedFileInfo = *pFixedFileInfo;
 
             // print out all fixed file infos
-            ATLTRACE(_T("fileversion=%u.%u.%u.%u productversion=%u.%u.%u.%u structver=%u.%u\n")
-               _T("fileflags=%08x mask=%08x os=%08x type=%08x subtype=%08x date=0x%08x%08x\n")
-               _T("os=%s type=%s"),
+            CString text;
+            text.Format(
+               _T("fileversion=%u.%u.%u.%u productversion=%u.%u.%u.%u structver=%u.%u\n"),
                HIWORD(fixedFileInfo.dwFileVersionMS), LOWORD(fixedFileInfo.dwFileVersionMS),
                HIWORD(fixedFileInfo.dwFileVersionLS), LOWORD(fixedFileInfo.dwFileVersionLS),
                HIWORD(fixedFileInfo.dwProductVersionMS), LOWORD(fixedFileInfo.dwProductVersionMS),
                HIWORD(fixedFileInfo.dwProductVersionLS), LOWORD(fixedFileInfo.dwProductVersionLS),
-               HIWORD(fixedFileInfo.dwStrucVersion), LOWORD(fixedFileInfo.dwStrucVersion),
+               HIWORD(fixedFileInfo.dwStrucVersion), LOWORD(fixedFileInfo.dwStrucVersion));
+
+            text.AppendFormat(
+               _T("fileflags=%08x mask=%08x os=%08x type=%08x subtype=%08x date=0x%08x%08x\n"),
                fixedFileInfo.dwFileFlags,          // e.g. VFF_DEBUG | VFF_PRERELEASE
                fixedFileInfo.dwFileFlagsMask,      // = 0x3F for version "0.42"
                fixedFileInfo.dwFileOS,             // e.g. VOS_DOS_WINDOWS16
                fixedFileInfo.dwFileType,           // e.g. VFT_DRIVER
                fixedFileInfo.dwFileSubtype,        // e.g. VFT2_DRV_KEYBOARD
                fixedFileInfo.dwFileDateMS,         // e.g. 0
-               fixedFileInfo.dwFileDateLS,         // e.g. 0
+               fixedFileInfo.dwFileDateLS);        // e.g. 0
+
+            text.AppendFormat(
+               _T("os=%s type=%s\n"),
                fixedFileInfo.GetFileOS().GetString(),
                fixedFileInfo.GetFileType().GetString());
+
+            text.AppendFormat(
+               _T("fileversion=%s productversion=%s"),
+               fixedFileInfo.GetFileVersion().GetString(),
+               fixedFileInfo.GetProductVersion().GetString());
+
+            ATLTRACE(text);
          }
 
          // show languages and codepages
@@ -64,11 +77,16 @@ namespace UnitTest
             Assert::IsTrue(langAndCodepagesList.size() > 0);
 
             // print out all languages and codepages
-            for (size_t i = 0; i < langAndCodepagesList.size(); i++)
+            for (size_t langIndex = 0; langIndex < langAndCodepagesList.size(); langIndex++)
             {
-               ATLTRACE(_T("language %04x [%d] codepage %04x [%d]"),
-                  langAndCodepagesList[i].wLanguage, langAndCodepagesList[i].wLanguage,
-                  langAndCodepagesList[i].wCodePage, langAndCodepagesList[i].wCodePage);
+               CString text;
+               text.Format(_T("language %04x [%d] codepage %04x [%d]"),
+                  langAndCodepagesList[langIndex].wLanguage,
+                  langAndCodepagesList[langIndex].wLanguage,
+                  langAndCodepagesList[langIndex].wCodePage,
+                  langAndCodepagesList[langIndex].wCodePage);
+
+               ATLTRACE(text);
 
                // show all language-dependent strings
                LPCTSTR allNames[] =
@@ -87,11 +105,14 @@ namespace UnitTest
                   _T("SpecialBuild")
                };
 
-               for (unsigned int j = 0; j < sizeof(allNames) / sizeof(*allNames); j++)
+               for (unsigned int nameIndex = 0; nameIndex < sizeof_array(allNames); nameIndex++)
                {
-                  ATLTRACE(_T("  name \"%-17s: [%s]"),
-                     (CString(allNames[j]) + _T("\"")).GetString(),
-                     vir.GetStringValue(langAndCodepagesList[i], allNames[j]).GetString());
+                  CString text2;
+                  text2.Format(_T("  name \"%-17s: [%s]"),
+                     (CString(allNames[nameIndex]) + _T("\"")).GetString(),
+                     vir.GetStringValue(langAndCodepagesList[langIndex], allNames[nameIndex]).GetString());
+
+                  ATLTRACE(text2);
                }
             }
          }

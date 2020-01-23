@@ -287,6 +287,7 @@ namespace UnitTest
          filter.ReadLine(text);
          Assert::IsTrue(pszLine2 == text);
 
+         Assert::IsTrue(true == filter.AtEndOfStream());
          Assert::IsTrue(true == msCRLF.AtEndOfStream());
       }
 
@@ -298,6 +299,7 @@ namespace UnitTest
             Stream::TextStreamFilter::textEncodingAnsi, Stream::TextStreamFilter::lineEndingNative);
 
          filter.Write(pszLine1);
+         filter.Flush();
 
          Assert::IsTrue(2 * sizeof(char) == ms.GetData().size());
          Assert::IsTrue(static_cast<char>(pszLine1[0]) == reinterpret_cast<LPCSTR>(&ms.GetData()[0])[0]);
@@ -543,6 +545,25 @@ namespace UnitTest
          Assert::IsTrue(pszData[0] == filter.ReadChar());
          Assert::IsTrue(pszData[1] == filter.ReadChar());
          Assert::IsTrue(pszData[2] == filter.ReadChar());
+      }
+
+      /// tests CanRead() and CanWrite methods
+      TEST_METHOD(TestCanReadCanWrite)
+      {
+         // set up
+         BYTE abData[] = { 0x42, 0x61 };
+         Stream::MemoryReadStream readOnlyStream(abData, sizeof(abData));
+         Stream::MemoryStream readWriteStream(abData, sizeof(abData));
+
+         Stream::TextStreamFilter readOnlyFilter(readOnlyStream, Stream::TextStreamFilter::textEncodingUTF8);
+         Stream::TextStreamFilter readWriteFilter(readWriteStream, Stream::TextStreamFilter::textEncodingUTF8);
+
+         // check
+         Assert::IsTrue(readOnlyFilter.CanRead(), L"reading must be possible from read-only filter");
+         Assert::IsFalse(readOnlyFilter.CanWrite(), L"writing must be impossible from read-only filter");
+
+         Assert::IsTrue(readWriteFilter.CanRead(), L"reading must be possible from read-write filter");
+         Assert::IsTrue(readWriteFilter.CanWrite(), L"writing must be possible from read-write filter");
       }
    };
 

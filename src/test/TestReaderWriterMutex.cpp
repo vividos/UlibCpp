@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006,2007,2008,2009,2012,2017 Michael Fink
+// Copyright (C) 2006,2007,2008,2009,2012,2017,2020 Michael Fink
 //
 /// \file TestReaderWriterMutex.cpp tests for ReaderWriterMutex class
 //
@@ -8,6 +8,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include <ulib/thread/ReaderWriterMutex.hpp>
+#include <ulib/HighResolutionTimer.hpp>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -54,10 +55,9 @@ namespace UnitTest
          Writer = 1
       };
 
-      int type;
-      int updatesObserved;
-      LARGE_INTEGER startTime;
-      LARGE_INTEGER endTime;
+      int type = Reader;
+      int updatesObserved = 0;
+      HighResolutionTimer timer;
    };
 
    struct ThreadArgs
@@ -72,7 +72,7 @@ namespace UnitTest
       void* valueHolder;
       HANDLE hThreadWaitingEvent;
       HANDLE hThreadWakeupEvent;
-      ThreadTimes* thdTimes;
+      ThreadTimes* threadTimes;
    };
 
 
@@ -146,21 +146,20 @@ namespace UnitTest
 
    unsigned int __stdcall ReaderThreadFunc(void* args)
    {
-      ThreadArgs* thdArgs = static_cast<ThreadArgs*>(args);
-      ThreadTimes* thdTimes = thdArgs->thdTimes + thdArgs->thdIndex;
-      ValueHolder* valueHolder = static_cast<ValueHolder*>(thdArgs->valueHolder);
-      int numIterations = thdArgs->numReaderIterations;
+      ThreadArgs* threadArgs = static_cast<ThreadArgs*>(args);
+      ThreadTimes* threadTimes = threadArgs->threadTimes + threadArgs->thdIndex;
+      ValueHolder* valueHolder = static_cast<ValueHolder*>(threadArgs->valueHolder);
+      int numIterations = threadArgs->numReaderIterations;
 
-      thdTimes->type = ThreadTimes::Reader;
-      thdTimes->updatesObserved = 0;
+      threadTimes->type = ThreadTimes::Reader;
 
-      SignalObjectAndWait(thdArgs->hThreadWaitingEvent, thdArgs->hThreadWakeupEvent, INFINITE, FALSE);
+      SignalObjectAndWait(threadArgs->hThreadWaitingEvent, threadArgs->hThreadWakeupEvent, INFINITE, FALSE);
 
-      QueryPerformanceCounter(&thdTimes->startTime);
+      threadTimes->timer.Start();
 
       LONG v = 0;
 
-      if ((thdArgs->readerWorkInBetweenLockAcquisitions == 0) || (thdArgs->readerWorkWhileHoldingLock == 0))
+      if ((threadArgs->readerWorkInBetweenLockAcquisitions == 0) || (threadArgs->readerWorkWhileHoldingLock == 0))
       {
          for (int i = 0; i < numIterations; ++i)
          {
@@ -169,8 +168,8 @@ namespace UnitTest
       }
       else
       {
-         int workWhileHoldingLock = thdArgs->readerWorkWhileHoldingLock;
-         int workBetweenAcquisitions = thdArgs->readerWorkInBetweenLockAcquisitions;
+         int workWhileHoldingLock = threadArgs->readerWorkWhileHoldingLock;
+         int workBetweenAcquisitions = threadArgs->readerWorkInBetweenLockAcquisitions;
          int updatesObserved = 0;
          int oldValue = 0;
          for (int i = 0; i < numIterations; ++i)
@@ -189,28 +188,28 @@ namespace UnitTest
             }
          }
 
-         thdTimes->updatesObserved = updatesObserved;
+         threadTimes->updatesObserved = updatesObserved;
       }
 
-      QueryPerformanceCounter(&thdTimes->endTime);
+      threadTimes->timer.Stop();
 
       return v;
    }
 
    unsigned int __stdcall WriterThreadFunc(void* args)
    {
-      ThreadArgs* thdArgs = static_cast<ThreadArgs*>(args);
-      ThreadTimes* thdTimes = thdArgs->thdTimes + thdArgs->thdIndex;
-      ValueHolder* valueHolder = static_cast<ValueHolder*>(thdArgs->valueHolder);
-      int numIterations = thdArgs->numWriterIterations;
+      ThreadArgs* threadArgs = static_cast<ThreadArgs*>(args);
+      ThreadTimes* threadTimes = threadArgs->threadTimes + threadArgs->thdIndex;
+      ValueHolder* valueHolder = static_cast<ValueHolder*>(threadArgs->valueHolder);
+      int numIterations = threadArgs->numWriterIterations;
 
-      thdTimes->type = ThreadTimes::Writer;
+      threadTimes->type = ThreadTimes::Writer;
 
-      SignalObjectAndWait(thdArgs->hThreadWaitingEvent, thdArgs->hThreadWakeupEvent, INFINITE, FALSE);
+      SignalObjectAndWait(threadArgs->hThreadWaitingEvent, threadArgs->hThreadWakeupEvent, INFINITE, FALSE);
 
-      QueryPerformanceCounter(&thdTimes->startTime);
+      threadTimes->timer.Start();
 
-      if ((thdArgs->writerWorkInBetweenLockAcquisitions == 0) && (thdArgs->writerWorkWhileHoldingLock == 0))
+      if ((threadArgs->writerWorkInBetweenLockAcquisitions == 0) && (threadArgs->writerWorkWhileHoldingLock == 0))
       {
          for (int i = 0; i < numIterations; ++i)
          {
@@ -219,8 +218,8 @@ namespace UnitTest
       }
       else
       {
-         int workWhileHoldingLock = thdArgs->writerWorkWhileHoldingLock;
-         int workBetweenAcquisitions = thdArgs->writerWorkInBetweenLockAcquisitions;
+         int workWhileHoldingLock = threadArgs->writerWorkWhileHoldingLock;
+         int workBetweenAcquisitions = threadArgs->writerWorkInBetweenLockAcquisitions;
          int newV = 0;
 
          for (int i = 0; i < numIterations; ++i)
@@ -234,7 +233,7 @@ namespace UnitTest
          }
       }
 
-      QueryPerformanceCounter(&thdTimes->endTime);
+      threadTimes->timer.Stop();
 
       return numIterations;
    }
@@ -243,124 +242,117 @@ namespace UnitTest
    TEST_CLASS(TestReaderWriterMutex)
    {
       /// tests reader/writer
-      TEST_METHOD(Test1)
+      TEST_METHOD(TestReaderWriter)
       {
-         LARGE_INTEGER perfFreq;
-
          // Must run on platform that supports QueryPerformanceFrequency.
+         LARGE_INTEGER perfFreq;
          Assert::IsTrue(TRUE == QueryPerformanceFrequency(&perfFreq));
 
-         unsigned(__stdcall * readerStartAddress) (void *);
-         unsigned(__stdcall * writerStartAddress) (void *);
+         unsigned(__stdcall * readerStartAddress) (void*);
+         unsigned(__stdcall * writerStartAddress) (void*);
 
-         ProgramArgs progArgs;
+         ProgramArgs programArgs;
 
-         progArgs.numReaderThreads = 1;
-         progArgs.numWriterThreads = 1;
-         DWORD totalThreads = progArgs.numReaderThreads + progArgs.numWriterThreads;
+         programArgs.numReaderThreads = 1;
+         programArgs.numWriterThreads = 1;
+         DWORD totalThreads = programArgs.numReaderThreads + programArgs.numWriterThreads;
 
-         ThreadArgs thdArgs;
+         ThreadArgs threadArgs;
 
-         thdArgs.numReaderIterations = progArgs.numReaderIterations;
-         thdArgs.numWriterIterations = progArgs.numWriterIterations;
-         thdArgs.readerWorkWhileHoldingLock = progArgs.readerWorkWhileHoldingLock;
-         thdArgs.writerWorkWhileHoldingLock = progArgs.writerWorkWhileHoldingLock;
-         thdArgs.readerWorkInBetweenLockAcquisitions = progArgs.readerWorkInBetweenLockAcquisitions;
-         thdArgs.writerWorkInBetweenLockAcquisitions = progArgs.writerWorkInBetweenLockAcquisitions;
-         thdArgs.hThreadWaitingEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
-         thdArgs.hThreadWakeupEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
-         thdArgs.thdTimes = new ThreadTimes[totalThreads];
+         threadArgs.numReaderIterations = programArgs.numReaderIterations;
+         threadArgs.numWriterIterations = programArgs.numWriterIterations;
+         threadArgs.readerWorkWhileHoldingLock = programArgs.readerWorkWhileHoldingLock;
+         threadArgs.writerWorkWhileHoldingLock = programArgs.writerWorkWhileHoldingLock;
+         threadArgs.readerWorkInBetweenLockAcquisitions = programArgs.readerWorkInBetweenLockAcquisitions;
+         threadArgs.writerWorkInBetweenLockAcquisitions = programArgs.writerWorkInBetweenLockAcquisitions;
+         threadArgs.hThreadWaitingEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
+         threadArgs.hThreadWakeupEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
+         threadArgs.threadTimes = new ThreadTimes[totalThreads];
 
          ReaderWriterMutex rwLock;
          ValueHolder valHolder(rwLock);
 
          readerStartAddress = ReaderThreadFunc;
          writerStartAddress = WriterThreadFunc;
-         thdArgs.valueHolder = &valHolder;
+         threadArgs.valueHolder = &valHolder;
 
          HANDLE* threads = new HANDLE[totalThreads];
 
-         HANDLE* nextThd = threads;
+         HANDLE* nextThread = threads;
 
-         int thdTimesIndex = 0;
+         int threadTimesIndex = 0;
 
          // Create the readers
-         for (DWORD i = 0; i < progArgs.numReaderThreads; ++i, ++nextThd)
+         for (DWORD i = 0; i < programArgs.numReaderThreads; ++i, ++nextThread)
          {
-            thdArgs.thdIndex = thdTimesIndex++;
+            threadArgs.thdIndex = threadTimesIndex++;
 
-            *nextThd = reinterpret_cast<HANDLE>(_beginthreadex(NULL, 0, readerStartAddress, &thdArgs, FALSE, NULL));
+            *nextThread = reinterpret_cast<HANDLE>(_beginthreadex(NULL, 0, readerStartAddress, &threadArgs, FALSE, NULL));
 
-            WaitForSingleObject(thdArgs.hThreadWaitingEvent, INFINITE);
+            WaitForSingleObject(threadArgs.hThreadWaitingEvent, INFINITE);
          }
 
          // Create the writers
-         for (DWORD i = 0; i < progArgs.numWriterThreads; ++i, ++nextThd)
+         for (DWORD i = 0; i < programArgs.numWriterThreads; ++i, ++nextThread)
          {
-            thdArgs.thdIndex = thdTimesIndex++;
+            threadArgs.thdIndex = threadTimesIndex++;
 
-            *nextThd = reinterpret_cast<HANDLE>(_beginthreadex(NULL, 0, writerStartAddress, &thdArgs, TRUE, NULL));
+            *nextThread = reinterpret_cast<HANDLE>(_beginthreadex(NULL, 0, writerStartAddress, &threadArgs, TRUE, NULL));
 
-            WaitForSingleObject(thdArgs.hThreadWaitingEvent, INFINITE);
+            WaitForSingleObject(threadArgs.hThreadWaitingEvent, INFINITE);
          }
 
-         LARGE_INTEGER startTime;
-         LARGE_INTEGER endTime;
+         HighResolutionTimer globalTimer;
 
-         QueryPerformanceCounter(&startTime);
+         globalTimer.Start();
 
-         SetEvent(thdArgs.hThreadWakeupEvent);
+         SetEvent(threadArgs.hThreadWakeupEvent);
 
          WaitForMultipleObjects(totalThreads, threads, TRUE, INFINITE);
 
-         QueryPerformanceCounter(&endTime);
+         globalTimer.Stop();
 
-         for (nextThd = threads; nextThd < (threads + totalThreads); ++nextThd)
+         for (nextThread = threads; nextThread < (threads + totalThreads); ++nextThread)
          {
-            CloseHandle(*nextThd);
+            CloseHandle(*nextThread);
          }
 
          delete[] threads;
 
-         CloseHandle(thdArgs.hThreadWaitingEvent);
-         CloseHandle(thdArgs.hThreadWakeupEvent);
+         CloseHandle(threadArgs.hThreadWaitingEvent);
+         CloseHandle(threadArgs.hThreadWakeupEvent);
 
          double timeInSecs;
-         LONGLONG timeSpan;
 
          ATLTRACE(_T("Thread Timings:"));
 
 
          // Calculate timings.
-         for (DWORD i = 0; i < totalThreads; ++i)
+         for (DWORD threadIndex = 0; threadIndex < totalThreads; ++threadIndex)
          {
-            ThreadTimes* thdTimes = thdArgs.thdTimes + i;
-            timeSpan = thdTimes->endTime.QuadPart - thdTimes->startTime.QuadPart;
-            timeInSecs = static_cast<double>(timeSpan) / static_cast<double>(perfFreq.QuadPart);
+            ThreadTimes* threadTimes = threadArgs.threadTimes + threadIndex;
+            timeInSecs = threadTimes->timer.Elapsed();
 
-            CString cszUpdatesObserved;
-            if (thdTimes->type == ThreadTimes::Reader)
-               cszUpdatesObserved.Format(_T(", updates observed: %i"), thdTimes->updatesObserved);
+            CString textUpdatesObserved;
+            if (threadTimes->type == ThreadTimes::Reader)
+               textUpdatesObserved.Format(_T(", updates observed: %i"), threadTimes->updatesObserved);
 
-            CString cszText;
-            cszText.Format(_T("\t%s %u starts @%I64u, ends @%I64u, dur. %u.%03u secs.%s"),
-               (thdTimes->type == ThreadTimes::Reader) ? _T("Reader") : _T("Writer"),
-               i, thdTimes->startTime.QuadPart,
-               thdTimes->endTime.QuadPart,
-               unsigned(timeInSecs), unsigned((timeInSecs - unsigned(timeInSecs))*1000.0),
-               cszUpdatesObserved.GetString());
+            CString text;
+            text.Format(_T("\t%s %u duration %u.%03u secs.%s"),
+               (threadTimes->type == ThreadTimes::Reader) ? _T("Reader") : _T("Writer"),
+               threadIndex,
+               unsigned(timeInSecs), unsigned((timeInSecs - unsigned(timeInSecs)) * 1000.0),
+               textUpdatesObserved.GetString());
 
-            ATLTRACE(cszText);
+            ATLTRACE(text);
          }
 
-         delete[] thdArgs.thdTimes;
+         delete[] threadArgs.threadTimes;
 
-         timeSpan = endTime.QuadPart - startTime.QuadPart;
-
-         timeInSecs = static_cast<double>(timeSpan) / static_cast<double>(perfFreq.QuadPart);
+         timeInSecs = globalTimer.Elapsed();
 
          ATLTRACE(_T("Total execution time is %u.%03u seconds.\n"),
-            unsigned(timeInSecs), unsigned((timeInSecs - unsigned(timeInSecs))*1000.0));
+            unsigned(timeInSecs), unsigned((timeInSecs - unsigned(timeInSecs)) * 1000.0));
       }
    };
 
