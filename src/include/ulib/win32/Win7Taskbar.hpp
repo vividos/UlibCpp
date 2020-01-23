@@ -33,7 +33,7 @@ namespace Win32
       }
 
       // move ctor
-      TaskbarProgressBar(TaskbarProgressBar&& other)
+      TaskbarProgressBar(TaskbarProgressBar&& other) noexcept
          :m_impl(std::move(other.m_impl))
       {
       }
@@ -47,12 +47,13 @@ namespace Win32
       /// copy assignment operator
       TaskbarProgressBar& operator=(const TaskbarProgressBar& other)
       {
-         m_impl = other.m_impl;
+         if (this != &other)
+            m_impl = other.m_impl;
          return *this;
       }
 
       /// move assignment operator; not available
-      TaskbarProgressBar& operator=(TaskbarProgressBar&& other)
+      TaskbarProgressBar& operator=(TaskbarProgressBar&& other) noexcept
       {
          m_impl = std::move(other.m_impl);
          return *this;
