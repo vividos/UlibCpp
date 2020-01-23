@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006,2007,2008,2012,2014,2017 Michael Fink
+// Copyright (C) 2006,2007,2008,2012,2014,2017,2020 Michael Fink
 //
 /// \file IStream.hpp stream interface
 //
@@ -16,9 +16,9 @@ namespace Stream
       /// origin for Seek() operations
       enum ESeekOrigin
       {
-         seekBegin = 0,
-         seekCurrent = 1,
-         seekEnd = 2,
+         seekBegin = 0,    ///< seek from beginning of stream
+         seekCurrent = 1,  ///< relative seek from current stream position
+         seekEnd = 2,      ///< seek from end of stream
       };
 
       /// dtor

@@ -283,8 +283,8 @@ private:
    LONG m_lReadersWaiting; ///< number of reader waiting
 
    /// active writer/reader
-   /// HIWORD is writer active flag;
-   /// LOWORD is readers active count;
+   /// HIWORD is writer active flag
+   /// LOWORD is readers active count
    DWORD m_dwActiveWriterReaders;
 
    /// handle to signal "ready to read"

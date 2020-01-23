@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2007,2008,2009,2017 Michael Fink
+// Copyright (C) 2007,2008,2009,2017,2020 Michael Fink
 //
 /// \file SystemException.hpp Win32 system exception class
 //
@@ -20,10 +20,10 @@ public:
    {
    }
 
-   /// returns win32 error code
+   /// returns Win32 error code
    DWORD Win32Error() const { return m_win32ErrorCode; }
 
 private:
-   /// win32 error code
+   /// Win32 error code
    DWORD m_win32ErrorCode;
 };

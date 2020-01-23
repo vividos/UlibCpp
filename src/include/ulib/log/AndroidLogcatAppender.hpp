@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006-2015,2017 Michael Fink
+// Copyright (C) 2006-2015,2017,2020 Michael Fink
 //
 /// \file AndroidLogcatAppender.hpp appender that is using Android logcat
 //
@@ -21,7 +21,7 @@ namespace Log
          // nothing to cleanup
       }
 
-      /// outputs logging event using OutputDebugString
+      /// outputs logging event using Android logging
       virtual void DoAppend(const LoggingEventPtr loggingEvent)
       {
          ATLASSERT(Layout().get() != nullptr);

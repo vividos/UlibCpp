@@ -92,7 +92,7 @@ TCHAR TextStreamFilter::ReadChar()
       if (uiCount <= 1 || uiCount > 6)
          throw Exception(_T("illegal utf8 lead byte encountered"), __FILE__, __LINE__);
 
-      // move remaining bits in position;
+      // move remaining bits in position
       bLeading >>= uiCount;
 
       // move remaining bits to bits 6..n, so that the next byte's 6 bits
@@ -193,7 +193,7 @@ void TextStreamFilter::ReadLine(CString& line)
             // in any mode, the last character must be a CR to start a new line
             if (m_lineEndingMode == lineEndingReadAny)
             {
-               // last character may have been a CR, so we got CRLF;
+               // last character may have been a CR, so we got CRLF
                // or it was another character, then we simply got LF
                break;
             }

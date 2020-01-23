@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006-2015,2017 Michael Fink
+// Copyright (C) 2006-2015,2017,2020 Michael Fink
 //
 /// \file TimeZone.cpp time zone class
 //
@@ -243,7 +243,7 @@ bool TimeZone::IsDaylightSavingTime(const DateTime& dt) const
       m_spImpl->m_tzi.DaylightDate.wMonth == 0)
       return false; // no daylight savings time without transition dates
 
-                    // convert transition dates to absolute dates
+   // convert transition dates to absolute dates
    DateTime dtTrans1 = CalculateTransitionDate(dt.Year(), 0);
    DateTime dtTrans2 = CalculateTransitionDate(dt.Year(), 1);
 
@@ -251,12 +251,7 @@ bool TimeZone::IsDaylightSavingTime(const DateTime& dt) const
       dtTrans2.Status() != DateTime::valid)
       return false; // no daylight savings time
 
-                    //ATLTRACE(_T("t1=%s\nt2=%s\ndt=%s"),
-                    //   dtTrans1.Format(_T("%Y-%m-%dT%H:%M:%S")),
-                    //   dtTrans2.Format(_T("%Y-%m-%dT%H:%M:%S")),
-                    //   dt.Format(_T("%Y-%m-%dT%H:%M:%S")));
-
-                    // compare if given date/time is in the range
+   // compare if given date/time is in the range
    return dtTrans1 < dt && dt < dtTrans2;
 }
 

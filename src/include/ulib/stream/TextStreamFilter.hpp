@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006,2007,2008,2009,2012,2014,2017 Michael Fink
+// Copyright (C) 2006,2007,2008,2009,2012,2014,2017,2020 Michael Fink
 //
 /// \file TextStreamFilter.hpp text stream filter
 //
@@ -22,16 +22,16 @@ namespace Stream
          ELineEndingMode lineEndingMode = lineEndingNative);
 
       /// reads a single character
-      virtual TCHAR ReadChar();
+      virtual TCHAR ReadChar() override;
 
       /// reads a whole line
-      virtual void ReadLine(CString& line);
+      virtual void ReadLine(CString& line) override;
 
       /// writes text
-      virtual void Write(const CString& text);
+      virtual void Write(const CString& text) override;
 
       /// writes endline character
-      virtual void WriteEndline();
+      virtual void WriteEndline() override;
 
       /// returns underlying stream (const version)
       const IStream& Stream() const { return m_stream; }
@@ -40,16 +40,16 @@ namespace Stream
       IStream& Stream() { return m_stream; }
 
       /// returns true when stream can be read
-      virtual bool CanRead() const { return m_stream.CanRead(); }
+      virtual bool CanRead() const override { return m_stream.CanRead(); }
 
       /// returns true when stream can be written to
-      virtual bool CanWrite() const { return m_stream.CanWrite(); }
+      virtual bool CanWrite() const override { return m_stream.CanWrite(); }
 
       /// returns true when the stream end is reached
-      virtual bool AtEndOfStream() const { return m_stream.AtEndOfStream(); }
+      virtual bool AtEndOfStream() const override { return m_stream.AtEndOfStream(); }
 
       /// flushes out text stream
-      virtual void Flush() { m_stream.Flush(); }
+      virtual void Flush() override { m_stream.Flush(); }
 
    private:
       /// puts back one character

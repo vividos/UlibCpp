@@ -12,16 +12,16 @@
 class TimeSpan
 {
 public:
-   /// date/time span status values
+   /// time span status values
    enum T_enStatus { valid = 0, invalid, min, max };
 
    /// default ctor
    TimeSpan();
 
    /// ctor; takes date/time span components
-   TimeSpan(int iHours, int iMins, int iSecs, int iMillisecs = 0);
+   TimeSpan(int hours, int minutes, int seconds, int milliseconds = 0);
 
-   /// ctor; initialize with min or max status
+   /// ctor; initialize with min or max status only
    explicit TimeSpan(T_enStatus status);
 
    /// copy ctor
@@ -65,12 +65,12 @@ public:
    // operators
    TimeSpan operator+(const TimeSpan& rhs) const; ///< add operator
    TimeSpan operator-(const TimeSpan& rhs) const; ///< subtract operator
-   TimeSpan operator*(int iFactor) const;          ///< multiply by scalar operator
-   TimeSpan operator/(int iFactor) const;          ///< divide by scalar operator
+   TimeSpan operator*(int factor) const;          ///< multiply by scalar operator
+   TimeSpan operator/(int factor) const;          ///< divide by scalar operator
    TimeSpan& operator+=(const TimeSpan span);     ///< add inplace operator
    TimeSpan& operator-=(const TimeSpan span);     ///< subtract inplace operator
-   TimeSpan& operator*=(int iFactor);              ///< multiply by scalar inplace operator
-   TimeSpan& operator/=(int iFactor);              ///< divide by scalar inplace operator
+   TimeSpan& operator*=(int factor);              ///< multiply by scalar inplace operator
+   TimeSpan& operator/=(int factor);              ///< divide by scalar inplace operator
    TimeSpan operator-() const;                     ///< subtract two time spans operator
 
    bool operator==(const TimeSpan& rhs) const;     ///< equal operator
@@ -81,7 +81,7 @@ public:
    bool operator>=(const TimeSpan& rhs) const { return !operator<(rhs); }  ///< less or equal operator
 
    /// sets time span components
-   void SetDateTimeSpan(int iHours, int iMins, int iSecs, int iMillisecs);
+   void SetDateTimeSpan(int hours, int minutes, int seconds, int milliseconds);
 
    /// format time span as ISO 8601 (in "hh:mm:ss" format)
    CString FormatISO8601() const;

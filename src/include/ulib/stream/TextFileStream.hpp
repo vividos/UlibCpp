@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006,2007,2008,2012,2014,2017 Michael Fink
+// Copyright (C) 2006,2007,2008,2012,2014,2017,2020 Michael Fink
 //
 /// \file TextFileStream.hpp text file stream
 //
@@ -37,7 +37,7 @@ namespace Stream
       /// returns if the file was successfully opened
       bool IsOpen() const { return m_fileStream.IsOpen(); }
       /// returns true when the file end is reached
-      bool AtEndOfStream() const { return m_fileStream.AtEndOfStream(); }
+      virtual bool AtEndOfStream() const override { return m_fileStream.AtEndOfStream(); }
 
    private:
       /// file stream

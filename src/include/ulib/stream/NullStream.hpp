@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006,2007,2008,2017 Michael Fink
+// Copyright (C) 2006,2007,2008,2017,2020 Michael Fink
 //
 /// \file NullStream.hpp null stream
 //
@@ -10,7 +10,6 @@
 
 namespace Stream
 {
-
    /// null stream that can be read from (returns just zeros), written to and seeked
    class NullStream : public IStream
    {

@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2008-2012,2017 Michael Fink
+// Copyright (C) 2008-2012,2017,2020 Michael Fink
 //
 /// \file IoCContainer.hpp Inversion of Control container
 //
@@ -9,7 +9,7 @@
 #include <string>
 #include <map>
 #pragma warning(push)
-#pragma warning(disable: 26439 26812)
+#pragma warning(disable: 26439 26451 26812)
 #include <boost/any.hpp>
 #include <boost/ref.hpp>
 #pragma warning(pop)
@@ -25,7 +25,7 @@ public:
       return current;
    }
 
-   /// registers ref for class
+   /// registers reference for class
    template <typename TClass>
    void Register(boost::reference_wrapper<TClass> ref)
    {

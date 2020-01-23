@@ -32,7 +32,7 @@ bool ISO8601Parser::ParseDateTime(LPCTSTR timestamp, std::wstring& strRemaining)
 
    // note: inputFacet is not deleted here; it is done somewhere inside the stream classes
    // note: we don't use
-   //    inputFacet->set_iso_extended_format();
+   //    inputFacet->set_iso_extended_format()
    // here, since it doesn't include the T divider
    const time_input_facet* inputFacet =
       new time_input_facet(L"%Y-%m-%dT%H:%M:%S%F");

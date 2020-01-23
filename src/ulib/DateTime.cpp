@@ -37,16 +37,16 @@ DateTime::DateTime()
 {
 }
 
-DateTime::DateTime(unsigned int uiYear, unsigned int uiMonth, unsigned int uiDay,
-   unsigned int uiHour, unsigned int uiMinute, unsigned int uiSecond, unsigned int uiMillisecond)
+DateTime::DateTime(unsigned int year, unsigned int month, unsigned int day,
+   unsigned int hour, unsigned int minute, unsigned int second, unsigned int millisecond)
    : m_spImpl(new DateTimeImpl)
 {
    try
    {
       m_spImpl->m_dt = boost::posix_time::ptime(
-         boost::gregorian::date(USHORT(uiYear), USHORT(uiMonth), USHORT(uiDay)),
-         boost::posix_time::time_duration(uiHour, uiMinute, uiSecond,
-            boost::posix_time::time_duration::fractional_seconds_type(uiMillisecond) * 1000));
+         boost::gregorian::date(USHORT(year), USHORT(month), USHORT(day)),
+         boost::posix_time::time_duration(hour, minute, second,
+            boost::posix_time::time_duration::fractional_seconds_type(millisecond) * 1000));
    }
    catch (...)
    {
@@ -55,7 +55,7 @@ DateTime::DateTime(unsigned int uiYear, unsigned int uiMonth, unsigned int uiDay
    }
 }
 
-DateTime::DateTime(T_enStatus status)
+DateTime::DateTime(DateTime::T_enStatus status)
    :m_spImpl(new DateTimeImpl)
 {
    ATLASSERT(status == DateTime::min || status == DateTime::max);
@@ -123,17 +123,17 @@ DateTime DateTime::Today()
 }
 
 
-void DateTime::SetDateTime(unsigned int uiYear, unsigned int uiMonth, unsigned int uiDay,
-   unsigned int uiHour, unsigned int uiMinute, unsigned int uiSecond, unsigned int uiMillisecond)
+void DateTime::SetDateTime(unsigned int year, unsigned int month, unsigned int day,
+   unsigned int hour, unsigned int minute, unsigned int second, unsigned int millisecond)
 {
    PrepareCopy();
 
    try
    {
       m_spImpl->m_dt = boost::posix_time::ptime(
-         boost::gregorian::date(USHORT(uiYear), USHORT(uiMonth), USHORT(uiDay)),
-         boost::posix_time::time_duration(uiHour, uiMinute, uiSecond,
-            boost::posix_time::time_duration::fractional_seconds_type(uiMillisecond) * 1000));
+         boost::gregorian::date(USHORT(year), USHORT(month), USHORT(day)),
+         boost::posix_time::time_duration(hour, minute, second,
+            boost::posix_time::time_duration::fractional_seconds_type(millisecond) * 1000));
    }
    catch (...)
    {
@@ -282,7 +282,7 @@ bool DateTime::operator<(const DateTime& rhs) const
    return m_spImpl->m_dt < rhs.m_spImpl->m_dt;
 }
 
-CString DateTime::FormatISO8601(T_enISO8601Format enFormat, bool bBasic, const TimeZone& tz) const
+CString DateTime::FormatISO8601(DateTime::T_enISO8601Format enFormat, bool bBasic, const TimeZone& tz) const
 {
    CString cszDate;
    switch (enFormat)
@@ -335,7 +335,7 @@ CString DateTime::FormatISO8601(T_enISO8601Format enFormat, bool bBasic, const T
    return cszDate;
 }
 
-CString DateTime::Format(const CString& cszFormat, const TimeZone& tz) const
+CString DateTime::Format(const CString& format, const TimeZone& tz) const
 {
    ATLASSERT(m_spImpl != NULL);
 
@@ -349,21 +349,21 @@ CString DateTime::Format(const CString& cszFormat, const TimeZone& tz) const
 
    CString cszDateTime;
    LPTSTR pszBuffer = cszDateTime.GetBufferSetLength(256);
-   _tcsftime(pszBuffer, cszDateTime.GetLength(), cszFormat, &tmTemp);
+   _tcsftime(pszBuffer, cszDateTime.GetLength(), format, &tmTemp);
    cszDateTime.ReleaseBuffer();
 
    return cszDateTime;
 }
 
-void DateTime::ParseISO8601(const CString& cszISO8601Timestamp) const
+void DateTime::ParseISO8601(const CString& iso8601Timestamp)
 {
-   if (cszISO8601Timestamp.IsEmpty())
+   if (iso8601Timestamp.IsEmpty())
    {
       m_spImpl->m_dt = boost::date_time::not_a_date_time;
       return;
    }
 
-   ISO8601Parser p(cszISO8601Timestamp);
+   ISO8601Parser p(iso8601Timestamp);
    if (p.IsValid())
       m_spImpl->m_dt = p.Get();
 }

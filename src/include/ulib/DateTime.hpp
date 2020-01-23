@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006-2014,2017 Michael Fink
+// Copyright (C) 2006-2014,2017,2020 Michael Fink
 //
 /// \file DateTime.hpp date/time class
 //
@@ -17,15 +17,15 @@ public:
    /// date/time status values
    enum T_enStatus { valid = 0, invalid, min, max };
 
-   /// default ctor
+   /// default ctor; initialized with invalid status
    DateTime();
 
    /// ctor; takes date/time components
-   DateTime(unsigned int uiYear, unsigned int uiMonth, unsigned int uiDay,
-      unsigned int uiHour, unsigned int uiMinute, unsigned int uiSecond,
-      unsigned int uiMillisecond = 0);
+   DateTime(unsigned int year, unsigned int month, unsigned int day,
+      unsigned int hour, unsigned int minute, unsigned int second,
+      unsigned int millisecond = 0);
 
-   /// ctor; initialize with min or max status
+   /// ctor; initialize with min or max status only
    explicit DateTime(T_enStatus status);
 
    /// copy ctor
@@ -56,9 +56,9 @@ public:
    static DateTime MinValue() { return DateTime(DateTime::min); }
 
    /// sets date/time components
-   void SetDateTime(unsigned int uiYear, unsigned int uiMonth, unsigned int uiDay,
-      unsigned int uiHour, unsigned int uiMinute, unsigned int uiSecond,
-      unsigned int uiMillisecond = 0);
+   void SetDateTime(unsigned int year, unsigned int month, unsigned int day,
+      unsigned int hour, unsigned int minute, unsigned int second,
+      unsigned int millisecond = 0);
 
    // properties
 
@@ -110,7 +110,7 @@ public:
       formatYM,      ///< year and month
       formatYMD,     ///< year and month
       formatYMD_HM_Z,   ///< year, month, day, hour, minute and timezone offset
-      formatYMD_HMS_Z,  ///<year, month, day, hour, minute, second and timezone offset
+      formatYMD_HMS_Z,  ///< year, month, day, hour, minute, second and timezone offset
       formatYMD_HMSF_Z, ///< full date/time with fraction and timezone offset
    };
 
@@ -119,10 +119,10 @@ public:
       const TimeZone& tz = TimeZone::System()) const;
 
    /// formats date/time with given format, see _tcsftime
-   CString Format(const CString& cszFormat, const TimeZone& tz = TimeZone::System()) const;
+   CString Format(const CString& format, const TimeZone& tz = TimeZone::System()) const;
 
    /// parses ISO 8601 formatted date/time
-   void ParseISO8601(const CString& cszISO8601Timestamp) const;
+   void ParseISO8601(const CString& iso8601Timestamp);
 
 private:
    /// prepares another copy of the object when date/time value is about to be modified

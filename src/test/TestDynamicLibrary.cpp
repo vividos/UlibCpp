@@ -15,7 +15,7 @@ namespace UnitTest
    TEST_CLASS(TestDynamicLibrary)
    {
       /// tests resource extraction as string
-      TEST_METHOD(LoadLibrary)
+      TEST_METHOD(TestLoadLibrary)
       {
          // set up
          DynamicLibrary lib{ _T("kernel32.dll") };

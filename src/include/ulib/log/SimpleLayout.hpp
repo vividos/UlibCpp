@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006-2014,2017 Michael Fink
+// Copyright (C) 2006-2014,2017,2020 Michael Fink
 //
 /// \file SimpleLayout.hpp simple layout class
 //
@@ -23,7 +23,7 @@ namespace Log
       }
 
       /// formats the simple log message
-      virtual void Format(CString& outputText, const LoggingEventPtr loggingEvent)
+      virtual void Format(CString& outputText, const LoggingEventPtr loggingEvent) override
       {
          ATLASSERT(loggingEvent.get() != nullptr);
 

@@ -45,7 +45,7 @@ public:
    bool IsLoaded() const { return m_module != nullptr; }
 
    /// checks if function with given name is available
-   bool IsFunctionAvail(LPCSTR functionName)
+   bool IsFunctionAvail(LPCSTR functionName) const
    {
       return GetProcAddress(m_module, functionName) != nullptr;
    }

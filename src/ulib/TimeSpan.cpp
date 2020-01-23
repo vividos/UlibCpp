@@ -15,10 +15,10 @@ TimeSpan::TimeSpan()
 {
 }
 
-TimeSpan::TimeSpan(int iHours, int iMins, int iSecs, int iMillisecs)
+TimeSpan::TimeSpan(int hours, int minutes, int seconds, int millseconds)
    : m_spImpl(new TimeSpanImpl)
 {
-   SetDateTimeSpan(iHours, iMins, iSecs, iMillisecs);
+   SetDateTimeSpan(hours, minutes, seconds, millseconds);
 }
 
 TimeSpan::TimeSpan(T_enStatus status)
@@ -142,21 +142,21 @@ TimeSpan TimeSpan::operator-(const TimeSpan& rhs) const
    return dts;
 }
 
-TimeSpan TimeSpan::operator*(int iFactor) const
+TimeSpan TimeSpan::operator*(int factor) const
 {
    ATLASSERT(m_spImpl != nullptr);
 
    TimeSpan dts;
-   dts.m_spImpl->m_span = m_spImpl->m_span * iFactor;
+   dts.m_spImpl->m_span = m_spImpl->m_span * factor;
    return dts;
 }
 
-TimeSpan TimeSpan::operator/(int iFactor) const
+TimeSpan TimeSpan::operator/(int factor) const
 {
    ATLASSERT(m_spImpl != nullptr);
 
    TimeSpan dts;
-   dts.m_spImpl->m_span = m_spImpl->m_span / iFactor;
+   dts.m_spImpl->m_span = m_spImpl->m_span / factor;
    return dts;
 }
 
@@ -182,23 +182,23 @@ TimeSpan& TimeSpan::operator-=(const TimeSpan span)
    return *this;
 }
 
-TimeSpan& TimeSpan::operator*=(int iFactor)
+TimeSpan& TimeSpan::operator*=(int factor)
 {
    ATLASSERT(m_spImpl != nullptr);
 
    PrepareCopy();
 
-   m_spImpl->m_span *= iFactor;
+   m_spImpl->m_span *= factor;
    return *this;
 }
 
-TimeSpan& TimeSpan::operator/=(int iFactor)
+TimeSpan& TimeSpan::operator/=(int factor)
 {
    ATLASSERT(m_spImpl != nullptr);
 
    PrepareCopy();
 
-   m_spImpl->m_span /= iFactor;
+   m_spImpl->m_span /= factor;
    return *this;
 }
 
@@ -245,7 +245,7 @@ bool TimeSpan::operator<(const TimeSpan& rhs) const
    return m_spImpl->m_span < rhs.m_spImpl->m_span;
 }
 
-void TimeSpan::SetDateTimeSpan(int iHours, int iMins, int iSecs, int iMillisecs)
+void TimeSpan::SetDateTimeSpan(int hours, int minutes, int seconds, int millseconds)
 {
    ATLASSERT(m_spImpl != nullptr);
 
@@ -254,8 +254,8 @@ void TimeSpan::SetDateTimeSpan(int iHours, int iMins, int iSecs, int iMillisecs)
    try
    {
       // note: multiplying milliseconds with 1000 here, since resolution is in microsecs
-      m_spImpl->m_span = boost::posix_time::time_duration(iHours, iMins, iSecs,
-         boost::posix_time::time_duration::fractional_seconds_type(iMillisecs) * 1000);
+      m_spImpl->m_span = boost::posix_time::time_duration(hours, minutes, seconds,
+         boost::posix_time::time_duration::fractional_seconds_type(millseconds) * 1000);
    }
    catch (...)
    {

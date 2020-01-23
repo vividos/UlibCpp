@@ -29,7 +29,7 @@ namespace Log
       /// returns additivity flag
       bool Additivity() const { return m_additivity; }
 
-      /// returns parent
+      /// returns parent logger
       LoggerPtr Parent() { return m_parentLogger; }
 
       /// returns full logger name
@@ -143,7 +143,7 @@ namespace Log
       T_setAppender m_setAppender;
    };
 
-}
+} // namespace Log
 
 /// logs using DEBUG level
 #define LOG_DEBUG(msg, cat) ::Log::Logger::GetLogger(cat)->Debug(msg, __FILE__, __LINE__);

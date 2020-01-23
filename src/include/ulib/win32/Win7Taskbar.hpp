@@ -91,4 +91,4 @@ namespace Win32
       std::shared_ptr<TaskbarImpl> m_impl;
    };
 
-} // namespace Win7
+} // namespace Win32

@@ -28,7 +28,7 @@ public:
    {
    }
 
-   /// adds new observer; new id is returned
+   /// adds new observer; new ID is returned
    int Add(std::function<T> fnObserver)
    {
       int handlerID = m_nextId;
@@ -45,7 +45,7 @@ public:
       return *this;
    }
 
-   /// removes an observer by id
+   /// removes an observer by ID
    void Remove(int id)
    {
       m_mapAllObserver.erase(id);
@@ -92,7 +92,7 @@ public:
    }
 
 private:
-   /// next id
+   /// next ID
    int m_nextId;
 
    /// map with all observer subjects

@@ -19,7 +19,7 @@ namespace UnitTest
    TEST_CLASS(TestFileStream)
    {
       /// creates testfile for tests
-      bool CreateTestFile(const CString& cszFilename);
+      bool CreateTestFile(const CString& filename);
 
       /// tests FileStream class, read functionality
       TEST_METHOD(TestRead1);
@@ -49,9 +49,9 @@ namespace UnitTest
 using UnitTest::TestFileStream;
 
 /// creates test file
-bool TestFileStream::CreateTestFile(const CString& cszFilename)
+bool TestFileStream::CreateTestFile(const CString& filename)
 {
-   FileStream fs(cszFilename, FileStream::modeCreateNew, FileStream::accessWrite, FileStream::shareNone);
+   FileStream fs(filename, FileStream::modeCreateNew, FileStream::accessWrite, FileStream::shareNone);
 
    if (!fs.IsOpen())
       return false;
@@ -73,12 +73,12 @@ bool TestFileStream::CreateTestFile(const CString& cszFilename)
 void TestFileStream::TestRead1()
 {
    UnitTest::AutoCleanupFolder folder;
-   CString cszFilename(folder.FolderName());
-   cszFilename += _T("test.bin");
+   CString filename(folder.FolderName());
+   filename += _T("test.bin");
 
-   Assert::IsTrue(CreateTestFile(cszFilename));
+   Assert::IsTrue(CreateTestFile(filename));
 
-   FileStream fs(cszFilename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareRead);
+   FileStream fs(filename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareRead);
 
    Assert::IsTrue(fs.IsOpen());
    Assert::IsFalse(fs.AtEndOfStream());
@@ -105,12 +105,12 @@ void TestFileStream::TestRead1()
 void TestFileStream::TestCopyCtor()
 {
    UnitTest::AutoCleanupFolder folder;
-   CString cszFilename(folder.FolderName());
-   cszFilename += _T("test.bin");
+   CString filename(folder.FolderName());
+   filename += _T("test.bin");
 
-   Assert::IsTrue(CreateTestFile(cszFilename));
+   Assert::IsTrue(CreateTestFile(filename));
 
-   FileStream fs(cszFilename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareRead);
+   FileStream fs(filename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareRead);
 
    Assert::IsTrue(fs.IsOpen());
 
@@ -134,12 +134,12 @@ void TestFileStream::TestCopyCtor()
 void TestFileStream::TestOpen1()
 {
    UnitTest::AutoCleanupFolder folder;
-   CString cszFilename(folder.FolderName());
-   cszFilename += _T("test.bin");
+   CString filename(folder.FolderName());
+   filename += _T("test.bin");
 
    // create file; shouldn't exist yet
    {
-      FileStream fs(cszFilename, FileStream::modeCreateNew, FileStream::accessWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeCreateNew, FileStream::accessWrite, FileStream::shareNone);
       Assert::IsTrue(fs.IsOpen());
 
       fs.WriteByte(42);
@@ -148,12 +148,12 @@ void TestFileStream::TestOpen1()
    // create file; should fail, since file exists now
    try
    {
-      FileStream fs(cszFilename, FileStream::modeCreateNew, FileStream::accessWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeCreateNew, FileStream::accessWrite, FileStream::shareNone);
       Assert::IsTrue(false);
    }
-   catch (Stream::StreamException& e)
+   catch (const Stream::StreamException& e)
    {
-      (e);
+      UNUSED(e);
    }
 }
 
@@ -161,12 +161,12 @@ void TestFileStream::TestOpen1()
 void TestFileStream::TestOpen2()
 {
    UnitTest::AutoCleanupFolder folder;
-   CString cszFilename(folder.FolderName());
-   cszFilename += _T("test.bin");
+   CString filename(folder.FolderName());
+   filename += _T("test.bin");
 
    // create file; shouldn't exist yet
    {
-      FileStream fs(cszFilename, FileStream::modeCreate, FileStream::accessWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeCreate, FileStream::accessWrite, FileStream::shareNone);
       Assert::IsTrue(fs.IsOpen());
 
       fs.WriteByte(42);
@@ -174,7 +174,7 @@ void TestFileStream::TestOpen2()
 
    // create file; should overwrite file
    {
-      FileStream fs(cszFilename, FileStream::modeCreate, FileStream::accessWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeCreate, FileStream::accessWrite, FileStream::shareNone);
       Assert::IsTrue(fs.IsOpen());
 
       fs.WriteByte(53);
@@ -182,7 +182,7 @@ void TestFileStream::TestOpen2()
 
    // read test file
    {
-      FileStream fs(cszFilename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
+      FileStream fs(filename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
       Assert::IsTrue(fs.IsOpen());
 
       Assert::IsTrue(53 == fs.ReadByte());
@@ -193,23 +193,23 @@ void TestFileStream::TestOpen2()
 void TestFileStream::TestOpen3()
 {
    UnitTest::AutoCleanupFolder folder;
-   CString cszFilename(folder.FolderName());
-   cszFilename += _T("test.bin");
+   CString filename(folder.FolderName());
+   filename += _T("test.bin");
 
    // open file; shouldn't exist yet, so should fail
    try
    {
-      FileStream fs(cszFilename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
+      FileStream fs(filename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
       Assert::IsTrue(false);
    }
-   catch (Stream::StreamException& e)
+   catch (const Stream::StreamException& e)
    {
-      (e);
+      UNUSED(e);
    }
 
    // create file
    {
-      FileStream fs(cszFilename, FileStream::modeCreate, FileStream::accessWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeCreate, FileStream::accessWrite, FileStream::shareNone);
       Assert::IsTrue(fs.IsOpen());
 
       fs.WriteByte(53);
@@ -217,7 +217,7 @@ void TestFileStream::TestOpen3()
 
    // open file; file exists now
    {
-      FileStream fs(cszFilename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
+      FileStream fs(filename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
       Assert::IsTrue(fs.IsOpen());
 
       Assert::IsTrue(53 == fs.ReadByte());
@@ -228,12 +228,12 @@ void TestFileStream::TestOpen3()
 void TestFileStream::TestOpen4()
 {
    UnitTest::AutoCleanupFolder folder;
-   CString cszFilename(folder.FolderName());
-   cszFilename += _T("test.bin");
+   CString filename(folder.FolderName());
+   filename += _T("test.bin");
 
    // open file; shouldn't exist yet, so should create a new file
    {
-      FileStream fs(cszFilename, FileStream::modeOpenOrCreate, FileStream::accessReadWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeOpenOrCreate, FileStream::accessReadWrite, FileStream::shareNone);
       Assert::IsTrue(fs.IsOpen());
 
       fs.WriteByte(53);
@@ -241,7 +241,7 @@ void TestFileStream::TestOpen4()
 
    // open file; file exists now
    {
-      FileStream fs(cszFilename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
+      FileStream fs(filename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
       Assert::IsTrue(fs.IsOpen());
 
       Assert::IsTrue(53 == fs.ReadByte());
@@ -252,23 +252,23 @@ void TestFileStream::TestOpen4()
 void TestFileStream::TestOpen5()
 {
    UnitTest::AutoCleanupFolder folder;
-   CString cszFilename(folder.FolderName());
-   cszFilename += _T("test.bin");
+   CString filename(folder.FolderName());
+   filename += _T("test.bin");
 
    // create file; shouldn't exist yet, so should fail
    try
    {
-      FileStream fs(cszFilename, FileStream::modeTruncate, FileStream::accessWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeTruncate, FileStream::accessWrite, FileStream::shareNone);
       Assert::IsTrue(false);
    }
-   catch (Stream::StreamException& e)
+   catch (const Stream::StreamException& e)
    {
-      (e);
+      UNUSED(e);
    }
 
    // create file
    {
-      FileStream fs(cszFilename, FileStream::modeCreate, FileStream::accessWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeCreate, FileStream::accessWrite, FileStream::shareNone);
       Assert::IsTrue(fs.IsOpen());
 
       fs.WriteByte(53);
@@ -277,7 +277,7 @@ void TestFileStream::TestOpen5()
 
    // create file; should exist now
    {
-      FileStream fs(cszFilename, FileStream::modeTruncate, FileStream::accessWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeTruncate, FileStream::accessWrite, FileStream::shareNone);
       Assert::IsTrue(fs.IsOpen());
 
       Assert::IsTrue(0 == fs.Position());
@@ -289,7 +289,7 @@ void TestFileStream::TestOpen5()
 
    // open file; check file contents
    {
-      FileStream fs(cszFilename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
+      FileStream fs(filename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
       Assert::IsTrue(fs.IsOpen());
       Assert::IsTrue(1 == fs.Length());
 
@@ -301,12 +301,12 @@ void TestFileStream::TestOpen5()
 void TestFileStream::TestOpen6()
 {
    UnitTest::AutoCleanupFolder folder;
-   CString cszFilename(folder.FolderName());
-   cszFilename += _T("test.bin");
+   CString filename(folder.FolderName());
+   filename += _T("test.bin");
 
    // create file; shouldn't exist yet
    {
-      FileStream fs(cszFilename, FileStream::modeCreate, FileStream::accessWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeCreate, FileStream::accessWrite, FileStream::shareNone);
       Assert::IsTrue(fs.IsOpen());
 
       fs.WriteByte(42);
@@ -314,7 +314,7 @@ void TestFileStream::TestOpen6()
 
    // append file
    {
-      FileStream fs(cszFilename, FileStream::modeAppend, FileStream::accessWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeAppend, FileStream::accessWrite, FileStream::shareNone);
       Assert::IsTrue(fs.IsOpen());
 
       fs.WriteByte(53);
@@ -322,7 +322,7 @@ void TestFileStream::TestOpen6()
 
    // append file again, trying to seek before position 2
    {
-      FileStream fs(cszFilename, FileStream::modeAppend, FileStream::accessWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeAppend, FileStream::accessWrite, FileStream::shareNone);
       Assert::IsTrue(fs.IsOpen());
 
       // seek to pos 2
@@ -334,7 +334,7 @@ void TestFileStream::TestOpen6()
 
    // read test file
    {
-      FileStream fs(cszFilename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
+      FileStream fs(filename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
       Assert::IsTrue(fs.IsOpen());
 
       Assert::IsTrue(42 == fs.ReadByte());
@@ -346,12 +346,12 @@ void TestFileStream::TestOpen6()
 void TestFileStream::TestSeek1()
 {
    UnitTest::AutoCleanupFolder folder;
-   CString cszFilename(folder.FolderName());
-   cszFilename += _T("test.bin");
+   CString filename(folder.FolderName());
+   filename += _T("test.bin");
 
-   Assert::IsTrue(CreateTestFile(cszFilename));
+   Assert::IsTrue(CreateTestFile(filename));
 
-   FileStream fs(cszFilename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
+   FileStream fs(filename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
    Assert::IsTrue(fs.IsOpen());
 
    Assert::IsTrue(6 == fs.Length());
@@ -379,9 +379,9 @@ void TestFileStream::TestSeek1()
       Assert::IsTrue(2 == fs.Seek(-1, Stream::IStream::seekBegin));
       Assert::IsTrue(false);
    }
-   catch (Stream::StreamException& e)
+   catch (const Stream::StreamException& e)
    {
-      (e);
+      UNUSED(e);
    }
 
    Assert::IsTrue(2 == fs.Position());
@@ -391,12 +391,12 @@ void TestFileStream::TestSeek1()
 void TestFileStream::TestSeek2()
 {
    UnitTest::AutoCleanupFolder folder;
-   CString cszFilename(folder.FolderName());
-   cszFilename += _T("test.bin");
+   CString filename(folder.FolderName());
+   filename += _T("test.bin");
 
-   Assert::IsTrue(CreateTestFile(cszFilename));
+   Assert::IsTrue(CreateTestFile(filename));
 
-   FileStream fs(cszFilename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
+   FileStream fs(filename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
    Assert::IsTrue(fs.IsOpen());
 
    // current pos: 0
@@ -421,9 +421,9 @@ void TestFileStream::TestSeek2()
       Assert::IsTrue(2 == fs.Seek(-3, Stream::IStream::seekCurrent));
       Assert::IsTrue(false);
    }
-   catch (Stream::StreamException& e)
+   catch (const Stream::StreamException& e)
    {
-      (e);
+      UNUSED(e);
    }
    Assert::IsTrue(2 == fs.Position());
 
@@ -440,12 +440,12 @@ void TestFileStream::TestSeek2()
 void TestFileStream::TestSeek3()
 {
    UnitTest::AutoCleanupFolder folder;
-   CString cszFilename(folder.FolderName());
-   cszFilename += _T("test.bin");
+   CString filename(folder.FolderName());
+   filename += _T("test.bin");
 
-   Assert::IsTrue(CreateTestFile(cszFilename));
+   Assert::IsTrue(CreateTestFile(filename));
 
-   FileStream fs(cszFilename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
+   FileStream fs(filename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
    Assert::IsTrue(fs.IsOpen());
 
    Assert::IsTrue(6 == fs.Length());
@@ -461,9 +461,9 @@ void TestFileStream::TestSeek3()
       Assert::IsTrue(4 == fs.Seek(-8, Stream::IStream::seekEnd));
       Assert::IsTrue(false);
    }
-   catch (Stream::StreamException& e)
+   catch (const Stream::StreamException& e)
    {
-      (e);
+      UNUSED(e);
    }
    Assert::IsTrue(4 == fs.Position());
 
@@ -480,16 +480,16 @@ void TestFileStream::TestSeek3()
 void TestFileStream::TestAtEndOfStream()
 {
    UnitTest::AutoCleanupFolder folder;
-   CString cszFilename(folder.FolderName());
-   cszFilename += _T("test.bin");
+   CString filename(folder.FolderName());
+   filename += _T("test.bin");
 
    // create a one-byte file
    {
-      FileStream fs(cszFilename, FileStream::modeCreateNew, FileStream::accessWrite, FileStream::shareNone);
+      FileStream fs(filename, FileStream::modeCreateNew, FileStream::accessWrite, FileStream::shareNone);
       fs.WriteByte(42);
    }
 
-   FileStream fs(cszFilename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
+   FileStream fs(filename, FileStream::modeOpen, FileStream::accessRead, FileStream::shareWrite);
    Assert::IsTrue(fs.IsOpen());
 
    Assert::IsFalse(fs.AtEndOfStream());
