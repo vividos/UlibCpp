@@ -11,6 +11,7 @@ assignment operators.
   methods are now marked deprecated, to be removed in version 4.3.0.
   Warning C4996 will show what calls have to be adjusted to the equivalent
   static methods.
+- Fixed some edge cases when parsing program options in ProgramOptions
 
 # Version 4.1.7
 

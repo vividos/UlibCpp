@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2008-2014,2017 Michael Fink
+// Copyright (C) 2008-2014,2017,2020 Michael Fink
 //
 /// \file ProgramOptions.hpp program options handling
 //
@@ -88,27 +88,6 @@ public:
 private:
    /// parses command line
    void Parse(CommandLineParser& parser);
-
-   /// calls single argument handler
-   static bool CallSingleArgHandler(const std::vector<CString>& argsList, T_fnOptionHandlerSingleArg fnHandler)
-   {
-      ATLASSERT(argsList.size() == 1);
-      return fnHandler(argsList[0]);
-   }
-
-   /// sets string argument to storage variable
-   static bool SetStringArgStorage(const CString& argument, CString& storage)
-   {
-      storage = argument;
-      return true;
-   }
-
-   /// sets bool argument to storage variable
-   static bool SetBoolArgStorage(bool& storage)
-   {
-      storage = true;
-      return true;
-   }
 
 private:
    /// info about a single option

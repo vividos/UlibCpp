@@ -23,36 +23,44 @@ void ProgramOptions::RegisterOption(const CString& shortOptionChars, const CStri
 void ProgramOptions::RegisterOption(const CString& shortOptionChars, const CString& longOption, const CString& helpText,
    T_fnOptionHandlerNoArg fnOptionHandler)
 {
-   T_fnOptionHandler fnOptionHandler2 = std::bind([&]() -> bool { return fnOptionHandler(); });
-
-   RegisterOption(shortOptionChars, longOption, helpText, 0, fnOptionHandler2);
+   RegisterOption(shortOptionChars, longOption, helpText, 0,
+      [fnOptionHandler](auto dummy)
+      {
+         return fnOptionHandler();
+      });
 }
 
 void ProgramOptions::RegisterOption(const CString& shortOptionChars, const CString& longOption,
    const CString& helpText, T_fnOptionHandlerSingleArg fnOptionHandler)
 {
-   T_fnOptionHandler fnOptionHandler2 =
-      std::bind(&ProgramOptions::CallSingleArgHandler, std::placeholders::_1, fnOptionHandler);
-
-   RegisterOption(shortOptionChars, longOption, helpText, 1, fnOptionHandler2);
+   RegisterOption(shortOptionChars, longOption, helpText, 1,
+      [fnOptionHandler](const std::vector<CString>& argsList)
+      {
+         ATLASSERT(argsList.size() == 1);
+         return fnOptionHandler(argsList[0]);
+      });
 }
 
 void ProgramOptions::RegisterOption(const CString& shortOptionChars, const CString& longOption,
    const CString& helpText, CString& argStorage)
 {
-   T_fnOptionHandlerSingleArg fnOptionHandler =
-      std::bind(&ProgramOptions::SetStringArgStorage, std::placeholders::_1, std::ref(argStorage));
-
-   RegisterOption(shortOptionChars, longOption, helpText, fnOptionHandler);
+   RegisterOption(shortOptionChars, longOption, helpText,
+      [&argStorage](const CString& argument)
+      {
+         argStorage = argument;
+         return true;
+      });
 }
 
 void ProgramOptions::RegisterOption(const CString& shortOptionChars, const CString& longOption,
    const CString& helpText, bool& optionFlag)
 {
-   T_fnOptionHandlerSingleArg fnOptionHandler =
-      std::bind(&ProgramOptions::SetBoolArgStorage, std::ref(optionFlag));
-
-   RegisterOption(shortOptionChars, longOption, helpText, fnOptionHandler);
+   RegisterOption(shortOptionChars, longOption, helpText, 0,
+      [&optionFlag](auto argsList)
+      {
+         optionFlag = true;
+         return true;
+      });
 }
 
 void ProgramOptions::RegisterHelpOption()
@@ -64,6 +72,8 @@ void ProgramOptions::RegisterHelpOption()
 
 bool ProgramOptions::OutputHelp()
 {
+   m_handledHelp = true;
+
    if (!m_fnOptionOutputHandler)
       return true;
 
@@ -99,8 +109,6 @@ bool ProgramOptions::OutputHelp()
    }
 
    m_fnOptionOutputHandler(helpText);
-
-   m_handledHelp = true;
 
    return true;
 }
@@ -166,8 +174,8 @@ void ProgramOptions::Parse(CommandLineParser& parser)
                CString paramArgs;
                for (unsigned int numArgs = 0; numArgs < optInfo.m_numArgs; numArgs++)
                {
-                  parser.GetNext(paramArgs);
-                  argsList.push_back(paramArgs);
+                  if (parser.GetNext(paramArgs))
+                     argsList.push_back(paramArgs);
                }
 
                if (argsList.size() < optInfo.m_numArgs)

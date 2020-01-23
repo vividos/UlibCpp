@@ -168,6 +168,7 @@
     <ClCompile Include="TestException.cpp" />
     <ClCompile Include="TestFileFinder.cpp" />
     <ClCompile Include="TestPath.cpp" />
+    <ClCompile Include="TestProgramOptions.cpp" />
     <ClCompile Include="TestReaderWriterMutex.cpp" />
     <ClCompile Include="TestResourceData.cpp" />
     <ClCompile Include="TestSingleton.cpp" />

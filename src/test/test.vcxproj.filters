@@ -113,6 +113,9 @@
     <ClCompile Include="thread\TestThread.cpp">
       <Filter>Source Files\thread</Filter>
     </ClCompile>
+    <ClCompile Include="TestProgramOptions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="test.rc">
