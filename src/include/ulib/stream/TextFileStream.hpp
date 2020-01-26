@@ -21,8 +21,8 @@ namespace Stream
          FileStream::EFileMode fileMode,
          FileStream::EFileAccess fileAccess,
          FileStream::EFileShare fileShare,
-         ETextEncoding textEncoding = textEncodingNative,
-         ELineEndingMode lineEndingMode = lineEndingCRLF)
+         ITextStream::ETextEncoding textEncoding = textEncodingNative,
+         ITextStream::ELineEndingMode lineEndingMode = lineEndingCRLF)
          :TextStreamFilter(m_fileStream, textEncoding, lineEndingMode),
          m_fileStream(filename, fileMode, fileAccess, fileShare)
       {

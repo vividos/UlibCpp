@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2007,2008,2012,2014,2017 Michael Fink
+// Copyright (C) 2007,2008,2012,2014,2017,2020 Michael Fink
 //
 /// \file ITextStream.hpp text stream interface
 //
@@ -15,18 +15,18 @@ namespace Stream
       /// text encoding that is possible for text files
       enum ETextEncoding
       {
-         textEncodingNative,  ///< native encoding; compiler options decide if ansi or unicode is used for output
-         textEncodingAnsi,    ///< ansi text encoding; depends on the current codepage (not recommended)
+         textEncodingNative,  ///< native encoding; compiler options decide if ANSI or Unicode is used for output
+         textEncodingAnsi,    ///< ANSI text encoding; depends on the current codepage (not recommended)
          textEncodingUTF8,    ///< UTF-8 encoding
          textEncodingUCS2,    ///< UCS-2 encoding
       };
 
-      /// line ending mode used to detect lines or for writing
+      /// line ending mode used to detect lines or is used for writing
       enum ELineEndingMode
       {
          lineEndingCRLF,   ///< a CR and LF char (\\r\\n) is used to separate lines; Win32-style
          lineEndingLF,     ///< a LF char (\\n) is used to separate lines; Linux-style
-         lineEndingCR,     ///< a CR char (\\r) is used to separate lines; MAC-style
+         lineEndingCR,     ///< a CR char (\\r) is used to separate lines; Mac-style
          lineEndingReadAny,///< when reading, any of the above line ending modes are detected when using ReadLine()
          lineEndingNative, ///< native mode is used
       };
