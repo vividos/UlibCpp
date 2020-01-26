@@ -30,7 +30,7 @@ public:
    void Register(std::reference_wrapper<TClass> ref)
    {
       std::string name = typeid(TClass).raw_name();
-      m_mapAllInstances.insert(std::make_pair(name, ref));
+      m_mapAllInstances[name] = ref;
    }
 
    /// resolves class to object
