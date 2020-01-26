@@ -1,7 +1,7 @@
 @echo off
 REM
 REM ulib - a collection of useful classes
-REM Copyright (C) 2000-2019 Michael Fink
+REM Copyright (C) 2000-2020 Michael Fink
 REM
 REM Pushes NuGet package to NuGet.org
 REM
@@ -11,6 +11,6 @@ if "%NUGET_APIKEY%" == "" echo "Note: API keys are managed under https://www.nug
 if "%NUGET_APIKEY%" == "" exit 1
 
 nuget setApiKey %NUGET_APIKEY%
-nuget push Vividos.UlibCpp.Static.4.1.7.nupkg -Source https://www.nuget.org/api/v2/package 
+nuget push Vividos.UlibCpp.Static.4.2.0.nupkg -Source https://www.nuget.org/api/v2/package
 
 pause
