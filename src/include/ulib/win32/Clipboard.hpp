@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2007,2008,2017 Michael Fink
+// Copyright (C) 2007,2008,2017,2020 Michael Fink
 //
 /// \file Clipboard.hpp clipboard class
 //
@@ -41,6 +41,7 @@ namespace Win32
       void SetText(const CString& text);
 
       /// sets HTML text
+      [[deprecated("don't use the SetHtml() method, it is removed in future versions")]]
       void SetHtml(const CString& htmlFragment, const CString& sourceURL);
 
       /// sets clipboard data; generic function

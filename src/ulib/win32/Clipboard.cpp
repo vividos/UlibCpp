@@ -97,23 +97,12 @@ void Clipboard::SetText(const CString& text)
 #endif
 }
 
-/// \todo not implemented
 void Clipboard::SetHtml(const CString& htmlFragment, const CString& sourceURL)
 {
    UNUSED(htmlFragment);
    UNUSED(sourceURL);
 
-   // format see here:
-   // http://msdn.microsoft.com/en-us/library/ms649015(VS.85).aspx
-   CString text;
-
-   // now convert everything to UTF8
-   std::vector<char> utf8text;
-   StringToUTF8(text, utf8text);
-
-   UINT cfhtml = RegisterFormat(_T("HTML Format"));
-
-   SetData(cfhtml, reinterpret_cast<const BYTE*>(utf8text.data()), static_cast<UINT>(utf8text.size()));
+   ATLASSERT(false);
 }
 
 void Clipboard::SetData(UINT format, const BYTE* dataPtr, UINT size)
