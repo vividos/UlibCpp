@@ -236,7 +236,7 @@ references to objects in a central place.
 
        /// registers reference for class
        template <typename TClass>
-       void Register(boost::reference_wrapper<TClass> ref);
+       void Register(std::reference_wrapper<TClass> ref);
 
        /// resolves class to object
        template <typename TInterface>

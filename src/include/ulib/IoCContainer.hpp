@@ -45,7 +45,7 @@ public:
          throw std::runtime_error(std::string("class not registered: ") + typeid(TInterface).name());
 
       std::reference_wrapper<TInterface> ref =
-         boost::any_cast<boost::reference_wrapper<TInterface>>(iter->second);
+         boost::any_cast<std::reference_wrapper<TInterface>>(iter->second);
 
       return ref.get();
    }
