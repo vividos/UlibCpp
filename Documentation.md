@@ -1116,8 +1116,823 @@ when compiling and linking an Android C++ project type.
 
 ## Stream
 
+The `stream` include folder contains classes for handing binary files, text
+files and other streams. The classes are inspired by C#'s `System.IO.Stream`
+classes.
+
+### IStream interface
+
+`#include <ulib/stream/IStream.hpp>`
+
+This header defines the `IStream` interface that describes a stream that can
+be read from, written to and seeked on.
+
+    namespace Stream
+    {
+       class IStream
+       {
+       public:
+          /// origin for Seek() operations
+          enum ESeekOrigin
+          {
+             seekBegin = 0,
+             seekCurrent = 1,
+             seekEnd = 2,
+          };
+
+          virtual ~IStream();
+
+          // stream capabilities
+
+          /// returns true when stream can be read
+          virtual bool CanRead() const = 0;
+          /// returns true when stream can be written to
+          virtual bool CanWrite() const = 0;
+          /// returns true when seek operations are possible in the stream
+          virtual bool CanSeek() const = 0;
+
+          // read support
+
+          /// reads amount of data into given buffer; returns if stream is at its end
+          virtual bool Read(void* buffer, DWORD maxBufferLength, DWORD& numBytesRead) = 0;
+          /// reads one byte
+          virtual BYTE ReadByte();
+
+          /// returns true when the stream end is reached
+          virtual bool AtEndOfStream() const = 0;
+
+          // write support
+
+          /// writes out given data buffer
+          virtual void Write(const void* dataToWrite, DWORD lengthInBytes, DWORD& numBytesWritten) = 0;
+          /// writes out single byte
+          virtual void WriteByte(BYTE byteToWrite);
+
+          // seek support
+
+          /// seeks to given position, regarding given origin
+          virtual ULONGLONG Seek(LONGLONG seekOffset, ESeekOrigin origin) = 0;
+          /// returns current position in stream
+          virtual ULONGLONG Position() = 0;
+          /// returns length of stream
+          virtual ULONGLONG Length() = 0;
+
+          /// flushes data
+          virtual void Flush() = 0;
+          /// closes stream
+          virtual void Close() = 0;
+       };
+    }
+
+### Stream exception
+
+`#include <ulib/stream/StreamException.hpp>`
+
+This header defines a `StreamException` class that is used throughout the
+stream classes to report errors.
+
+    namespace Stream
+    {
+       class StreamException : public Exception
+       {
+       public:
+          StreamException(LPCSTR sourceFile, UINT sourceLine);
+          StreamException(const CString& message, LPCSTR sourceFile, UINT sourceLine)
+       };
+    }
+
+See the `Exception` class for more member functions.
+
+### File stream
+
+`#include <ulib/stream/FileStream.hpp>`
+
+The `FileStream` class implements `IStream` based on a file in storage.
+
+    namespace Stream
+    {
+       class FileStream : public IStream
+       {
+       public:
+          /// file open mode
+          enum EFileMode
+          {
+             modeCreateNew = 1,   ///< creates a new file; fails when it already exists
+             modeCreate = 2,      ///< create a new file; if it already exists, it is overwritten
+             modeOpen = 3,        ///< open an existing file; fail when no file was found
+             modeOpenOrCreate = 4,///< open an existing file; create empty file when no file was found
+             modeTruncate = 5,    ///< open an existing file; truncate file to 0 bytes; fail when no file was found
+             modeAppend = 6,      ///< like modeOpen, and seeks to the end of the file; no seek before end is allowed
+          };
+
+          /// file access
+          enum EFileAccess
+          {
+             accessRead = 0x80000000,      ///< read access to file only
+             accessWrite = 0x40000000,     ///< write access to file only
+             accessReadWrite = 0xC0000000, ///< read and write access to file
+          };
+
+          /// file share mode
+          enum EFileShare
+          {
+             shareNone = 0,       ///< declines reading or writing the file
+             shareRead = 1,       ///< allows reading from the file
+             shareWrite = 2,      ///< allows writing to the file
+             shareReadWrite = 3,  ///< allows both reading and writing
+             shareDelete = 4,     ///< file can be deleted by others
+          };
+
+          /// ctor; opens or creates a file
+          FileStream(LPCTSTR filename, EFileMode fileMode, EFileAccess fileAccess, EFileShare fileShare);
+
+          /// returns if the file was successfully opened
+          bool IsOpen() const;
+
+          // more overridden IStream methods...
+      };
+    }
+
+### Read-only memory stream
+
+`#include <ulib/stream/MemoryReadStream.hpp>`
+
+
+The `MemoryReadStream` class represents a memory-based stream that can only
+be read from. Seeking is possible, but not beyond the buffer size. `CanWrite()`
+returns false.
+
+    namespace Stream
+    {
+       class MemoryReadStream : public IStream
+       {
+       public:
+          MemoryReadStream(const BYTE* data, DWORD_PTR length);
+
+          // more overridden IStream methods...
+       };
+    }
+
+### Read-write memory stream
+
+`#include <ulib/stream/MemoryStream.hpp>`
+
+The `MemoryStream` class represents a memory-based stream that can be read
+from and be written to. Writing beyond the current memory expands the memory space.
+Seeking beyond the current memory space isn't possible.
+
+    namespace Stream
+    {
+       class MemoryStream : public IStream
+       {
+       public:
+          /// ctor; opens an empty memory stream
+          MemoryStream();
+
+          /// ctor; provides memory contents for memory stream
+          MemoryStream(const BYTE* dataToUse, DWORD_PTR lengthInBytes);
+
+          /// returns data
+          const std::vector<BYTE>& GetData() const;
+
+          // more overridden IStream methods...
+       };
+    }
+
+### Null stream
+
+`#include <ulib/stream/NullStream.hpp>`
+
+The `NullStream` class implements a stream that behaves like `/dev/zero`:
+Reading results in zeros, writing discards data, and seeking always seeks to
+position 0.
+
+    namespace Stream
+    {
+       class NullStream : public IStream
+       {
+       public:
+          NullStream();
+
+          // more overridden IStream methods...
+       };
+    }
+
+### Endian aware filter
+
+`#include <ulib/stream/EndianAwareFilter.hpp>`
+
+The `EndianAwareFilter` implements some helper methods for reading and writing
+16-bit and 32-bit values in an endian aware fashion. It can be used with any
+`IStream` implementation. The method suffixes `LE` means little-endian and
+`BE` means big-endian.
+
+    namespace Stream
+    {
+       class EndianAwareFilter
+       {
+       public:
+          EndianAwareFilter(IStream& stream);
+
+          WORD Read16LE();
+          WORD Read16BE();
+          DWORD Read32LE();
+          DWORD Read32BE();
+
+          void Write16LE(WORD w);
+          void Write16BE(WORD w);
+          void Write32LE(DWORD dw);
+          void Write32BE(DWORD dw);
+       };
+    }
+
+# ITextStream interface
+
+`#include <ulib/stream/ITextStream.hpp>`
+
+This header defines the `ITextStream` interface that describes a text based
+stream that can be read from and written to, both per-character and per-line.
+The interface has similarities to `IStream` but doesn't derive from
+it.
+
+    namespace Stream
+    {
+       class ITextStream
+       {
+       public:
+          /// text encoding that is possible for text files
+          enum ETextEncoding
+          {
+             textEncodingNative,  ///< native encoding; compiler options decide if ANSI or Unicode is used for output
+             textEncodingAnsi,    ///< ANSI text encoding; depends on the current codepage (not recommended)
+             textEncodingUTF8,    ///< UTF-8 encoding
+             textEncodingUCS2,    ///< UCS-2 encoding
+          };
+
+          /// line ending mode used to detect lines or is used for writing
+          enum ELineEndingMode
+          {
+             lineEndingCRLF,   ///< a CR and LF char (\\r\\n) is used to separate lines; Win32-style
+             lineEndingLF,     ///< a LF char (\\n) is used to separate lines; Linux-style
+             lineEndingCR,     ///< a CR char (\\r) is used to separate lines; Mac-style
+             lineEndingReadAny,///< when reading, any of the above line ending modes are detected when using ReadLine()
+             lineEndingNative, ///< native mode is used
+          };
+
+          /// ctor
+          ITextStream(ETextEncoding textEncoding = textEncodingNative,
+             ELineEndingMode lineEndingMode = lineEndingNative);
+
+          /// dtor
+          virtual ~ITextStream();
+
+          // stream capabilities
+
+          /// returns text encoding currently in use
+          ETextEncoding TextEncoding() const;
+
+          /// returns line ending mode currently in use
+          ELineEndingMode LineEndingMode() const;
+
+          /// returns true when stream can be read
+          virtual bool CanRead() const = 0;
+
+          /// returns true when stream can be written to
+          virtual bool CanWrite() const = 0;
+
+          /// returns true when the stream end is reached
+          virtual bool AtEndOfStream() const = 0;
+
+          // read support
+
+          /// reads a single character
+          virtual TCHAR ReadChar() = 0;
+
+          /// reads a whole line using line ending settings
+          virtual void ReadLine(CString& line) = 0;
+
+          // write support
+
+          /// writes text
+          virtual void Write(const CString& text) = 0;
+
+          /// writes endline character
+          virtual void WriteEndline() = 0;
+
+          /// writes a line
+          void WriteLine(const CString& line);
+
+          /// flushes out text stream
+          virtual void Flush() = 0;
+       };
+    }
+
+### Text stream filter
+
+`#include <ulib/stream/TextStreamFilter.hpp>`
+
+The `TextStreamFilter` class is an implementation of `ITextStream` that uses
+an underlying `IStream` to read from or write to a stream of any type. The
+ctor needs the properties for text encoding and line ending to determine the
+text format.
+
+    namespace Stream
+    {
+       class TextStreamFilter : public ITextStream
+       {
+       public:
+          TextStreamFilter(IStream& stream,
+             ETextEncoding textEncoding = textEncodingNative,
+             ELineEndingMode lineEndingMode = lineEndingNative);
+
+            /// returns underlying stream (const version)
+            const IStream& Stream() const;
+
+            /// returns underlying stream
+            IStream& Stream();
+
+            // more overridden ITextStream methods...
+       };
+    }
+
+### Text file stream
+
+`#include <ulib/stream/TextFileStream.hpp>`
+
+The `TextFileStream` implements reading from a text file. It's derived from
+`TextStreamFilter` to provide the char-based and line-based read and write
+methods, and internally uses a `FileStream` to access the file in storage.
+
+    namespace Stream
+    {
+       /// text file stream
+       class TextFileStream : public TextStreamFilter
+       {
+       public:
+          /// ctor; opens or creates text file stream
+          TextFileStream(LPCTSTR filename,
+             EFileMode fileMode,
+             EFileAccess fileAccess,
+             EFileShare fileShare,
+             ETextEncoding textEncoding = textEncodingNative,
+             ELineEndingMode lineEndingMode = lineEndingCRLF);
+
+          /// returns if the file was successfully opened
+          bool IsOpen() const;
+
+          /// returns true when the file end is reached
+          bool AtEndOfStream() const;
+
+       private:
+          /// file stream
+          FileStream m_fileStream;
+       };
+    }
+
 ## Threading
 
-## Unit test support
+The `thread` include folder contains classes for multithreading purposes.
+
+### Event classes
+
+`#include <ulib/thread/Event.hpp>`
+
+Defines two classes `ManualResetEvent` and `AutoResetEvent` that share the
+same interface but differ in what happens when an event is `Wait()`ed on. The
+ctor and the methods may throw a `SystemException` on error.
+
+    class ManualResetEvent
+    {
+    public:
+       ManualResetEvent(bool initialState);
+
+       /// sets event
+       void Set();
+
+       /// resets event
+       void Reset()
+
+       /// waits given time (or infinitely) for event to get set
+       bool Wait(DWORD timeoutInMilliseconds = INFINITE);
+
+       /// returns internal event handle
+       HANDLE Handle() const;
+    };
+
+### Mutex common header
+
+`#include <ulib/thread/Mutex.hpp>`
+
+Includes all other mutex related header files.
+
+### Lightweight mutex
+
+`#include <ulib/thread/LightweightMutex.hpp>`
+
+Defines a light-weight, non-recursive mutex that may not call into kernel, and
+so performing much faster than other mutex types. This is implemented using a
+critical section. The ctor and the methods may throw a `SystemException` on
+error. Note that this class is always used together with the `MutexLock`
+class.
+
+    class LightweightMutex
+    {
+    public:
+       /// lock type
+       typedef MutexLock<LightweightMutex> LockType;
+
+       /// ctor
+       LightweightMutex();
+
+       /// dtor
+       ~LightweightMutex();
+    };
+
+### Mutex lock classes
+
+`#include <ulib/thread/MutexLock.hpp>`
+
+Locks are used to obtain access to the object protected by the mutex. The lock
+classes are templated classes that have access to the implementation of the
+various mutex classes. `MutexLock` locks the given mutex while the object is
+live:
+
+    template <typename T>
+    class MutexLock
+    {
+    public:
+       /// ctor; locks mutex
+       MutexLock(T& mutex);
+       /// dtor; unlocks object
+       ~MutexLock();
+    };
+
+The `MutexTryLock` doesn't lock in the ctor, but provides a `Try()` method:
+
+    template <typename T>
+    class MutexTryLock
+    {
+    public:
+       /// ctor; takes a lockable object, but doesn't lock it yet
+       MutexTryLock(T& mutex);
+
+       /// dtor; unlocks object
+       ~MutexTryLock();
+
+       /// tries locking mutex until timeout (in milliseconds)
+       bool Try(DWORD timeoutInMilliseconds);
+    };
+
+The `MutexUnLocker` class can temporarily unlock a locked mutex:
+
+    template <typename T>
+    class MutexUnLocker
+    {
+    public:
+       /// ctor; takes a lockable object and unlocks it
+       MutexUnLocker(T& mutex);
+
+       /// dtor; locks object
+       ~MutexUnLocker();
+    };
+
+### Reader-writer mutex
+
+`#include <ulib/thread/ReaderWriterMutex.hpp>`
+
+A mutex that supports locking for reading and for writing. Multiple readers
+can lock the mutex, with only one writer being able to lock it for writing.
+
+    class ReaderWriterMutex
+    {
+    public:
+       ReaderWriterMutex();
+       ~ReaderWriterMutex();
+    };
+
+There are two custom lock classes that can be used with `ReaderWriterMutex`.
+The reader lock can be obtained multiple times:
+
+    class ReaderLock
+    {
+    public:
+       /// ctor; locks the mutex as reader
+       ReaderLock(ReaderWriterMutex& mutex);
+       /// dtor; releases the mutex
+       ~ReaderLock();
+    };
+
+Only one writer lock can be obtained at any time:
+
+    class WriterLock
+    {
+    public:
+       /// ctor; locks the mutex as writer
+       WriterLock(ReaderWriterMutex& mutex);
+       /// dtor; releases the mutex
+       ~WriterLock();
+    };
+
+### Recursive mutex
+
+`#include <ulib/thread/RecursiveMutex.hpp>`
+
+A recursively lockable mutex. This is implemented using a system mutex. The
+ctor may throw a `SystemException` on error. Note that this class is always
+used together with the `MutexLock` or `MutexTryLock` class.
+
+    class RecursiveMutex
+    {
+    public:
+       /// lock type
+       typedef MutexLock<RecursiveMutex> LockType;
+
+       /// try-lock type
+       typedef MutexTryLock<RecursiveMutex> TryLockType;
+
+       RecursiveMutex();
+    };
+
+### Thread handing
+
+`#include <ulib/thread/Thread.hpp>`
+
+The `Thread` class provides two methods for threads:
+
+    class Thread
+    {
+    public:
+       /// sets thread name for current or specified thread
+       static void SetName(LPCTSTR threadName, DWORD threadId = DWORD(-1))
+
+       /// returns current thread ID
+       static DWORD CurrentId();
+    };
+
+The thread name appears in the debugger Threads window and may also appear in
+minidump crash dumps.
+
+## Unit test
+
+The `unittest` include folder contains classes supporting writing unit tests.
+
+### Auto-cleanup file
+
+`#include <ulib/unittest/AutoCleanupFile.hpp>`
+
+Provides a RAII class that deletes the file specified as soon as the object
+goes out of scope:
+
+    namespace UnitTest
+    {
+       class AutoCleanupFile
+       {
+       public:
+          AutoCleanupFile(LPCTSTR filename)
+          ~AutoCleanupFile();
+       };
+    }
+
+### Auto-cleanup folder
+
+`#include <ulib/unittest/AutoCleanupFolder.hpp>`
+
+Provides a RAII class that creates a temporary folder that is deleted (as well
+as its contents) as soon as the object goes out of scope:
+
+    namespace UnitTest
+    {
+       class AutoCleanupFolder
+       {
+       public:
+          AutoCleanupFile()
+          ~AutoCleanupFile();
+          const CString& FolderName() const;
+
+       };
+    }
 
 ## Win32 API
+
+The `win32` include folder contains helper classes for the Win32 API.
+
+### Clipboard
+
+`#include <ulib/Clipboard.hpp>`
+
+Provides access to the Win32 clipboard.
+
+    namespace Win32
+    {
+       class Clipboard
+       {
+       public:
+          Clipboard(HWND hwnd = nullptr);
+
+          ~Clipboard();
+
+          /// empties the clipboard
+          void Clear() const;
+
+          /// returns number of formats currently on the clipboard
+          int CountFormats() const;
+
+          /// checks if a given format is available
+          static bool IsFormatAvail(UINT format);
+
+          /// returns text format (CF_TEXT or CF_UNICODETEXT)
+          CString GetText();
+
+          /// returns binary data for given clipboard format
+          void GetData(UINT format, std::vector<BYTE>& data);
+
+          /// sets clipboard text as format CF_TEXT or CF_UNICODETEXT (depending on build options)
+          void SetText(const CString& text);
+
+          /// sets clipboard data; generic function
+          void SetData(UINT format, const BYTE* dataPtr, UINT size);
+
+          /// registers a given format name
+          UINT RegisterFormat(LPCTSTR formatName) const;
+
+          /// returns format name for given format id
+          CString GetFormatName(UINT format) const;
+
+          /// enumerates all clipboard formats currently available on the clipboard
+          void EnumFormats(std::vector<UINT>& formatList) const;
+       };
+    }
+
+The class and its functions should be pretty self explanatory.
+
+### Embedded browser support
+
+`#include <ulib/DocHostUI.hpp>`
+
+This header file provides a default implementation of the automation interface
+`IDocHostUIHandlerDispatch` that is used when customizing an IE WebBrowser
+control. Derive your class from `IDocHostUIHandlerDispatchImpl` and
+implement the methods that interest you. See detailed commands in the header
+file itself.
+
+### Win32 error messages
+
+`#include <ulib/ErrorMessage.hpp>`
+
+Helps with handling Win32 error messages. Format an error code like this:
+
+    DWORD win32ErrorCode = GetLastError(); // also for HRESULTs
+    CString message = Win32::ErrorMessage(win32ErrorCode).ToString();
+
+### Ini file access
+
+`#include <ulib/IniFile.hpp>`
+
+Encapsulates access to .ini files:
+
+    class IniFile
+    {
+    public:
+       IniFile(const CString& iniFilename);
+
+       /// returns integer value from section and key
+       int GetInt(LPCTSTR sectionName, LPCTSTR keyName, int defaultValue);
+
+       /// returns string value from section and key
+       CString GetString(LPCTSTR sectionName, LPCTSTR keyName, LPCTSTR defaultValue);
+
+       /// writes a string value to a section and key
+       void WriteString(LPCTSTR sectionName, LPCTSTR keyName, LPCTSTR value);
+    };
+
+### Process handling
+
+`#include <ulib/Process.hpp>`
+
+The `Process` class provides an easy way to start a process, without worrying
+abount missing closing any handles.
+
+namespace Win32
+{
+   class Process
+   {
+   public:
+      /// sets working directory for process
+      void WorkingDirectory(const CString& workingDirectory);
+
+      /// creates process with given command line
+      bool Create(const CString& commandLine);
+
+      /// returns process handle
+      HANDLE ProcessHandle() const;
+   };
+
+}
+
+### Resource data handling
+
+`#include <ulib/ResourceData.hpp>`
+
+Helps accessing data that is stored in the resources, e.g. as `RT_RCDATA` type.
+
+    namespace Win32
+    {
+       class ResourceData
+       {
+       public:
+          ResourceData(LPCTSTR resourceName, LPCTSTR resourceType = _T("\"RT_RCDATA\""),
+             HINSTANCE instanceHandle = nullptr);
+
+          /// returns true if the resource is available
+          bool IsAvailable() const;
+
+          /// returns resource data as byte array
+          bool AsRawData(std::vector<BYTE>& rawData);
+
+          /// returns resource data as string
+          CString AsString(bool storedAsUnicode = false);
+
+          /// saves resource data as file
+          bool AsFile(LPCTSTR filename);
+       };
+    }
+
+The ctor lets you pass the resource name, e.g. using the `MAKEINTRESOURCE()`
+macro, and the resource type. You can also specify a different instance
+handle, e.g. when using resource DLLs.
+
+### Version info resource
+
+`#include <ulib/VersionInfoResource.hpp>`
+
+The `VersionInfoResource` class lets you access the version info resource
+stored in an .exe or .dll file. There are fixed infos and language-dependent
+resources.
+
+    VersionInfoResource resource{ filename };
+    if (!resource.IsAvail())
+       return;
+    FixedFileInfo* info = resource.GetFixedFileInfo();
+
+The `FixedFileInfo` class looks like this:
+
+    class FixedFileInfo : public VS_FIXEDFILEINFO
+    {
+    public:
+       CString GetFileVersion() const;
+       CString GetProductVersion() const;
+       CString GetFileOS() const;
+       CString GetFileType() const;
+    };
+
+The four methods serve to format a displayable text from the infos stored in
+the Win32's `VS_FIXEDFILEINFO` struct.
+
+Version info resources may also contain language-dependent strings. The
+languages can be queried like this:
+
+    typedef struct tagLANGANDCODEPAGE
+    {
+       WORD wLanguage; // language code
+       WORD wCodePage; // code page
+    } LANGANDCODEPAGE, *PLANGANDCODEPAGE;
+
+    void GetLangAndCodepages(std::vector<LANGANDCODEPAGE>& langAndCodepageList);
+
+    CString GetStringValue(const LANGANDCODEPAGE& langAndCodepage, LPCTSTR valueName);
+
+First get all `LANGANDCODEPAGE` entries using `GetLangAndCodepages()`, then
+call `GetStringValue()`, specifying the value name. These can be e.g.
+"Comment", "ProductName", "SpecialBuild" or any other text values appearing in
+the version info resource.
+
+### Windows 7 task bar
+
+`#include <ulib/Win7Taskbar.hpp>`
+
+Provides access to the Taskbar and its functionality introduced in Windows 7.
+The main goal is to control the task bar icon's progress bar.
+
+This opens the taskbar for the given HWND:
+
+    Win32::Taskbar taskbar{ m_hWnd };
+    if (!taskbar.IsAvailable())
+       return; // below Windows 7
+
+You can open the progress bar for the taskbar icon for this process:
+
+    Win32::TaskbarProgressBar progressBar = taskbar.OpenProgressBar();
+
+    progressBar.SetState(TBPF_NORMAL);
+    progressBar.SetPos(40, 100); // 40 of 100 percent done
+
+Other states that can be set are:
+
+- `TBPF_NOPROGRESS`: Stops showing progress
+- `TBPF_INDETERMINATE`: Shows an indeterminate progress, cycling repeatedly
+- `TBPF_NORMAL`: Shows normal progress using the values set via `SetPos()`
+- `TBPF_ERROR`: Shows error progress (red background color)
+- `TBPF_PAUSED`: Shows paused progress (yellow background color)
+
+When `TaskbarProgressBar` leaves the scope and the dtor is called, the
+progress is also set to `TBPF_NOPROGRESS`.
