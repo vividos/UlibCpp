@@ -1,5 +1,12 @@
 # UlibCpp Changelog
 
+# Version 4.2.1
+
+Compiled with Visual Studio 2019 Version 16.5.0 and Boost 1.71.
+
+- Fixed crash in Win32::Taskbar class when internal ITaskbarList3 COM object
+ couldn't be accessed
+
 # Version 4.2.0
 
 Compiled with Visual Studio 2019 Version 16.4.3 and Boost 1.71.
