@@ -35,14 +35,20 @@ void TaskbarProgressBar::SetState(TaskbarProgressBarState state)
       state == TBPF_ERROR ||
       state == TBPF_PAUSED);
 
-   m_impl->m_taskBarList->SetProgressState(
-      m_impl->m_hwnd,
-      static_cast<TBPFLAG>(state));
+   if (m_impl != nullptr && m_impl->m_taskBarList != nullptr)
+   {
+      m_impl->m_taskBarList->SetProgressState(
+         m_impl->m_hwnd,
+         static_cast<TBPFLAG>(state));
+   }
 }
 
 void TaskbarProgressBar::SetPos(UINT currentPos, UINT maxPos)
 {
-   m_impl->m_taskBarList->SetProgressValue(m_impl->m_hwnd, currentPos, maxPos);
+   if (m_impl != nullptr && m_impl->m_taskBarList != nullptr)
+   {
+      m_impl->m_taskBarList->SetProgressValue(m_impl->m_hwnd, currentPos, maxPos);
+   }
 }
 
 Taskbar::Taskbar(HWND hwnd)
@@ -54,5 +60,5 @@ Taskbar::Taskbar(HWND hwnd)
 
 bool Taskbar::IsAvailable() const
 {
-   return m_impl->m_taskBarList != nullptr;
+   return m_impl != nullptr && m_impl->m_taskBarList != nullptr;
 }
