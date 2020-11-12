@@ -1718,7 +1718,7 @@ The `win32` include folder contains helper classes for the Win32 API.
 
 ### Clipboard
 
-`#include <ulib/Clipboard.hpp>`
+`#include <ulib/win32/Clipboard.hpp>`
 
 Provides access to the Win32 clipboard.
 
@@ -1767,7 +1767,7 @@ The class and its functions should be pretty self explanatory.
 
 ### Embedded browser support
 
-`#include <ulib/DocHostUI.hpp>`
+`#include <ulib/win32/DocHostUI.hpp>`
 
 This header file provides a default implementation of the automation interface
 `IDocHostUIHandlerDispatch` that is used when customizing an IE WebBrowser
@@ -1777,7 +1777,7 @@ file itself.
 
 ### Win32 error messages
 
-`#include <ulib/ErrorMessage.hpp>`
+`#include <ulib/win32/ErrorMessage.hpp>`
 
 Helps with handling Win32 error messages. Format an error code like this:
 
@@ -1786,7 +1786,7 @@ Helps with handling Win32 error messages. Format an error code like this:
 
 ### Ini file access
 
-`#include <ulib/IniFile.hpp>`
+`#include <ulib/win32/IniFile.hpp>`
 
 Encapsulates access to .ini files:
 
@@ -1807,7 +1807,7 @@ Encapsulates access to .ini files:
 
 ### Process handling
 
-`#include <ulib/Process.hpp>`
+`#include <ulib/win32/Process.hpp>`
 
 The `Process` class provides an easy way to start a process, without worrying
 abount missing closing any handles.
@@ -1831,7 +1831,7 @@ namespace Win32
 
 ### Resource data handling
 
-`#include <ulib/ResourceData.hpp>`
+`#include <ulib/win32/ResourceData.hpp>`
 
 Helps accessing data that is stored in the resources, e.g. as `RT_RCDATA` type.
 
@@ -1863,7 +1863,7 @@ handle, e.g. when using resource DLLs.
 
 ### Version info resource
 
-`#include <ulib/VersionInfoResource.hpp>`
+`#include <ulib/win32/VersionInfoResource.hpp>`
 
 The `VersionInfoResource` class lets you access the version info resource
 stored in an .exe or .dll file. There are fixed infos and language-dependent
@@ -1908,7 +1908,7 @@ the version info resource.
 
 ### Windows 7 task bar
 
-`#include <ulib/Win7Taskbar.hpp>`
+`#include <ulib/win32/Win7Taskbar.hpp>`
 
 Provides access to the Taskbar and its functionality introduced in Windows 7.
 The main goal is to control the task bar icon's progress bar.
@@ -1936,3 +1936,22 @@ Other states that can be set are:
 
 When `TaskbarProgressBar` leaves the scope and the dtor is called, the
 progress is also set to `TBPF_NOPROGRESS`.
+
+### System image list
+
+`#include <ulib/win32/SystemImageList.hpp>`
+
+Provides two static methods in the `SystemImageList` class:
+
+    class SystemImageList
+    {
+       static CImageList Get(bool smallIcons);
+       static int IndexFromFilename(LPCTSTR filename);
+    };
+
+The `Get()` method returns the system's image list. Use this for list views or
+tree views that show file icons. Be sure to mark the image list as shared,
+e.g. using the LVS_SHAREIMAGELISTS style on list views.
+
+The `IndexFromFilename()` returns an image list index for the given filename.
+The file name doesn't have to exist.
