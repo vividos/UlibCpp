@@ -11,6 +11,6 @@ if "%NUGET_APIKEY%" == "" echo "Note: API keys are managed under https://www.nug
 if "%NUGET_APIKEY%" == "" exit 1
 
 nuget setApiKey %NUGET_APIKEY%
-nuget push Vividos.UlibCpp.Static.4.2.1.nupkg -Source https://www.nuget.org/api/v2/package
+nuget push Vividos.UlibCpp.Static.4.2.2.nupkg -Source https://www.nuget.org/api/v2/package
 
 pause

@@ -1,5 +1,13 @@
 # UlibCpp Changelog
 
+# Version 4.2.2
+
+Compiled with Visual Studio 2019 Version 16.7.7 and Boost 1.72.
+
+This version suppresses more warnings when including Boost and WTL headers.
+
+New classes: SystemImageList
+
 # Version 4.2.1
 
 Compiled with Visual Studio 2019 Version 16.5.0 and Boost 1.71.
