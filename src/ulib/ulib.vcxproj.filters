@@ -251,6 +251,9 @@
     <ClInclude Include="..\include\ulib\ulib.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ulib\win32\SystemImageList.hpp">
+      <Filter>Public Include Files\win32</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -323,6 +326,9 @@
       <Filter>Source Files\win32</Filter>
     </ClCompile>
     <ClCompile Include="win32\VersionInfoResource.cpp">
+      <Filter>Source Files\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\SystemImageList.cpp">
       <Filter>Source Files\win32</Filter>
     </ClCompile>
   </ItemGroup>
