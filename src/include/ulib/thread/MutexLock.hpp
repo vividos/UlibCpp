@@ -25,13 +25,13 @@ public:
    }
 
    /// move ctor; moves an already locked mutex to this object
-   MutexLock(MutexLock&& lock)
+   MutexLock(MutexLock&& lock) noexcept
       :m_mutex(std::move(lock.m_mutex))
    {
    }
 
    /// move assignment operator
-   MutexLock& operator=(MutexLock&& lock)
+   MutexLock& operator=(MutexLock&& lock) noexcept
    {
       m_mutex = std::move(lock.m_mutex);
    }
@@ -63,13 +63,13 @@ public:
    }
 
    /// move ctor; moves an already locked mutex to this object
-   MutexTryLock(MutexTryLock&& lock)
+   MutexTryLock(MutexTryLock&& lock) noexcept
       :m_mutex(std::move(lock.m_mutex))
    {
    }
 
    /// move assignment operator
-   MutexTryLock& operator=(MutexTryLock&& lock)
+   MutexTryLock& operator=(MutexTryLock&& lock) noexcept
    {
       m_mutex = std::move(lock.m_mutex);
    }
@@ -108,13 +108,13 @@ public:
    }
 
    /// move ctor; moves an already locked mutex to this object
-   MutexUnLocker(MutexUnLocker&& lock)
+   MutexUnLocker(MutexUnLocker&& lock) noexcept
       :m_mutex(std::move(lock.m_mutex))
    {
    }
 
    /// move assignment operator
-   MutexUnLocker& operator=(MutexUnLocker&& lock)
+   MutexUnLocker& operator=(MutexUnLocker&& lock) noexcept
    {
       m_mutex = std::move(lock.m_mutex);
    }
