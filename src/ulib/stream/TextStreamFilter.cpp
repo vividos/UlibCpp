@@ -233,8 +233,9 @@ void TextStreamFilter::Write(const CString& text)
    case textEncodingAnsi:
    {
       CStringA ansiText = text;
-      LPCSTR textPtr = ansiText;
-      m_stream.Write(textPtr, static_cast<DWORD>(strlen(textPtr) * sizeof(*textPtr)), numWriteBytes);
+      LPCSTR textPtr = ansiText.GetString();
+      if (ansiText.GetLength() > 0 && textPtr != nullptr)
+         m_stream.Write(textPtr, static_cast<DWORD>(strlen(textPtr) * sizeof(*textPtr)), numWriteBytes);
    }
    break;
 
