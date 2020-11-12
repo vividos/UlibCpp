@@ -6,7 +6,7 @@
     <title>$title$</title>
     <authors>Michael Fink</authors>
     <owners>Michael Fink</owners>
-    <licenseUrl>https://opensource.org/licenses/BSD-2-Clause</licenseUrl>
+    <license>BSD-2-Clause</license>
     <projectUrl>https://github.com/vividos/UlibCpp</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <summary>UlibCpp is a collection of useful C++ classes that help writing Win32 console, ATL and WTL applications faster.</summary>
