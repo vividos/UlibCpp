@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2009,2012,2017,2018,2019 Michael Fink
+// Copyright (C) 2009,2012,2017,2018,2019,2020 Michael Fink
 //
 /// \file Wtl.hpp configuration for WTL 8 or higher
 //
@@ -11,7 +11,7 @@
 
 // ignore /analyze warnings in WTL header files
 #pragma warning(push)
-#pragma warning(disable: 6001 6011 6031 6294 6385 6387 26110 26444 26454 26495 26812 26819 28182)
+#pragma warning(disable: 6001 6011 6031 6294 6385 6387 26110 26444 26451 26454 26495 26812 26819 28182)
 
 // ignore warnings in Win32 API header files that WTL includes
 #pragma warning(disable: 4091) // 'typedef ' : ignored on left of 'T1' when no variable is declared
