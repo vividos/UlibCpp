@@ -247,7 +247,7 @@
     <Import Project="..\packages\Microsoft.Build.Tasks.Git.1.0.0\build\Microsoft.Build.Tasks.Git.targets" Condition="Exists('..\packages\Microsoft.Build.Tasks.Git.1.0.0\build\Microsoft.Build.Tasks.Git.targets')" />
     <Import Project="..\packages\Microsoft.SourceLink.Common.1.0.0\build\Microsoft.SourceLink.Common.targets" Condition="Exists('..\packages\Microsoft.SourceLink.Common.1.0.0\build\Microsoft.SourceLink.Common.targets')" />
     <Import Project="..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.targets" Condition="Exists('..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.targets')" />
-    <Import Project="..\packages\wtl.10.0.10077\build\native\wtl.targets" Condition="Exists('..\packages\wtl.10.0.10077\build\native\wtl.targets')" />
+    <Import Project="..\packages\wtl.10.0.10320\build\native\wtl.targets" Condition="Exists('..\packages\wtl.10.0.10320\build\native\wtl.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -260,6 +260,6 @@
     <Error Condition="!Exists('..\packages\Microsoft.SourceLink.Common.1.0.0\build\Microsoft.SourceLink.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.Common.1.0.0\build\Microsoft.SourceLink.Common.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.targets'))" />
-    <Error Condition="!Exists('..\packages\wtl.10.0.10077\build\native\wtl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\wtl.10.0.10077\build\native\wtl.targets'))" />
+    <Error Condition="!Exists('..\packages\wtl.10.0.10320\build\native\wtl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\wtl.10.0.10320\build\native\wtl.targets'))" />
   </Target>
 </Project>
