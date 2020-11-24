@@ -72,7 +72,10 @@ public:
    double TotalElapsed() const
    {
       DWORD tickNow = GetTickCount();
+#pragma warning(push)
+#pragma warning(disable: 26451)
       return 0.001 * (m_totalElapsed + (m_isStarted ? (tickNow - m_tickStart) : 0));
+#pragma warning(pop)
    }
 
    /// returns if timer is running
