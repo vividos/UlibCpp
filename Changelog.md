@@ -1,5 +1,15 @@
 # UlibCpp Changelog
 
+# Version 4.2.3
+
+Compiled with Visual Studio 2019 Version 16.8.2 and Boost 1.72.
+
+This version fixes error C1047 and LNK1257 that appears when trying to link to
+a project that is compiled with 16.8.0 or later. Also suppresses more warnings
+when including WTL headers.
+
+No new classes or functions.
+
 # Version 4.2.2
 
 Compiled with Visual Studio 2019 Version 16.7.7 and Boost 1.72.
