@@ -1,0 +1,26 @@
+#
+# ulib - a collection of useful classes
+# Copyright (C) 2020 Michael Fink
+#
+# AppVeyor build configuration file
+#
+version: 4.2.3.{build}
+
+image: Visual Studio 2019
+
+before_build:
+- cmd: nuget restore src\UlibCpp.sln
+
+build:
+  project: src/Build.proj
+  publish_nuget: true
+  verbosity: normal
+
+after_build:
+- cmd: >-
+    cd src\nupkg
+    nuget pack
+
+artifacts:
+- path: src\nupkg\*.nupkg
+  name: NuGet package

@@ -1,6 +1,7 @@
 # Release checklist
 
-- [ ] Set version number in Changelog.md, .nuspec, SonarCloud.cmd and PushNuGetPackage.cmd
+- [ ] Set version number in Changelog.md, appveyor.yml, .nuspec,
+      SonarCloud.cmd and PushNuGetPackage.cmd
 - [ ] Update Changelog.md and .nuspec file
 - [ ] Update all NuGet packages
 - [ ] Run unit tests and fix fails
