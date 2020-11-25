@@ -17,9 +17,9 @@ build:
   verbosity: normal
 
 after_build:
-- cmd: >-
-    cd src\nupkg
-    nuget pack
+- cmd: |
+      cd src\nupkg
+      nuget pack
 
 artifacts:
 - path: src\nupkg\*.nupkg
