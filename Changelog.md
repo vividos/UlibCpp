@@ -1,5 +1,11 @@
 # UlibCpp Changelog
 
+# Version 4.2.4
+
+Compiled with Visual Studio 2019 Version 16.9.1 and Boost 1.72.
+
+No new classes or functions.
+
 # Version 4.2.3
 
 Compiled with Visual Studio 2019 Version 16.8.2 and Boost 1.72.
