@@ -14,6 +14,9 @@
     <releaseNotes>See document: https://github.com/vividos/UlibCpp/blob/master/Changelog.md</releaseNotes>
     <copyright>Copyright 2017-2021 Michael Fink</copyright>
     <tags>native C++ WTL</tags>
+    <dependencies>
+      <group targetFramework="native" />
+    </dependencies>
   </metadata>
   <files>
     <file src="build\native\Vividos.UlibCpp.Static.targets" target="build\native\Vividos.UlibCpp.Static.targets" />
