@@ -2,6 +2,12 @@
 
 # Version 4.2.4
 
+Compiled with Visual Studio 2019 Version 16.11.4 and Boost 1.77.
+
+No new classes or functions.
+
+# Version 4.2.4
+
 Compiled with Visual Studio 2019 Version 16.9.1 and Boost 1.72.
 
 No new classes or functions.
