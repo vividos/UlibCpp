@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)..\bin\$(Configuration)\$(PlatformName)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)..\intermediate\$(Configuration)\$(PlatformName)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;BOOST_PP_VARIADICS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Enabled</ExceptionHandling>
+      <CppLanguageStandard>c++1z</CppLanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
