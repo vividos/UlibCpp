@@ -16,7 +16,7 @@
 #ifdef _WIN32
 #include <ulib/config/Win32.hpp>
 #include <ulib/config/Atl.hpp>
-#else
+#elif defined(__ANDROID__)
 #include <ulib/config/Android.hpp>
 #endif
 

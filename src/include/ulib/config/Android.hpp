@@ -78,3 +78,13 @@ inline void AndroidLog(android_LogPriority prio, LPCSTR tag, LPCSTR file, UINT l
 #else
 #define ATLVERIFY(x) (void)(x)
 #endif
+
+// Android Clang specifics
+#ifdef __clang_version__
+#pragma clang diagnostic ignored "-Wunknown-pragmas"
+#define BOOST_TT_NO_DEDUCED_NOEXCEPT_PARAM
+#define __builtin_FILE() ""
+#define __builtin_LINE() 42
+#define __builtin_FUNCTION() ""
+#define __builtin_COLUMN() 42
+#endif

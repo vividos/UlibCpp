@@ -8,4 +8,6 @@
 #include "stdafx.h"
 
 // include all public headers here, in order to check if they compile
+#ifndef __ANDROID__
 #include <ulib/ulib.hpp>
+#endif
