@@ -1,20 +1,20 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006,2007,2008,2009,2012,2017 Michael Fink
+// Copyright (C) 2006,2007,2008,2009,2012,2017,2022 Michael Fink
 //
 /// \file Exception.hpp exception base class
 //
 #pragma once
 
-#include <exception>
+#include <stdexcept>
 
 /// exception base class
-class Exception : public std::exception
+class Exception : public std::runtime_error
 {
 public:
    /// ctor
    Exception(LPCSTR sourceFile, UINT sourceLine)
-      :std::exception(FormatExceptionText(nullptr, sourceFile, sourceLine)),
+      :std::runtime_error(FormatExceptionText(nullptr, sourceFile, sourceLine).GetString()),
       m_sourceFile(sourceFile),
       m_sourceLine(sourceLine)
    {
@@ -22,7 +22,7 @@ public:
 
    /// ctor
    Exception(const CString& message, LPCSTR sourceFile, UINT sourceLine)
-      :std::exception(FormatExceptionText(message.GetString(), sourceFile, sourceLine)),
+      :std::runtime_error(FormatExceptionText(message.GetString(), sourceFile, sourceLine).GetString()),
       m_message(message),
       m_sourceFile(sourceFile),
       m_sourceLine(sourceLine)
