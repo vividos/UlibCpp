@@ -8,6 +8,10 @@
 #include "stdafx.h"
 #include <ulib/thread/Thread.hpp>
 
+#if defined(__ANDROID__)
+#include <pthread.h>
+#endif
+
 #ifdef _WIN32
 
 #ifndef MS_VC_EXCEPTION
