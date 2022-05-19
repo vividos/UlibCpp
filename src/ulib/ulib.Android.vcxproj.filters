@@ -281,9 +281,6 @@
     <ClCompile Include="thread\Thread.cpp">
       <Filter>Source Files\thread</Filter>
     </ClCompile>
-    <ClCompile Include="StdioTimeZone.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="UTF8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

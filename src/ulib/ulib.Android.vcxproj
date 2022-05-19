@@ -184,7 +184,6 @@
   <ItemGroup>
     <ClCompile Include="CommandLineParser.cpp" />
     <ClCompile Include="DateTime.cpp" />
-    <ClCompile Include="StdioTimeZone.cpp" />
     <ClCompile Include="log\Logger.cpp" />
     <ClCompile Include="log\PatternLayout.cpp" />
     <ClCompile Include="ProgramOptions.cpp" />
