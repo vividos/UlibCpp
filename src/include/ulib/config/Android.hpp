@@ -88,3 +88,5 @@ inline void AndroidLog(android_LogPriority prio, LPCSTR tag, LPCSTR file, UINT l
 #define __builtin_FUNCTION() ""
 #define __builtin_COLUMN() 42
 #endif
+
+#include <ulib/CString.hpp>
