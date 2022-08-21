@@ -1,12 +1,12 @@
 #
 # ulib - a collection of useful classes
-# Copyright (C) 2020-2021 Michael Fink
+# Copyright (C) 2020-2022 Michael Fink
 #
 # AppVeyor build configuration file
 #
 version: 4.2.5.{build}
 
-image: Visual Studio 2019
+image: Visual Studio 2022
 
 before_build:
 - cmd: nuget restore src\UlibCpp.sln
