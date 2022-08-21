@@ -1,5 +1,11 @@
 # UlibCpp Changelog
 
+# Version 4.3.0
+
+Compiled with Visual Studio 2022 Version 17.3.1 and Boost 1.80.
+
+No new classes or functions.
+
 # Version 4.2.4
 
 Compiled with Visual Studio 2019 Version 16.11.4 and Boost 1.77.
