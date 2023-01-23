@@ -14,11 +14,10 @@ cache:
 
 before_build:
   - cmd: nuget restore src\UlibCpp.sln
-  - cmd: |
-      pushd "C:\Tools\vcpkg"
+  - ps: |
+      cd "C:\Tools\vcpkg"
       git pull > nul
       call .\bootstrap-vcpkg.bat -disableMetrics
-      popd
 
 build:
   project: src/Build.proj
@@ -26,9 +25,7 @@ build:
   verbosity: normal
 
 after_build:
-  - cmd: |
-      cd src\nupkg
-      nuget pack
+  - cmd: cd src\nupkg && nuget pack
 
 artifacts:
   - path: src\nupkg\*.nupkg
