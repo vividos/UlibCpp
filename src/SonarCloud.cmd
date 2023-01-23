@@ -39,7 +39,7 @@ SonarScanner.MSBuild.exe begin ^
     /d:"sonar.host.url=https://sonarcloud.io" ^
     /d:"sonar.cfamily.threads=4" ^
     /d:"sonar.cfamily.cache.enabled=true" ^
-    /d:"sonar.cfamily.cache.path=%CD%\.sonarqube\cache" ^
+    /d:"sonar.cfamily.cache.path=%CD%\.sonar-cache" ^
     /o:"vividos-github" ^
     /d:"sonar.login=%SONARLOGIN%" ^
     /d:sonar.cs.vstest.reportsPaths="%CD%\TestResults\*.trx"

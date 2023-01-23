@@ -301,3 +301,4 @@ stuff/
 src/CoverageReport
 src/ulib-coverage.xml
 /src/ulib/vcpkg_installed/
+/src/.sonar-cache/
