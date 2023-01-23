@@ -1,5 +1,14 @@
 # UlibCpp Changelog
 
+# Version 4.3.1
+
+Compiled with Visual Studio 2022 Version 17.4.4 and Boost 1.81.0.
+
+This version fixes the following link error by disabling
+`Link time code generation`:
+
+    LINK : fatal error C1047: The object or library file '...\ulib.lib' was created by a different version of the compiler than other objects like 'X.obj'; rebuild all objects and libraries with the same compiler
+
 # Version 4.3.0
 
 Compiled with Visual Studio 2022 Version 17.3.1 and Boost 1.80.

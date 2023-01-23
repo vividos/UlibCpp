@@ -1,6 +1,6 @@
 # BSD 2-Clause License
 
-Copyright (c) 2017-2022, vividos
+Copyright (c) 2017-2023, vividos
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

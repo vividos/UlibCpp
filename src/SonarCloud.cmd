@@ -1,7 +1,7 @@
 @echo off
 REM
 REM ulib - a collection of useful classes
-REM Copyright (C) 2000-2022 Michael Fink
+REM Copyright (C) 2000-2023 Michael Fink
 REM
 REM Runs SonarCloud analysis build
 REM
@@ -33,7 +33,7 @@ rmdir .\bw-output /s /q 2> nul
 
 SonarScanner.MSBuild.exe begin ^
     /k:"UlibCpp" ^
-    /v:"4.3.0" ^
+    /v:"4.3.1" ^
     /d:"sonar.cfamily.build-wrapper-output=%CD%\bw-output" ^
     /d:"sonar.coverageReportPaths=ulib-coverage.xml" ^
     /d:"sonar.host.url=https://sonarcloud.io" ^
