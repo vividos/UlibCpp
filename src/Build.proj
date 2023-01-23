@@ -1,16 +1,16 @@
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ProjectToBuild Include="UlibCpp.sln">
-      <Properties>Configuration=Debug;Platform=x86</Properties>
+    <ProjectToBuild Include="ulib/ulib.vcxproj">
+      <Properties>Configuration=Debug;Platform=Win32;SolutionDir=$(MSBuildThisFileDirectory)</Properties>
     </ProjectToBuild>
-    <ProjectToBuild Include="UlibCpp.sln">
-      <Properties>Configuration=Release;Platform=x86</Properties>
+    <ProjectToBuild Include="ulib/ulib.vcxproj">
+      <Properties>Configuration=Release;Platform=Win32;SolutionDir=$(MSBuildThisFileDirectory)</Properties>
     </ProjectToBuild>
-    <ProjectToBuild Include="UlibCpp.sln">
-      <Properties>Configuration=Debug;Platform=x64</Properties>
+    <ProjectToBuild Include="ulib/ulib.vcxproj">
+      <Properties>Configuration=Debug;Platform=x64;SolutionDir=$(MSBuildThisFileDirectory)</Properties>
     </ProjectToBuild>
-    <ProjectToBuild Include="UlibCpp.sln">
-      <Properties>Configuration=Release;Platform=x64</Properties>
+    <ProjectToBuild Include="ulib/ulib.vcxproj">
+      <Properties>Configuration=Release;Platform=x64;SolutionDir=$(MSBuildThisFileDirectory)</Properties>
     </ProjectToBuild>
   </ItemGroup>
 
