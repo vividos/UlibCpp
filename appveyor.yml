@@ -1,6 +1,6 @@
 #
 # ulib - a collection of useful classes
-# Copyright (C) 2020-2022 Michael Fink
+# Copyright (C) 2020-2023 Michael Fink
 #
 # AppVeyor build configuration file
 #
@@ -8,8 +8,16 @@ version: 4.3.0.{build}
 
 image: Visual Studio 2022
 
+cache:
+  - C:\Users\appveyor\AppData\Local\vcpkg\archives -> appveyor.yml
+  - C:\projects\ulibcpp\src\ulib\vcpkg_installed -> appveyor.yml
+
 before_build:
-- cmd: nuget restore src\UlibCpp.sln
+  - cmd: nuget restore src\UlibCpp.sln
+  - cmd: |
+      cd "C:\Tools\vcpkg"
+      git pull > nul
+      call .\bootstrap-vcpkg.bat -disableMetrics
 
 build:
   project: src/Build.proj

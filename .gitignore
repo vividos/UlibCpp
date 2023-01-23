@@ -300,3 +300,4 @@ src/cov-int.zip
 stuff/
 src/CoverageReport
 src/ulib-coverage.xml
+/src/ulib/vcpkg_installed/

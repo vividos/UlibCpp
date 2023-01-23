@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "ulibcpp",
+  "version-string": "4.3.0",
+  "dependencies": [
+    "boost-asio",
+    "boost-date-time",
+    {
+      "name": "wtl",
+      "platform": "windows"
+    }
+  ]
+}
