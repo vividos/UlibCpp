@@ -33,7 +33,7 @@ rmdir .\bw-output /s /q 2> nul
 
 SonarScanner.MSBuild.exe begin ^
     /k:"UlibCpp" ^
-    /v:"4.3.1" ^
+    /v:"4.4.0" ^
     /d:"sonar.cfamily.build-wrapper-output=%CD%\bw-output" ^
     /d:"sonar.coverageReportPaths=ulib-coverage.xml" ^
     /d:"sonar.host.url=https://sonarcloud.io" ^
