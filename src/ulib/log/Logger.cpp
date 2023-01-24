@@ -10,12 +10,7 @@
 #include <ulib/log/Logger.hpp>
 #include <ulib/log/Appender.hpp>
 #include <ulib/log/LoggingEvent.hpp>
-
-#define BOOST_THREAD_NO_LIB
-#pragma warning(push)
-#pragma warning(disable: 6387 6388 26451 28159 26439 26812 28251)
-#include <boost/thread/once.hpp>
-#pragma warning(pop)
+#include <mutex>
 
 using Log::Logger;
 using Log::LoggerPtr;
@@ -33,7 +28,7 @@ CString Logger::Name()
 }
 
 /// once flag for root logger initialisation
-boost::once_flag g_rootLoggerOnceFlag = BOOST_ONCE_INIT;
+std::once_flag g_rootLoggerOnceFlag;
 
 /// root logger
 static Log::LoggerPtr s_rootLogger;
@@ -45,7 +40,7 @@ void Logger::InitRootLogger()
 
 LoggerPtr Logger::GetRootLogger()
 {
-   boost::call_once(g_rootLoggerOnceFlag, &Logger::InitRootLogger);
+   std::call_once(g_rootLoggerOnceFlag, &Logger::InitRootLogger);
    return s_rootLogger;
 }
 

@@ -9,7 +9,6 @@
     {
       "name": "wtl",
       "platform": "windows"
-    },
-    "boost-thread"
+    }
   ]
 }
