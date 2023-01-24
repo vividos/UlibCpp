@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2008-2012,2017,2020 Michael Fink
+// Copyright (C) 2008-2012,2017,2020,2023 Michael Fink
 //
 /// \file IoCContainer.hpp Inversion of Control container
 //
@@ -9,10 +9,7 @@
 #include <string>
 #include <map>
 #include <functional>
-#pragma warning(push)
-#pragma warning(disable: 26439 26451 26812)
-#include <boost/any.hpp>
-#pragma warning(pop)
+#include <any>
 
 /// inversion of control container
 class IoCContainer
@@ -45,7 +42,7 @@ public:
          throw std::runtime_error(std::string("class not registered: ") + typeid(TInterface).name());
 
       std::reference_wrapper<TInterface> ref =
-         boost::any_cast<std::reference_wrapper<TInterface>>(iter->second);
+         std::any_cast<std::reference_wrapper<TInterface>>(iter->second);
 
       return ref.get();
    }
@@ -64,7 +61,7 @@ private:
 
 private:
    /// instance map type
-   typedef std::map<std::string, boost::any> T_mapAllInstances;
+   typedef std::map<std::string, std::any> T_mapAllInstances;
 
    /// instance map
    T_mapAllInstances m_mapAllInstances;

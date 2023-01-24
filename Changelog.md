@@ -9,6 +9,8 @@ This version fixes the following link error by disabling
 
     LINK : fatal error C1047: The object or library file '...\ulib.lib' was created by a different version of the compiler than other objects like 'X.obj'; rebuild all objects and libraries with the same compiler
 
+The class `IoCContainer` now uses `std::any`.
+
 # Version 4.3.0
 
 Compiled with Visual Studio 2022 Version 17.3.1 and Boost 1.80.

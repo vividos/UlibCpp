@@ -3,7 +3,6 @@
   "name": "ulibcpp",
   "version-string": "4.3.0",
   "dependencies": [
-    "boost-any",
     "boost-asio",
     "boost-date-time",
     {
