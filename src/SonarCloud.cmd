@@ -29,12 +29,13 @@ REM
 REM Build using SonarQube scanner for MSBuild
 REM
 rmdir .\.sonarqube /s /q 2> nul
-rmdir .\bw-output /s /q 2> nul
+rmdir .\.bw-output /s /q 2> nul
+mkdir .\.sonar-cache 2> nul
 
 SonarScanner.MSBuild.exe begin ^
     /k:"UlibCpp" ^
     /v:"4.4.0" ^
-    /d:"sonar.cfamily.build-wrapper-output=%CD%\bw-output" ^
+    /d:"sonar.cfamily.build-wrapper-output=%CD%\.bw-output" ^
     /d:"sonar.coverageReportPaths=ulib-coverage.xml" ^
     /d:"sonar.host.url=https://sonarcloud.io" ^
     /d:"sonar.cfamily.threads=4" ^
@@ -53,7 +54,9 @@ nupkg\nuget restore UlibCpp.sln
 REM
 REM Rebuild Release|x86
 REM
-build-wrapper-win-x86-64.exe --out-dir bw-output msbuild UlibCpp.sln /m /property:Configuration=SonarQube /property:Platform=x86 /target:Rebuild
+build-wrapper-win-x86-64.exe ^
+  --out-dir .bw-output ^
+   msbuild UlibCpp.sln /m /property:Configuration=SonarQube /property:Platform=x86 /target:Rebuild
 
 REM
 REM Run unit tests

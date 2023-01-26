@@ -289,8 +289,8 @@ __pycache__/
 *.xsd.cs
 
 # SonarQube
-src/.sonarqube/
-src/bw-output/
+.sonarqube/
+.bw-output/
 
 # Coverity Scan
 src/cov-int/
@@ -301,4 +301,4 @@ stuff/
 src/CoverageReport
 src/ulib-coverage.xml
 /src/ulib/vcpkg_installed/
-/src/.sonar-cache/
+.sonar-cache/
