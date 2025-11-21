@@ -10,7 +10,7 @@ image: Visual Studio 2022
 
 cache:
   - C:\Users\appveyor\AppData\Local\vcpkg\archives -> appveyor.yml
-  - C:\projects\ulibcpp\src\ulib\vcpkg_installed -> appveyor.yml
+  - C:\projects\ulibcpp\intermediate\vcpkg_installed -> appveyor.yml
 
 before_build:
   - cmd: nuget restore src\UlibCpp.sln
