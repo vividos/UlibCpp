@@ -34,7 +34,7 @@ mkdir .\.sonar-cache 2> nul
 
 SonarScanner.MSBuild.exe begin ^
     /k:"UlibCpp" ^
-    /v:"4.4.0" ^
+    /v:"5.0.0" ^
     /d:"sonar.cfamily.build-wrapper-output=%CD%\.bw-output" ^
     /d:"sonar.coverageReportPaths=ulib-coverage.xml" ^
     /d:"sonar.host.url=https://sonarcloud.io" ^

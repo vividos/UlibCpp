@@ -1,10 +1,10 @@
 #
 # ulib - a collection of useful classes
-# Copyright (C) 2020-2023 Michael Fink
+# Copyright (C) 2020-2025 Michael Fink
 #
 # AppVeyor build configuration file
 #
-version: 4.4.0.{build}
+version: 5.0.0.{build}
 
 image: Visual Studio 2022
 
