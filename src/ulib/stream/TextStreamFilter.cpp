@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2006,2007,2008,2014,2017 Michael Fink
+// Copyright (C) 2006,2007,2008,2014,2017,2025 Michael Fink
 //
 /// \file TextStreamFilter.cpp text stream filter
 //
@@ -232,7 +232,7 @@ void TextStreamFilter::Write(const CString& text)
    {
    case textEncodingAnsi:
    {
-      CStringA ansiText = text;
+      CStringA ansiText { text };
       LPCSTR textPtr = ansiText.GetString();
       if (ansiText.GetLength() > 0 && textPtr != nullptr)
          m_stream.Write(textPtr, static_cast<DWORD>(strlen(textPtr) * sizeof(*textPtr)), numWriteBytes);

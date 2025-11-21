@@ -436,7 +436,7 @@ supports parsing arguments in double quotes, e.g. path names with spaces.
        CommandLineParser(const CString& commandLine = GetCommandLine());
 
        /// parses _tmain parameter
-       CommandLineParser(int argc, TCHAR* argv[]);
+       CommandLineParser(int argc, LPCTSTR argv[]);
 
        /// returns next parameter
        bool GetNext(CString& nextParameter);
@@ -514,7 +514,7 @@ and are assigned appropriately while parsing.
 Finally, call one of the `Parse()` functions:
 
     /// parses command line options, C-style
-    void Parse(int argc, _TCHAR* argv[]);
+    void Parse(int argc, LPCTSTR argv[]);
 
     /// parses command line options, Win32-style
     void Parse(LPCTSTR commandLine);

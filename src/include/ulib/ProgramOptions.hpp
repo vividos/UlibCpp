@@ -71,7 +71,7 @@ public:
    void RegisterOption(const CString& shortOptionChars, const CString& longOption, const CString& helpText, bool& optionFlag);
 
    /// parses command line options, C-style
-   void Parse(int argc, _TCHAR* argv[]);
+   void Parse(int argc, LPCTSTR argv[]);
 
    /// parses command line options, Win32-style
    void Parse(LPCTSTR commandLine);

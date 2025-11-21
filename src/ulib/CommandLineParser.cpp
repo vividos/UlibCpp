@@ -14,7 +14,7 @@ CommandLineParser::CommandLineParser(const CString& commandLine)
 {
 }
 
-CommandLineParser::CommandLineParser(int argc, TCHAR* argv[])
+CommandLineParser::CommandLineParser(int argc, LPCTSTR argv[])
    : m_currentIndex(0)
 {
    for (int argIndex = 0; argIndex < argc; argIndex++)

@@ -15,7 +15,7 @@ public:
    explicit CommandLineParser(const CString& commandLine = GetCommandLine());
 
    /// parses _tmain parameter
-   CommandLineParser(int argc, TCHAR* argv[]);
+   CommandLineParser(int argc, LPCTSTR argv[]);
 
    /// returns next parameter
    bool GetNext(CString& nextParameter);

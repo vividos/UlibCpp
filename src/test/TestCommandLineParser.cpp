@@ -42,7 +42,7 @@ namespace UnitTest
       /// parses command line with argc and argv values
       TEST_METHOD(TestParserArgcArgv)
       {
-         TCHAR* argv[] =
+         LPCTSTR argv[] =
          {
             _T("arg1"),
             _T("\"arg2"),

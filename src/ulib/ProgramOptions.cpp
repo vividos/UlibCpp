@@ -26,6 +26,7 @@ void ProgramOptions::RegisterOption(const CString& shortOptionChars, const CStri
    RegisterOption(shortOptionChars, longOption, helpText, 0,
       [fnOptionHandler](auto dummy)
       {
+         UNUSED(dummy);
          return fnOptionHandler();
       });
 }
@@ -58,6 +59,7 @@ void ProgramOptions::RegisterOption(const CString& shortOptionChars, const CStri
    RegisterOption(shortOptionChars, longOption, helpText, 0,
       [&optionFlag](auto argsList)
       {
+         UNUSED(argsList);
          optionFlag = true;
          return true;
       });
@@ -113,7 +115,7 @@ bool ProgramOptions::OutputHelp()
    return true;
 }
 
-void ProgramOptions::Parse(int argc, _TCHAR* argv[])
+void ProgramOptions::Parse(int argc, LPCTSTR argv[])
 {
    CommandLineParser parser(argc, argv);
    Parse(parser);

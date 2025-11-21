@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2007,2008,2017,2020 Michael Fink
+// Copyright (C) 2007,2008,2017,2020,2025 Michael Fink
 //
 /// \file Clipboard.cpp clipboard class
 //
@@ -90,7 +90,7 @@ void Clipboard::SetText(const CString& text)
       reinterpret_cast<const BYTE*>(wideText.GetString()),
       static_cast<UINT>((wideText.GetLength() + 1) * sizeof(WCHAR)));
 #else
-   CStringA ansiText = text;
+   CStringA ansiText{ text };
    SetData(CF_TEXT,
       reinterpret_cast<const BYTE*>(ansiText.GetString()),
       static_cast<UINT>((ansiText.GetLength() + 1) * sizeof(CHAR)));

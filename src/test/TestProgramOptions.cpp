@@ -24,7 +24,7 @@ namespace UnitTest
 
          // run
          bool outputHandlerCalled = false;
-         options.RegisterOutputHandler([&outputHandlerCalled](auto text) { outputHandlerCalled = true; });
+         options.RegisterOutputHandler([&outputHandlerCalled](auto text) { UNUSED(text); outputHandlerCalled = true; });
          options.RegisterOption(_T("o"), _T("opt"), _T("Option to test"), []() { return true; });
          options.OutputHelp();
 
@@ -85,7 +85,7 @@ namespace UnitTest
             foundArgument);
 
          // run
-         _TCHAR* args[] =
+         LPCTSTR args[] =
          {
             _T("dummy.exe"),
             _T("clone"),
