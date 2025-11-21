@@ -1,6 +1,6 @@
 REM
 REM ulib - a collection of useful classes
-REM Copyright (C) 2000-2020 Michael Fink
+REM Copyright (C) 2000-2025 Michael Fink
 REM
 REM Runs CppCheck to check sourcecode
 REM
@@ -22,14 +22,16 @@ REM --suppressions-list=<file>   File with suppressed warnings
 REM -j 4                Multithreading
 REM --platform=win32W   Platform specific types
 REM --language=c++      Language (file extensions)
-REM --std=c++11         Language (syntax)%
+REM --std=c++20         Language (syntax)
 REM --enable=all        Enable warnings
-REM --template vs       Output format for warnings
+REM --template=vs       Output format for warnings
 REM --check-config
 cppcheck.exe ^
    ..\ulib ..\include -DWIN32 -D_WINDOWS -DNDEBUG -D_UNICODE -D__cplusplus ^
    --suppressions-list=cppcheck-suppress.txt --inline-suppr ^
-   -j 4 --platform=win32W --language=c++ --std=c++11 %FORMAT% --enable=all --template vs 2> %OUTFILE%
+   -j 4 --platform=win32W --language=c++ --std=c++20 %FORMAT% --enable=all ^
+   --template=vs ^
+   2> %OUTFILE%
 
 REM don't break build when cppcheck reports errors
 exit 0
