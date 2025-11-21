@@ -5,6 +5,7 @@ VisualStudioVersion = 18.0.11205.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56814D4D-84AE-4AA1-8F9A-6B41912315EB}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		..\appveyor.yml = ..\appveyor.yml
 		..\Changelog.md = ..\Changelog.md
 		..\Documentation.md = ..\Documentation.md
