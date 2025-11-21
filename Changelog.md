@@ -4,6 +4,13 @@
 
 Compatible with Visual Studio 2026 and C++20.
 
+This version has some breaking changes:
+
+- C++20 is required to use the library.
+
+See the [MigrationGuide.md](https://github.com/vividos/UlibCpp/blob/main/MigrationGuide.md)
+for details on how to update.
+
 # Version 4.4.0
 
 Compiled with Visual Studio 2022 Version 17.4.4 and Boost 1.81.0.
