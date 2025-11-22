@@ -69,18 +69,6 @@ wizard can just include this file instead of the many ATL and WTL files in the
 generated `stdafx.h` file. The necessary order of ATL and WTL headers are
 ensured. Check the file contents for details.
 
-`#include <ulib/config/BoostAsio.hpp>`
-
-Includes the Boost header `<boost/asio.hpp>` and prevents default linking to
-some Boost libraries; also disables warnings from the included headers. The
-header also prevents auto-generating a WinSock-init class, which automatically
-pulls in a dependency to the `winsock2.dll`.
-
-`#include <ulib/config/BoostDateTime.hpp>`
-
-Includes the Boost header `<boost/date_time.hpp>`, disables warnings and
-also prevents linking to the `Boost.DateTime` library.
-
 `#include <ulib/config/Android.hpp>`
 
 Defines some types like `LPCTSTR` and macros like `ATLASSERT`, `ATLTRACE`,

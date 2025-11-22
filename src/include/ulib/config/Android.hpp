@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2013-2016,2017,2019 Michael Fink
+// Copyright (C) 2013-2016,2017,2019,2025 Michael Fink
 //
 /// \file Android.hpp Android NDK config
 //
@@ -82,7 +82,6 @@ inline void AndroidLog(android_LogPriority prio, LPCSTR tag, LPCSTR file, UINT l
 // Android Clang specifics
 #ifdef __clang_version__
 #pragma clang diagnostic ignored "-Wunknown-pragmas"
-#define BOOST_TT_NO_DEDUCED_NOEXCEPT_PARAM
 #define __builtin_FILE() ""
 #define __builtin_LINE() 42
 #define __builtin_FUNCTION() ""

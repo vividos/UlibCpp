@@ -1,6 +1,6 @@
 //
 // ulib - a collection of useful classes
-// Copyright (C) 2017,2020 Michael Fink
+// Copyright (C) 2017,2020,2025 Michael Fink
 //
 /// \file ulib/stdafx.h Precompiled header support
 //
@@ -19,9 +19,6 @@
 #elif defined(__ANDROID__)
 #include <ulib/config/Android.hpp>
 #endif
-
-// don't link against Boost.DateTime; only header functionality is used
-#define BOOST_DATE_TIME_NO_LIB
 
 // redefine ATLVERIFY when analyzing using Coverity Scan
 #if !defined(_DEBUG) && defined(__COVERITY__)

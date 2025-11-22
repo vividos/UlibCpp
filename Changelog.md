@@ -7,6 +7,7 @@ Compatible with Visual Studio 2026 and C++20.
 This version has some breaking changes:
 
 - C++20 is required to use the library.
+- The library doesn't have a dependency on Boost anymore.
 - `DateTime` and `TimeSpan` are using `std::chrono` now.
 
 See the [MigrationGuide.md](https://github.com/vividos/UlibCpp/blob/main/MigrationGuide.md)

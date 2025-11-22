@@ -236,12 +236,6 @@
     <ClInclude Include="..\include\ulib\config\Android.hpp">
       <Filter>Public Include Files\config</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\ulib\config\BoostAsio.hpp">
-      <Filter>Public Include Files\config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\ulib\config\BoostDateTime.hpp">
-      <Filter>Public Include Files\config</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\ulib\ulib.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>

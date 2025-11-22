@@ -65,7 +65,6 @@ OpenCppCoverage.exe ^
    --continue_after_cpp_exception --cover_children ^
    --sources ulib --sources test --sources include\ulib ^
    --excluded_sources test ^
-   --excluded_sources packages\boost ^
    --export_type SonarQube:ulib-coverage.xml ^
    --export_type html:CoverageReport ^
    --modules test.dll ^

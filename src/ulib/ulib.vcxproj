@@ -147,8 +147,6 @@
     <ClInclude Include="..\include\ulib\CommandLineParser.hpp" />
     <ClInclude Include="..\include\ulib\config\Android.hpp" />
     <ClInclude Include="..\include\ulib\config\Atl.hpp" />
-    <ClInclude Include="..\include\ulib\config\BoostAsio.hpp" />
-    <ClInclude Include="..\include\ulib\config\BoostDateTime.hpp" />
     <ClInclude Include="..\include\ulib\config\Common.hpp" />
     <ClInclude Include="..\include\ulib\config\CompileTimeWarningError.hpp" />
     <ClInclude Include="..\include\ulib\config\Win32.hpp" />

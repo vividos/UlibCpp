@@ -10,6 +10,16 @@ It is required to compile your project with C++20 in order to use the library.
 If you have an ATL or WTL project, be sure to also set "Conformance Mode" to
 "No (/permissive) since ATL is not prepared for C++20.
 
+### Boost
+
+The library doesn't have a dependency on Boost anymore. If you are using Boost
+in your project yourself, be sure to reference Boost directly, e.g. using
+`vcpkg.json` file.
+
+Also the two headers `<ulib/config/BoostAsio.hpp>` and
+`<ulib/config/BoostDateTime.hpp>` were removed. Replace them with the includes
+for the Boost library directly.
+
 ### CommandLine and ProgramOptions
 
 The `CommandLine` and `ProgramOptions` classes now take an `LPCTSTR argv[]`
