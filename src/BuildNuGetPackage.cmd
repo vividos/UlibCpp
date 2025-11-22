@@ -17,15 +17,18 @@ call "%VSINSTALL%\Common7\Tools\VsDevCmd.bat"
 REM
 REM Restore NuGet packages
 REM
-nupkg\nuget restore UlibCpp.sln
+msbuild /t:Restore UlibCpp.sln
 
 REM
 REM Build all
 REM
-msbuild Build.proj /m /target:Build
+msbuild ulib\ulib.vcxproj /p:Configuration=Debug /p:Platform=Win32
+msbuild ulib\ulib.vcxproj /p:Configuration=Release /p:Platform=Win32
+msbuild ulib\ulib.vcxproj /p:Configuration=Debug /p:Platform=x64
+msbuild ulib\ulib.vcxproj /p:Configuration=Release /p:Platform=x64
 
-cd nupkg
-call CreateNuGetPackage.cmd
-cd ..
+pushd nupkg
+nuget pack
+popd
 
 pause
