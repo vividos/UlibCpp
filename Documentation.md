@@ -561,10 +561,10 @@ A `DateTime` object can be created in several ways:
     static DateTime Today();
 
     /// returns max time value
-    static DateTime MaxValue() { return DateTime(DateTime::max); }
+    static DateTime MaxValue();
 
     /// returns min time value
-    static DateTime MinValue() { return DateTime(DateTime::min); }
+    static DateTime MinValue();
 
 The date can also be modified using these methods:
 
@@ -620,7 +620,7 @@ Formatting dates as text can be done with these methods:
     };
 
     /// formats date/time using ISO 8601 format
-    CString FormatISO8601(T_enISO8601Format enFormat = formatYMD_HMS_Z, bool bBasic = false,
+    CString FormatISO8601(T_enISO8601Format format = formatYMD_HMS_Z, bool basic = false,
         const TimeZone& tz = TimeZone::System()) const;
 
     /// formats date/time with given format, see _tcsftime
@@ -635,25 +635,17 @@ The class `TimeSpan` defines a time span that can be positive or negative.
 
 A `TimeSpan` object can be created in several ways:
 
-    /// time span status values
-    enum T_enStatus { valid = 0, invalid, min, max };
-
     /// default ctor
-    TimeSpan();
+    /// ctor, optionally taking a milliseconds duration
+    TimeSpan(std::chrono::milliseconds span = std::chrono::milliseconds::zero());
 
     /// ctor; takes date/time span components
     TimeSpan(int hours, int minutes, int seconds, int milliseconds = 0);
-
-    /// ctor; initialize with min or max status only
-    TimeSpan(T_enStatus status);
 
     /// sets time span components
     void SetDateTimeSpan(int hours, int minutes, int seconds, int milliseconds);
 
 The properties of the time span can also be accessed with these getters:
-
-    /// returns date/time status
-    T_enStatus Status() const;
 
     /// component hours in span (-23 to 23)
     int Hours() const;
@@ -688,9 +680,6 @@ Formatting time spans as text can be done with these methods:
     /// formats time span using specified format
     CString Format(T_enTimeSpanFormat format = formatHMS) const;
 
-    /// formats time span using given format, see _tcsftime
-    CString Format(LPCTSTR format) const;
-
 `#include <ulib/TimeZone.hpp>`
 
 The class `TimeZone` defines a time zone that can be used when formatting
@@ -699,13 +688,13 @@ The class `TimeZone` defines a time zone that can be used when formatting
 Time zones can be accessed with these static methods:
 
     /// returns UTC timezone
-    static TimeZone TimeZone::UTC();
+    static TimeZone UTC();
 
     /// returns current system's timezone
-    static TimeZone TimeZone::System();
+    static TimeZone System();
 
     /// enumerates all timezones in the system
-    static std::vector<TimeZone> TimeZone::EnumerateTimezones();
+    static std::vector<TimeZone> EnumerateTimezones();
 
 The `TimeZone` class can be accessed for further infos:
 
