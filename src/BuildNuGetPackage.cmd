@@ -1,12 +1,18 @@
 @echo off
 REM
 REM ulib - a collection of useful classes
-REM Copyright (C) 2000-2022 Michael Fink
+REM Copyright (C) 2000-2025 Michael Fink
 REM
 REM Build NuGet package
 REM
 
-call "%ProgramFiles%\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat"
+REM set this to your Visual Studio installation folder
+set VSINSTALL=%ProgramFiles%\Microsoft Visual Studio\18\Community
+
+REM
+REM Preparations
+REM
+call "%VSINSTALL%\Common7\Tools\VsDevCmd.bat"
 
 REM
 REM Restore NuGet packages

@@ -1,13 +1,13 @@
 @echo off
 REM
 REM ulib - a collection of useful classes
-REM Copyright (C) 2000-2022 Michael Fink
+REM Copyright (C) 2000-2025 Michael Fink
 REM
 REM Runs ulib Unit Tests and collects coverage information
 REM
 
 REM set this to your Visual Studio installation folder
-set VSINSTALL=%ProgramFiles%\Microsoft Visual Studio\2022\Community
+set VSINSTALL=%ProgramFiles%\Microsoft Visual Studio\18\Community
 
 REM and this to your OpenCppCoverage folder
 set OPENCPPCOVERAGE=C:\Projekte\Tools\OpenCppCoverage\
