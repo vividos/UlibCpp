@@ -107,7 +107,7 @@ std::vector<TimeZone> TimeZone::EnumerateTimezones()
          dwLength != 44 || dwType != REG_BINARY)
          throw Exception(_T("couldn't enumerate timezones"), __FILE__, __LINE__);
 
-      REG_TZI_FORMAT tzi;
+      REG_TZI_FORMAT tzi = {};
 
       // get binary data
       static_assert(sizeof(REG_TZI_FORMAT) == 44, "struct REG_TZI_FORMAT must have a size of 44");
@@ -163,7 +163,7 @@ TimeSpan TimeZone::GetUtcOffset(const DateTime& dt) const
 }
 
 /// converts SYSTEMTIME to DateTime
-DateTime SystemTimeToDateTime(const SYSTEMTIME& st)
+static DateTime SystemTimeToDateTime(const SYSTEMTIME& st)
 {
    return DateTime(
       st.wYear,
@@ -190,7 +190,7 @@ DateTime TimeZone::CalculateTransitionDate(unsigned int uiYear, unsigned int uiI
       stTemp.wDayOfWeek > 6)                         // invalid day of week
    {
       ATLASSERT(false);
-      return DateTime(DateTime::invalid);
+      return DateTime(DateTime::T_enStatus::invalid);
    }
 
    stTemp.wYear = static_cast<WORD>(uiYear); // set year
@@ -231,7 +231,7 @@ DateTime TimeZone::CalculateTransitionDate(unsigned int uiYear, unsigned int uiI
          return SystemTimeToDateTime(stFinal);
    }
 
-   return DateTime(DateTime::invalid);
+   return DateTime(DateTime::T_enStatus::invalid);
 }
 
 bool TimeZone::IsDaylightSavingTime(const DateTime& dt) const
@@ -247,8 +247,8 @@ bool TimeZone::IsDaylightSavingTime(const DateTime& dt) const
    DateTime dtTrans1 = CalculateTransitionDate(dt.Year(), 0);
    DateTime dtTrans2 = CalculateTransitionDate(dt.Year(), 1);
 
-   if (dtTrans1.Status() != DateTime::valid &&
-      dtTrans2.Status() != DateTime::valid)
+   if (dtTrans1.Status() != DateTime::T_enStatus::valid &&
+      dtTrans2.Status() != DateTime::T_enStatus::valid)
       return false; // no daylight savings time
 
    // compare if given date/time is in the range

@@ -22,7 +22,7 @@ namespace UnitTest
       TEST_METHOD(TestCtorDefault)
       {
          DateTime dt;
-         Assert::IsTrue(DateTime::invalid == dt.Status());
+         Assert::IsTrue(DateTime::T_enStatus::invalid == dt.Status());
       }
 
       /// tests ctor with data
@@ -30,7 +30,7 @@ namespace UnitTest
       {
          // ctor
          DateTime dt(2007, 5, 19, 1, 40, 26, 952);
-         Assert::IsTrue(DateTime::valid == dt.Status());
+         Assert::IsTrue(DateTime::T_enStatus::valid == dt.Status());
 
          Assert::IsTrue(2007 == dt.Year());
          Assert::IsTrue(5 == dt.Month());
@@ -48,19 +48,19 @@ namespace UnitTest
       /// tests ctor with min/max status
       TEST_METHOD(TestCtorStatus)
       {
-         DateTime dt1(DateTime::min), dt2(DateTime::max);
-         Assert::IsTrue(DateTime::min == dt1.Status());
-         Assert::IsTrue(DateTime::max == dt2.Status());
+         DateTime dt1(DateTime::T_enStatus::min), dt2(DateTime::T_enStatus::max);
+         Assert::IsTrue(DateTime::T_enStatus::min == dt1.Status());
+         Assert::IsTrue(DateTime::T_enStatus::max == dt2.Status());
       }
 
       /// tests copy ctor
       TEST_METHOD(TestCtorCopy)
       {
          DateTime dt1(2007, 5, 19, 1, 40, 26, 952);
-         Assert::IsTrue(DateTime::valid == dt1.Status());
+         Assert::IsTrue(DateTime::T_enStatus::valid == dt1.Status());
 
          DateTime dt2(dt1);
-         Assert::IsTrue(DateTime::valid == dt2.Status());
+         Assert::IsTrue(DateTime::T_enStatus::valid == dt2.Status());
 
          Assert::IsTrue(2007 == dt2.Year());
          Assert::IsTrue(5 == dt2.Month());
@@ -87,11 +87,11 @@ namespace UnitTest
       {
          // ctor
          DateTime dt1(2007, 5, 19, 1, 40, 26, 952), dt2;
-         Assert::IsTrue(DateTime::valid == dt1.Status());
-         Assert::IsTrue(DateTime::invalid == dt2.Status());
+         Assert::IsTrue(DateTime::T_enStatus::valid == dt1.Status());
+         Assert::IsTrue(DateTime::T_enStatus::invalid == dt2.Status());
 
          dt2 = dt1;
-         Assert::IsTrue(DateTime::valid == dt2.Status());
+         Assert::IsTrue(DateTime::T_enStatus::valid == dt2.Status());
 
          Assert::IsTrue(2007 == dt2.Year());
          Assert::IsTrue(5 == dt2.Month());
@@ -116,12 +116,12 @@ namespace UnitTest
       /// tests current date
       TEST_METHOD(TestNowToday)
       {
-         DateTime dtNow = DateTime::Now();
-         DateTime dtToday = DateTime::Today();
-         Assert::IsTrue(DateTime::valid == dtNow.Status());
-         Assert::IsTrue(DateTime::valid == dtToday.Status());
+         DateTime now = DateTime::Now();
+         DateTime today = DateTime::Today();
+         Assert::IsTrue(DateTime::T_enStatus::valid == now.Status());
+         Assert::IsTrue(DateTime::T_enStatus::valid == today.Status());
 
-         Assert::IsTrue(dtNow - dtToday == dtNow.TimeOfDay());
+         Assert::IsTrue(now - today == now.TimeOfDay());
       }
 
       /// tests operator+
@@ -269,7 +269,7 @@ namespace UnitTest
       TEST_METHOD(TestSetIllegalDateTime)
       {
          DateTime dt;
-         Assert::IsTrue(DateTime::invalid == dt.Status());
+         Assert::IsTrue(DateTime::T_enStatus::invalid == dt.Status());
       }
 
       /// tests formatting ISO 8601 dates, part 1
@@ -332,7 +332,7 @@ namespace UnitTest
       TEST_METHOD(TestSpanCtorDefault)
       {
          TimeSpan ts;
-         Assert::IsTrue(TimeSpan::invalid == ts.Status());
+         Assert::IsTrue(0 == ts.Milliseconds());
       }
 
       /// tests TimeSpan ctor with time span values, part 1
@@ -340,99 +340,90 @@ namespace UnitTest
       {
          // ctor
          TimeSpan ts(1, 40, 26, 123);
-         Assert::IsTrue(DateTime::valid == ts.Status());
 
          Assert::IsTrue(1 == ts.Hours());
          Assert::IsTrue(40 == ts.Minutes());
          Assert::IsTrue(26 == ts.Seconds());
          Assert::IsTrue(123 == ts.Milliseconds());
 
-         Assert::AreEqual(ts.TotalHours(), 1.0, g_dEpsilon);
-         Assert::AreEqual(ts.TotalMinutes(), 1.0 * 60 + 40.0, g_dEpsilon);
-         Assert::AreEqual(ts.TotalSeconds(), (1.0 * 60 + 40.0) * 60 + 26.0, g_dEpsilon);
-         Assert::AreEqual(ts.TotalMilliseconds(), ((1.0 * 60 + 40.0) * 60 + 26.0) * 1000.0 + 123.0, g_dEpsilon);
+         double milliseconds = ((1 * 60.0 + 40.0) * 60.0 + 26.0) * 1000.0 + 123.0;
+         Assert::AreEqual(ts.TotalHours(), milliseconds / 1000 / 60 / 60, g_dEpsilon);
+         Assert::AreEqual(ts.TotalMinutes(), milliseconds / 1000 / 60, g_dEpsilon);
+         Assert::AreEqual(ts.TotalSeconds(), milliseconds / 1000, g_dEpsilon);
+         Assert::AreEqual(ts.TotalMilliseconds(), milliseconds, g_dEpsilon);
       }
 
       /// tests TimeSpan ctor with time span values, part 2
       TEST_METHOD(TestSpanCtorTimeSpan2)
       {
          // ctor
-         TimeSpan ts(-4, 10, 2, 123);
-         Assert::IsTrue(DateTime::valid == ts.Status());
+         TimeSpan ts(-4, -10, -2, -123);
 
          Assert::IsTrue(-4 == ts.Hours());
          Assert::IsTrue(-10 == ts.Minutes());
          Assert::IsTrue(-2 == ts.Seconds());
          Assert::IsTrue(-123 == ts.Milliseconds());
 
-         Assert::AreEqual(ts.TotalHours(), -4.0, g_dEpsilon);
-         Assert::AreEqual(ts.TotalMinutes(), -4.0 * 60 + -10.0, g_dEpsilon);
-         Assert::AreEqual(ts.TotalSeconds(), (-4.0 * 60 + -10.0) * 60 + -2.0, g_dEpsilon);
-         Assert::AreEqual(ts.TotalMilliseconds(), ((-4.0 * 60 + -10.0) * 60 + -2.0) * 1000.0 + -123.0, g_dEpsilon);
+         double milliseconds = ((-4.0 * 60 + -10.0) * 60 + -2.0) * 1000.0 + -123.0;
+         Assert::AreEqual(ts.TotalHours(), milliseconds / 1000 / 60 / 60, g_dEpsilon);
+         Assert::AreEqual(ts.TotalMinutes(), milliseconds / 1000 / 60, g_dEpsilon);
+         Assert::AreEqual(ts.TotalSeconds(), milliseconds / 1000, g_dEpsilon);
+         Assert::AreEqual(ts.TotalMilliseconds(), milliseconds, g_dEpsilon);
       }
 
       /// tests TimeSpan ctor with time span values, part 3
       TEST_METHOD(TestSpanCtorTimeSpan3)
       {
          // ctor
-         TimeSpan ts(1, -40, 26, -123);
-         Assert::IsTrue(DateTime::valid == ts.Status());
+         TimeSpan ts(-1, -40, -26, -123);
 
          Assert::IsTrue(-1 == ts.Hours());
          Assert::IsTrue(-40 == ts.Minutes());
          Assert::IsTrue(-26 == ts.Seconds());
          Assert::IsTrue(-123 == ts.Milliseconds());
 
-         Assert::AreEqual(ts.TotalHours(), -1.0, g_dEpsilon);
-         Assert::AreEqual(ts.TotalMinutes(), -1.0 * 60 + -40.0, g_dEpsilon);
-         Assert::AreEqual(ts.TotalSeconds(), (-1.0 * 60 + -40.0) * 60 + -26.0, g_dEpsilon);
-         Assert::AreEqual(ts.TotalMilliseconds(), ((-1.0 * 60 + -40.0) * 60 + -26.0) * 1000.0 + -123.0, g_dEpsilon);
+         double milliseconds = ((-1.0 * 60 + -40.0) * 60 + -26.0) * 1000.0 + -123.0;
+         Assert::AreEqual(ts.TotalHours(), milliseconds / 1000 / 60 / 60, g_dEpsilon);
+         Assert::AreEqual(ts.TotalMinutes(), milliseconds / 1000 / 60, g_dEpsilon);
+         Assert::AreEqual(ts.TotalSeconds(), milliseconds / 1000, g_dEpsilon);
+         Assert::AreEqual(ts.TotalMilliseconds(), milliseconds, g_dEpsilon);
       }
 
       /// tests TimeSpan ctor with time span values, part 4
       TEST_METHOD(TestSpanCtorTimeSpan4)
       {
          // ctor
-         TimeSpan ts(-4, -10, 2, 123);
-         Assert::IsTrue(DateTime::valid == ts.Status());
+         TimeSpan ts(-4, -10, -2, -123);
 
          Assert::IsTrue(-4 == ts.Hours());
          Assert::IsTrue(-10 == ts.Minutes());
          Assert::IsTrue(-2 == ts.Seconds());
          Assert::IsTrue(-123 == ts.Milliseconds());
 
-         Assert::AreEqual(ts.TotalHours(), -4.0, g_dEpsilon);
-         Assert::AreEqual(ts.TotalMinutes(), -4.0 * 60 + -10.0, g_dEpsilon);
-         Assert::AreEqual(ts.TotalSeconds(), (-4.0 * 60 + -10.0) * 60 + -2.0, g_dEpsilon);
-         Assert::AreEqual(ts.TotalMilliseconds(), ((-4.0 * 60 + -10.0) * 60 + -2.0) * 1000.0 + -123.0, g_dEpsilon);
-      }
-
-      /// tests TimeSpan ctor with status enum value
-      TEST_METHOD(TestSpanCtorStatus)
-      {
-         TimeSpan ts1(TimeSpan::min), ts2(TimeSpan::max);
-         Assert::IsTrue(TimeSpan::min == ts1.Status());
-         Assert::IsTrue(TimeSpan::max == ts2.Status());
+         double milliseconds = ((-4.0 * 60 + -10.0) * 60 + -2.0) * 1000.0 + -123.0;
+         Assert::AreEqual(ts.TotalHours(), milliseconds / 1000 / 60 / 60, g_dEpsilon);
+         Assert::AreEqual(ts.TotalMinutes(), milliseconds / 1000 / 60, g_dEpsilon);
+         Assert::AreEqual(ts.TotalSeconds(), milliseconds / 1000, g_dEpsilon);
+         Assert::AreEqual(ts.TotalMilliseconds(), milliseconds, g_dEpsilon);
       }
 
       /// tests TimeSpan copy ctor
       TEST_METHOD(TestSpanCtorCopy)
       {
          TimeSpan ts1(1, 40, 26, 123);
-         Assert::IsTrue(DateTime::valid == ts1.Status());
 
          TimeSpan ts2(ts1);
-         Assert::IsTrue(TimeSpan::valid == ts2.Status());
 
          Assert::IsTrue(1 == ts2.Hours());
          Assert::IsTrue(40 == ts2.Minutes());
          Assert::IsTrue(26 == ts2.Seconds());
          Assert::IsTrue(123 == ts2.Milliseconds());
 
-         Assert::AreEqual(ts2.TotalHours(), 1.0, g_dEpsilon);
-         Assert::AreEqual(ts2.TotalMinutes(), 1.0 * 60 + 40.0, g_dEpsilon);
-         Assert::AreEqual(ts2.TotalSeconds(), (1.0 * 60 + 40.0) * 60 + 26.0, g_dEpsilon);
-         Assert::AreEqual(ts2.TotalMilliseconds(), ((1.0 * 60 + 40.0) * 60 + 26.0) * 1000.0 + 123.0, g_dEpsilon);
+         double milliseconds = ((1.0 * 60 + 40.0) * 60 + 26.0) * 1000.0 + 123.0;
+         Assert::AreEqual(ts2.TotalHours(), milliseconds / 1000 / 60 / 60, g_dEpsilon);
+         Assert::AreEqual(ts2.TotalMinutes(), milliseconds / 1000 / 60, g_dEpsilon);
+         Assert::AreEqual(ts2.TotalSeconds(), milliseconds / 1000, g_dEpsilon);
+         Assert::AreEqual(ts2.TotalMilliseconds(), milliseconds, g_dEpsilon);
 
          // check if copy on write doesn't store both values
          ts2.SetDateTimeSpan(2, 20, 13, 124);
@@ -446,21 +437,19 @@ namespace UnitTest
       {
          // ctor
          TimeSpan ts1(1, 40, 26, 123), ts2;
-         Assert::IsTrue(DateTime::valid == ts1.Status());
-         Assert::IsTrue(DateTime::invalid == ts2.Status());
 
          ts2 = ts1;
-         Assert::IsTrue(DateTime::valid == ts2.Status());
 
          Assert::IsTrue(1 == ts2.Hours());
          Assert::IsTrue(40 == ts2.Minutes());
          Assert::IsTrue(26 == ts2.Seconds());
          Assert::IsTrue(123 == ts2.Milliseconds());
 
-         Assert::AreEqual(ts2.TotalHours(), 1.0, g_dEpsilon);
-         Assert::AreEqual(ts2.TotalMinutes(), 1.0 * 60 + 40.0, g_dEpsilon);
-         Assert::AreEqual(ts2.TotalSeconds(), (1.0 * 60 + 40.0) * 60 + 26.0, g_dEpsilon);
-         Assert::AreEqual(ts2.TotalMilliseconds(), ((1.0 * 60 + 40.0) * 60 + 26.0) * 1000.0 + 123.0, g_dEpsilon);
+         double milliseconds = ((1.0 * 60 + 40.0) * 60 + 26.0) * 1000.0 + 123.0;
+         Assert::AreEqual(ts2.TotalHours(), milliseconds / 1000 / 60 / 60, g_dEpsilon);
+         Assert::AreEqual(ts2.TotalMinutes(), milliseconds / 1000 / 60, g_dEpsilon);
+         Assert::AreEqual(ts2.TotalSeconds(), milliseconds / 1000, g_dEpsilon);
+         Assert::AreEqual(ts2.TotalMilliseconds(), milliseconds, g_dEpsilon);
 
          // check if copy on write doesn't store both values
          ts2.SetDateTimeSpan(2, 20, 13, 124);
@@ -628,32 +617,24 @@ namespace UnitTest
       TEST_METHOD(TestSpanFormatISO8601)
       {
          TimeSpan span1;
-         TimeSpan span2{ TimeSpan::min };
-         TimeSpan span3{ TimeSpan::max };
-         TimeSpan span4(1, 40, 26, 123);
-         TimeSpan span5(-4, -10, 2, 123);
+         TimeSpan span2(1, 40, 26, 123);
+         TimeSpan span3(-4, -10, -2, -123);
 
-         Assert::AreEqual(_T(""), span1.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
-         Assert::AreEqual(_T("min"), span2.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
-         Assert::AreEqual(_T("max"), span3.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
-         Assert::AreEqual(_T("PT01H40M26S"), span4.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
-         Assert::AreEqual(_T("PT04H10M02S"), span5.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
+         Assert::AreEqual(_T("PT0H0M0S"), span1.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
+         Assert::AreEqual(_T("PT1H40M26S"), span2.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
+         Assert::AreEqual(_T("PT4H10M2S"), span3.Format(TimeSpan::formatISO8601), L"formatted time span must be correct");
       }
 
       /// Tests formatting TimeSpan using HMS format
       TEST_METHOD(TestSpanFormatHMS)
       {
          TimeSpan span1;
-         TimeSpan span2{ TimeSpan::min };
-         TimeSpan span3{ TimeSpan::max };
-         TimeSpan span4(1, 40, 26, 123);
-         TimeSpan span5(-4, -10, 2, 123);
+         TimeSpan span2(1, 40, 26, 123);
+         TimeSpan span3(-4, -10, -2, -123);
 
-         Assert::AreEqual(_T(""), span1.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
-         Assert::AreEqual(_T("min"), span2.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
-         Assert::AreEqual(_T("max"), span3.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
-         Assert::AreEqual(_T("01:40:26"), span4.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
-         Assert::AreEqual(_T("-04:10:02"), span5.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
+         Assert::AreEqual(_T("00:00:00"), span1.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
+         Assert::AreEqual(_T("01:40:26"), span2.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
+         Assert::AreEqual(_T("-04:10:02"), span3.Format(TimeSpan::formatHMS), L"formatted time span must be correct");
       }
 
       TEST_METHOD(TestTimeZoneEnumerate)

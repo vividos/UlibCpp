@@ -170,12 +170,6 @@
     <ClInclude Include="..\include\ulib\TimeSpan.hpp">
       <Filter>Public Include Files</Filter>
     </ClInclude>
-    <ClInclude Include="ISO8601Parser.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeSpanImpl.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\ulib\log\AndroidLogcatAppender.hpp">
       <Filter>Public Include Files\log</Filter>
     </ClInclude>
@@ -296,12 +290,6 @@
       <Filter>Source Files\stream</Filter>
     </ClCompile>
     <ClCompile Include="DateTime.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ISO8601Parser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeSpan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TimeZone.cpp">
