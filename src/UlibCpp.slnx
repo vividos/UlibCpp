@@ -1,0 +1,38 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <BuildType Name="SonarQube" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="../appveyor.yml" />
+    <File Path="../Changelog.md" />
+    <File Path="../Documentation.md" />
+    <File Path="../LICENSE.md" />
+    <File Path="../MigrationGuide.md" />
+    <File Path="../README.md" />
+    <File Path="../Release-Checklist.md" />
+    <File Path=".editorconfig" />
+    <File Path="nupkg/PushNuGetPackage.cmd" />
+    <File Path="nupkg/Vividos.UlibCpp.Static.nuspec" />
+    <File Path="SonarCloud.cmd" />
+  </Folder>
+  <Project Path="cppcheck/cppcheck.vcxproj">
+    <BuildType Project="Default" />
+    <Platform Project="Win32" />
+    <Build Solution="SonarQube|*" Project="false" />
+  </Project>
+  <Project Path="doxygen/doxygen.vcxproj">
+    <BuildType Project="Default" />
+    <Platform Project="Win32" />
+    <Build Solution="SonarQube|*" Project="false" />
+  </Project>
+  <Project Path="test/test.vcxproj">
+    <BuildType Solution="SonarQube|*" Project="Release" />
+  </Project>
+  <Project Path="ulib/ulib.vcxproj">
+    <BuildType Solution="SonarQube|*" Project="Release" />
+  </Project>
+</Solution>
