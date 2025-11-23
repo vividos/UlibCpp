@@ -22,7 +22,7 @@ SonarCloud: [![Quality Gate Status](https://sonarcloud.io/api/project_badges/mea
 
 ## License
 
-Licensed under the [BSD 2-clause license](LICENSE.md).
+Licensed under the [MIT license](LICENSE.md).
 
 ## History
 
