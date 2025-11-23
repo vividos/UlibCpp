@@ -45,5 +45,6 @@ various projects I'm publicly developing on GitHub.
 
 Currently the following projects of mine use UlibCpp:
 - [winLAME](https://github.com/vividos/winLAME)
+- [ProgrammersGlasses](https://github.com/vividos/ProgrammersGlasses)
 - [RemotePhotoTool](https://github.com/vividos/RemotePhotoTool)
 - Some projects in the [OldStuff](https://github.com/vividos/OldStuff) repository
